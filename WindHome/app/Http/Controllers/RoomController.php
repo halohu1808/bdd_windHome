@@ -27,6 +27,7 @@ class RoomController extends Controller
         return view('rooms.list', compact('rooms'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
