@@ -18,10 +18,9 @@ abstract class RepositoryEloquent implements RepositoryInterface
     public function setModel()
     {
         $this->model = app()->make($this->getModel());
-
     }
 
-    abstract public function getModel();
+    abstract function getModel();
 
 
     public function getAll()
