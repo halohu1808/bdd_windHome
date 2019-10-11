@@ -18,3 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'rooms'], function () {
+    Route::get('/', 'RoomController@index')->name('room.index');
+    Route::get('/create', 'RoomController@create')->name('room.create');
+    Route::post('/create', 'RoomController@store')->name('room.store');
+    Route::get('/update/{id}', 'RoomController@edit')->name('room.edit');
+    Route::post('/update/{id}', 'RoomController@update')->name('room.update');
+    Route::get('/delete/{id}', 'RoomController@destroy')->name('room.destroy');
+    Route::get('/detail/{id}', 'RoomController@show')->name('room.detail');
+});
