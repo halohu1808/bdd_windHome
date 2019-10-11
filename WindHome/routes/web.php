@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/c', function () {
+    return view('adminSite.createRoom');
 });
 
 Auth::routes();
