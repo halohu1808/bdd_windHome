@@ -19,16 +19,18 @@ class CreateRoomsTable extends Migration
             $table->string('address');
             $table->integer('pricePerMonth');
             $table->integer('minRentTime');
-            $table->boolean('bathRoom');
-            $table->integer('area');
-            $table->smallInteger('guest');
-            $table->boolean('parking');
-            $table->boolean('wifi');
-            $table->boolean('cooking');
-            $table->boolean('airCondition');
-            $table->boolean('status');
-            $table->double('lat');
-            $table->double('lng');
+            $table->boolean('bathRoom')->nullable();
+            $table->integer('area')->nullable();
+            $table->smallInteger('guest')->nullable();
+            $table->boolean('parking')->nullable();
+            $table->boolean('wifi')->nullable();
+            $table->boolean('cooking')->nullable();
+            $table->boolean('airCondition')->nullable();
+            $table->boolean('status')->nullable();
+            $table->double('lat')->nullable();
+            $table->double('lng')->nullable();
+            $table->string('image')->nullable();
+
             $table->timestamps();
         });
     }
