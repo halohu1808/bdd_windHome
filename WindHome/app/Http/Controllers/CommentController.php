@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use Illuminate\Http\Request;
-
+use App\Http\Service\Impl\CommentService;
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $commentService;
+
+    public function __construct(CommentService $commentService)
+    {
+        $this->commentService = $commentService;
+    }
+
     public function index()
     {
-        //
+        $comments = $this->commentService->getAll();
+        return view('comments.list', compact('comments'));
     }
 
     /**
@@ -22,9 +25,9 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($userId, $roomId)
     {
-        //
+        return view('comments.create', compact('userId', 'roomId'));
     }
 
     /**

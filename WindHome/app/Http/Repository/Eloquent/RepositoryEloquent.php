@@ -12,7 +12,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
 
     public function __construct()
     {
-        $this->model->setModel();
+        $this->setModel();
     }
 
     public function setModel()
