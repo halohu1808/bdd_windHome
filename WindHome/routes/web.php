@@ -14,6 +14,14 @@
 Route::get('/c', function () {
     return view('adminSite.createRoom');
 });
+Route::get('/l', function () {
+    return view('listSite.listPage');
+});
+
+Route::get('/homeSearch', function () {
+    return view('homeSite.homeSearch');
+});
+
 
 Auth::routes();
 

@@ -36,7 +36,7 @@
 
     @yield('content')
 
-
+</div>
 
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
