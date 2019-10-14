@@ -21,12 +21,29 @@ class CommentService implements CommentServiceInterface
         return $this->commentRepositoy->getAll();
     }
 
-    public function store($request, $userId, $roomId)
+    public function store($request, $roomId)    //Test lại phần userId và roomId
     {
-        $comment = new Comment();
-        $comment->comment = $request->input('comment');
-        $comment->userId = $userId;
-        $comment->roomId = $roomId;
-        $this->commentRepositoy->store($comment);
+        $userId = Auth::user()->id;
+        $comment = $request->comment;
+
+        $data = [
+            "comment" => $comment,
+            "userId" => $userId,
+            "roomId" => $roomId,
+        ];
+        $this->commentRepositoy->store($data);
+    }
+
+    public function update($request, $id)
+    {
+        $comment = $this->commentRepositoy->findById($id);
+        $data = $request->all();
+        $this->commentRepositoy->update($comment, $data);
+    }
+
+    public function destroy($id)
+    {
+        $comment = $this->commentRepositoy->findById($id);
+        $this->commentRepositoy->destroy($comment);
     }
 }

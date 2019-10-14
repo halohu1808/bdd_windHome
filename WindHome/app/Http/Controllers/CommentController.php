@@ -38,7 +38,9 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->commentService->store($request);
+        return redirect()->route('comment.index');
+
     }
 
     /**
@@ -58,9 +60,10 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit($id)
     {
-        //
+        $comment = $this->commentService->update($id);
+        return view('comments.edit', compact('comment'));
     }
 
     /**
@@ -70,9 +73,10 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, $id)
     {
-        //
+        $this->commentService->update($request, $id);
+        return redirect()->route('room.index');
     }
 
     /**
@@ -81,8 +85,9 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy($id)
     {
-        //
+        $this->commentService->destroy($id);
+        return redirect()->route('room.index');
     }
 }
