@@ -30,7 +30,6 @@ class CreateRoomsTable extends Migration
             $table->double('lat')->nullable();
             $table->double('lng')->nullable();
             $table->string('image')->nullable();
-
             $table->timestamps();
         });
     }

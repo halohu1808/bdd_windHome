@@ -11,27 +11,32 @@
 |
 */
 
+
 Route::get('/c', function () {
     return view('adminSite.createRoom');
 });
-Route::get('/l', function () {
+Route::get('/list', function () {
     return view('listSite.listPage');
 });
-
 Route::get('/homeSearch', function () {
     return view('homeSite.homeSearch');
 });
 
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['prefix' => 'comments'], function(){
     Route::get('/', 'CommentController@index')->name('comment.index');
     Route::get('/create', 'CommentController@create')->name('comment.create');
     Route::post('/create', 'CommentController@store')->name('comment.store');
+});
+
+Route::group(['prefix' => 'comments'], function () {
+    Route::get('/', 'CommentController@index')->name('comment.index');
+    Route::get('/create', 'CommentController@create')->name('comment.create');
+    Route::post('/create', 'CommentController@store')->name('comment.store');
+
 });
 
 Route::group(['prefix' => 'rooms'], function () {

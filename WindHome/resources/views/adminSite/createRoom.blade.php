@@ -3,7 +3,6 @@
     @include('adminSite.sideBarAdmin')
 @endsection
 @section('content')
-
     <div id="content">
         <div class="row pl-5">
             <h2>Tạo phòng mới</h2>
