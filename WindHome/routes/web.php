@@ -11,16 +11,16 @@
 |
 */
 
+
 Route::get('/c', function () {
     return view('adminSite.createRoom');
-});
+})->name('home');
 
 Auth::routes();
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::group(['prefix' => 'comments'], function(){
+Route::group(['prefix' => 'comments'], function () {
     Route::get('/', 'CommentController@index')->name('comment.index');
     Route::get('/create', 'CommentController@create')->name('comment.create');
     Route::post('/create', 'CommentController@store')->name('comment.store');
