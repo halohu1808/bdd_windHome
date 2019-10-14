@@ -15,9 +15,9 @@ class CommentRepositoryEloquent extends RepositoryEloquent implements CommentRep
         return Comment::class;
     }
 
-    public function store($comment)
-    {
-        $comment->save();
-    }
+//    public function store($comment)
+//    {
+//        $comment->save();
+//    }
 
 }
