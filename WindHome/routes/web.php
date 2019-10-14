@@ -24,7 +24,7 @@ Route::group(['prefix' => 'comments'], function(){
     Route::get('/', 'CommentController@index')->name('comment.index');
     Route::get('/create', 'CommentController@create')->name('comment.create');
     Route::post('/create', 'CommentController@store')->name('comment.store');
-
+});
 
 Route::group(['prefix' => 'rooms'], function () {
     Route::get('/', 'RoomController@index')->name('room.index');
