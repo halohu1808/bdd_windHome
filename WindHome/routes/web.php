@@ -11,6 +11,7 @@
 |
 */
 
+// Hải viết Route vớ vẩn để test giao diện tí thôi!
 
 Route::get('/c', function () {
     return view('adminSite.createRoom');
@@ -24,6 +25,12 @@ Route::get('/list', function () {
 Route::get('/homeSearch', function () {
     return view('homeSite.homeSearch');
 });
+
+Route::get('/roomDetail', function () {
+    return view('listSite.roomDetail');
+});
+// Xóa sau khi làm xong giao diện
+
 
 Auth::routes();
 
