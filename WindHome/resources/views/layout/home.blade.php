@@ -28,7 +28,7 @@
 
 <body>
 {{--Header--}}
-<div>
+<div class="sticky-top">
     @include('layout.header')
 </div>
 
