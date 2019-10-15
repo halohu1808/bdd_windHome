@@ -8,6 +8,7 @@
         <th>Area</th>
         <th>Guest</th>
         <th>Parking</th>
+        <th>Wifi</th>
         <th></th>
         <th></th>
     </tr>
@@ -20,8 +21,10 @@
             <td>{{$room->area}}</td>
             <td>{{$room->guest}}</td>
             <td>{{$room->parking}}</td>
+            <td>{{$room->wifi}}</td>
+
             <td><a href="{{route('room.edit',$room->id)}}" >Update</a></td>
-            <td><a href="{{route('room.destroy',$room->id)}}" >Update</a></td>
+            <td><a href="{{route('room.destroy',$room->id)}}" >Delete</a></td>
         </tr>
     @endforeach
 </table>
