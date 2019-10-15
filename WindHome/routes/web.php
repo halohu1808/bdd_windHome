@@ -11,6 +11,7 @@
 |
 */
 
+// Hải viết Route vớ vẩn để test giao diện tí thôi!
 
 
 Route::get('/adminSite', function () {
@@ -20,8 +21,13 @@ Route::get('/homeSearch', function () {
     return view('homeSite.homeSearch');
 });
 
-Auth::routes();
+Route::get('/roomDetail', function () {
+    return view('listSite.roomDetail');
+});
+// Xóa sau khi làm xong giao diện
 
+
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/redirect/{social}', 'SocialAuthController@redirect');
