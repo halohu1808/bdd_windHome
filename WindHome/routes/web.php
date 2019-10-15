@@ -12,14 +12,9 @@
 */
 
 
-Route::get('/c', function () {
-    return view('adminSite.createRoom');
-});
+
 Route::get('/adminSite', function () {
     return view('adminSite.adminSite');
-});
-Route::get('/list', function () {
-    return view('listSite.listPage');
 });
 Route::get('/homeSearch', function () {
     return view('homeSite.homeSearch');
@@ -28,7 +23,6 @@ Route::get('/homeSearch', function () {
 Auth::routes();
 
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
@@ -52,6 +46,7 @@ Route::group(['prefix' => 'comments'], function () {
 });
 
 Route::group(['prefix' => 'rooms'], function () {
+    Route::get('/list','RoomController@list')->name('room.list');
     Route::get('/', 'RoomController@index')->name('room.index');
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');

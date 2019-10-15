@@ -22,10 +22,18 @@
                         <label>Địa chỉ</label>
                         <input type="text" class="form-control" name="address" placeholder="Đường,quận,thành phố...">
                     </div>
+                    <div class="form-group">
+                        <label>Thành Phố</label>
+                        <input type="text" class="form-control" name="city" placeholder="Đường,quận,thành phố...">
+                    </div>
+                    <div class="form-group">
+                        <label>Quốc Gia</label>
+                        <input type="text" class="form-control" name="country" placeholder="Đường,quận,thành phố...">
+                    </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label>Số người</label>
-                            <input type="text" class="form-control" name="guest" placeholder="1,2...">
+                            <input type="number" class="form-control" name="guest" placeholder="1,2...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Thời gian thuê tối thiểu</label>
