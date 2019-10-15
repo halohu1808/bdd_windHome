@@ -21,6 +21,12 @@ class RoomController extends Controller
         $this->roomService = $roomService;
     }
 
+    public function list()
+    {
+        $rooms=$this->roomService->getAll();
+        return view('listSite.listPage',compact('rooms'));
+    }
+
     public function index()
     {
         $rooms = $this->roomService->getAll();
@@ -35,7 +41,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('rooms.create');
+        return view('adminSite.createRoom');
     }
 
     /**
@@ -58,8 +64,8 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        $room=$this->roomService->findById($id);
-        return view('rooms.detail',compact('room'));
+        $room = $this->roomService->findById($id);
+        return view('rooms.detail', compact('room'));
     }
 
     /**
