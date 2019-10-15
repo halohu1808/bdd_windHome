@@ -71,7 +71,7 @@ class rooms extends Seeder
         $room->status = False;
         $room->lat = 50;
         $room->lng = 100;
-        $room->image="a5.jpg";
+        $room->image="a3.jpg";
         $room->save();
 
         $room = new Room();
@@ -91,7 +91,7 @@ class rooms extends Seeder
         $room->status = False;
         $room->lat = 50;
         $room->lng = 100;
-        $room->image="a6.jpg";
+        $room->image="a4.jpg";
         $room->save();
 
         $room = new Room();

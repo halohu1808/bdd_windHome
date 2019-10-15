@@ -65,7 +65,7 @@ class RoomController extends Controller
     public function show($id)
     {
         $room = $this->roomService->findById($id);
-        return view('rooms.detail', compact('room'));
+        return view('listSite.roomDetail', compact('room'));
     }
 
     /**
