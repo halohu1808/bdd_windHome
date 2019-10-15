@@ -1,8 +1,9 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('home') }}">
-                Wind Home
+                <i class="fas fa-home fa-2x"></i>
+
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -11,6 +12,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
+                    <div class="wrapper">
+                        <div class="pr-2">
+                            <input type="text" class="form-control" name="where" placeholder="Nhập địa điểm">
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-outline-secondary">Tìm</button>
+                        </div>
+
+                    </div>
+
 
                 </ul>
 
@@ -49,3 +60,4 @@
             </div>
         </div>
     </nav>
+</div>

@@ -100,7 +100,7 @@
             </div>
             <hr>
             <div class="pl-5">
-                <button type="button" class="btn btn-primary">Thêm mới</button>
+                <button type="button" class="btn btn-outline-secondary">Thêm mới</button>
             </div>
 
         </form>

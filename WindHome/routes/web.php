@@ -15,6 +15,9 @@
 Route::get('/c', function () {
     return view('adminSite.createRoom');
 });
+Route::get('/adminSite', function () {
+    return view('adminSite.adminSite');
+});
 Route::get('/list', function () {
     return view('listSite.listPage');
 });
@@ -23,7 +26,8 @@ Route::get('/homeSearch', function () {
 });
 
 Auth::routes();
-//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['prefix' => 'comments'], function(){

@@ -1,4 +1,4 @@
-<nav id="sidebar">
+<nav id="sidebar" style="visibility: visible">
     <div class="sidebar-header">
         <a href="https://www.google.com"><h3>Wind Home</h3></a>
     </div>
