@@ -55,7 +55,7 @@
                 </tbody>
             </table>
         </div>
-        <button class="btn btn-outline-success" type="submit">Create</button>
+        <a class="btn btn-outline-secondary"  href="{{route('room.create')}}">Create</a>
 
 
     </div>
