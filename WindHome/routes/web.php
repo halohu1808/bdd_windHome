@@ -14,10 +14,20 @@
 
 Route::get('/c', function () {
     return view('adminSite.createRoom');
-})->name('home');
+});
+Route::get('/list', function () {
+    return view('listSite.listPage');
+});
+Route::get('/homeSearch', function () {
+    return view('homeSite.homeSearch');
+});
 
 Auth::routes();
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/redirect/{social}', 'SocialAuthController@redirect');
+Route::get('/callback/{social}', 'SocialAuthController@callback');
+
+
 
 
 
