@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="card-footer ">
-                    <a href="#" class="btn btn-outline-primary btn-sm">Chi Tiết</a>
+                    <a href="{{route('room.detail', $room->id)}}" class="btn btn-outline-primary btn-sm" =>Chi Tiết</a>
                     <label class="float-right mt-1 font-weight-bold text-success"> {{$room->pricePerMonth}} </label>
                 </div>
             </div>
