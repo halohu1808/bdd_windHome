@@ -13,36 +13,21 @@
 
 // Hải viết Route vớ vẩn để test giao diện tí thôi!
 
-
-Route::get('/adminSite', function () {
-    return view('adminSite.adminSite');
+Route::get('/test', function () {
+    return view('listSite.test');
 });
-Route::get('/homeSearch', function () {
+
+Route::get('/home', function () {
     return view('homeSite.homeSearch');
-});
-
-Route::get('/roomDetail', function () {
-    return view('listSite.roomDetail');
-});
+})->name('home');
 // Xóa sau khi làm xong giao diện
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
-
-
-
-
-
-Route::group(['prefix' => 'comments'], function(){
-    Route::get('/', 'CommentController@index')->name('comment.index');
-    Route::get('/create', 'CommentController@create')->name('comment.create');
-    Route::post('/create', 'CommentController@store')->name('comment.store');
-});
 
 Route::group(['prefix' => 'comments'], function () {
     Route::get('/', 'CommentController@index')->name('comment.index');
@@ -50,6 +35,8 @@ Route::group(['prefix' => 'comments'], function () {
     Route::post('/create', 'CommentController@store')->name('comment.store');
 
 });
+
+//Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
 
 Route::group(['prefix' => 'rooms'], function () {
     Route::get('/list','RoomController@list')->name('room.list');
