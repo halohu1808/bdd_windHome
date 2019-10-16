@@ -27,7 +27,8 @@
                         <option>5</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-outline-secondary">Tìm</button>
+{{--                <button type="submit" class="btn btn-outline-secondary">Tìm</button>--}}
+                <a class="btn btn-outline-secondary" href="{{route("room.list")}}" > Tìm Kiếm</a>
             </form>
 
         </div>

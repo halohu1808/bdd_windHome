@@ -3,6 +3,7 @@
 @section('sideBar')
     @include('listSite.filterSideBar')
 @endsection
+
 @section('content')
     <!-- Page Content  -->
     <div id="content">
