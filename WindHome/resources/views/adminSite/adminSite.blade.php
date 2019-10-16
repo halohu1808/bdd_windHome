@@ -24,35 +24,38 @@
             <table class="table table-hover">
                 <thead class="thead-light">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Price</th>
+                    <th>Bathroom</th>
+                    <th>Guest</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>Thornton</td>
-                    <td>@twitter</td>
-                </tr>
+                @foreach($rooms as $room)
+                    <tr>
+                        <td>{{$room->name}}</td>
+                        <td>{{$room->address}}</td>
+                        <td>{{$room->pricePerMonth}}</td>
+                        <td>{{$room->area}}</td>
+                        <td>{{$room->guest}}</td>
+                        <td>@if(isset($room->status))
+                                Có
+                            @else
+                                Không
+                            @endif</td>
+
+                        <td><a class="btn btn-outline-secondary"  href="{{route('room.edit',$room->id)}}" >Update</a></td>
+                        <td><a class="btn btn-outline-secondary" href="{{route('room.destroy',$room->id)}}" >Delete</a></td>
+                    </tr>
+                    @endforeach
+
                 </tbody>
             </table>
         </div>
-        <button class="btn btn-outline-success" type="submit">Create</button>
+        <a class="btn btn-outline-secondary"  href="{{route('room.create')}}">Create</a>
 
 
     </div>

@@ -17,12 +17,10 @@
                             <input type="text" class="form-control" name="where" placeholder="Nhập địa điểm">
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-outline-secondary">Tìm</button>
+{{--                            <button type="submit" class="btn btn-outline-secondary">Tìm</button>--}}
+                            <a class="btn btn-outline-secondary" href="{{route("room.list")}}" > Tìm Kiếm</a>
                         </div>
-
                     </div>
-
-
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -44,6 +42,9 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                <a class="pl-4" href="{{route('room.index')}}"> Trang quản lí</a> {{--Hải thêm để demo--}}
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
