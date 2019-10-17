@@ -10,13 +10,13 @@
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Phòng</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                    <a href="#">Tất cả</a>
+                    <a href="{{route('room.index')}}">Tất cả</a>
                 </li>
                 <li>
                     <a href="#">Đang cho thuê</a>
                 </li>
                 <li>
-                    <a href="#">Thêm phòng mới</a>
+                    <a href="{{route('room.create')}}">Thêm phòng mới</a>
                 </li>
             </ul>
         </li>

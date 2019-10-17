@@ -44,7 +44,7 @@
                 </div>
                 <div class="card-footer ">
                     <a href="{{route('room.detail', $room->id)}}" class="btn btn-outline-primary btn-sm" =>Chi Tiết</a>
-                    <label class="float-right mt-1 font-weight-bold text-success"> {{$room->pricePerMonth}} </label>
+                    <label class="float-right mt-1 font-weight-bold text-success"> $ {{number_format($room->pricePerMonth)}}  </label>
                 </div>
             </div>
 @endforeach

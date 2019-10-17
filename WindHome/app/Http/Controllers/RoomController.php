@@ -23,7 +23,7 @@ class RoomController extends Controller
 
     public function list()
     {
-        $rooms=$this->roomService->getAll();
+        $rooms=$this->roomService->getAll()->sortByDesc('created_at');  // <- Sort theo phòng mới tạo
         return view('listSite.listPage',compact('rooms'));
     }
 
