@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\createRoom;
 use App\Http\Service\Impl\RoomService;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use App\Room;
@@ -41,7 +42,10 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('adminSite.createRoom');
+        $jsonString = file_get_contents(base_path('public/city.json'));
+        $data = json_decode($jsonString, true);
+//        dd($data[0]['name']);
+        return view('adminSite.createRoom',compact('data'));
     }
 
     /**
@@ -50,9 +54,11 @@ class RoomController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(createRoom $request)
     {
         $this->roomService->store($request);
+
+
         return redirect()->route('room.index');
     }
 
@@ -87,7 +93,7 @@ class RoomController extends Controller
      * @param \App\Room $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(createRoom $request, $id)
     {
         $this->roomService->update($request, $id);
         return redirect()->route('room.index');

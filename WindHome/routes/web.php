@@ -17,6 +17,10 @@ Route::get('/test', function () {
     return view('listSite.test');
 });
 
+Route::get('/', function () {
+    return view('homeSite.homeSearch');
+});
+
 Route::get('/home', function () {
     return view('homeSite.homeSearch');
 })->name('home');
