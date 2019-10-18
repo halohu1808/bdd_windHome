@@ -14,4 +14,9 @@ class RoomRepositoryEloquent extends RepositoryEloquent implements RoomRepositor
     {
         return Room::class;
     }
+
+    public function booking($id)
+    {
+
+    }
 }
