@@ -28,7 +28,7 @@ class CreateRoomsTable extends Migration
             $table->boolean('wifi')->nullable();
             $table->boolean('cooking')->nullable();
             $table->boolean('airCondition')->nullable();
-            $table->boolean('status')->nullable();
+            $table->string('status')->nullable();
             $table->double('lat')->nullable();
             $table->double('lng')->nullable();
             $table->string('image')->nullable();

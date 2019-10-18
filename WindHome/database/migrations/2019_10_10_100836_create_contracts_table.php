@@ -18,6 +18,7 @@ class CreateContractsTable extends Migration
             $table->date('date');
             $table->integer('price');
             $table->integer('rentTime');
+            $table->integer('timeRemaining')->nullable();
             $table->bigInteger('userId')->unsigned();
             $table->foreign('userId')->references('id')->on('users');
             $table->bigInteger('roomId')->unsigned();

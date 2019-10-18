@@ -43,7 +43,7 @@ Route::group(['prefix' => 'comments'], function () {
 //Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
 
 Route::group(['prefix' => 'rooms'], function () {
-    Route::get('/list','RoomController@list')->name('room.list');
+    Route::get('/list', 'RoomController@list')->name('room.list');
     Route::get('/', 'RoomController@index')->name('room.index');
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
@@ -53,4 +53,9 @@ Route::group(['prefix' => 'rooms'], function () {
     Route::get('/detail/{id}', 'RoomController@show')->name('room.detail');
     Route::post('/booking/{id}','RoomController@booking')->name('room.booking');
 
+});
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/detail/{id}', 'AdminController@index')->name('admin.detail');
+    Route::get('/editOn/{id}','AdminController@editStatusOn')->name('admin.editStatusOn');
+    Route::get('/editOff/{id}','AdminController@editStatusOff')->name('admin.editStatusOff');
 });

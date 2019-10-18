@@ -27,7 +27,7 @@
                     <th>Name</th>
                     <th>Address</th>
                     <th>Price</th>
-                    <th>Bathroom</th>
+                    <th>Area</th>
                     <th>Guest</th>
                     <th>Status</th>
                     <th></th>
@@ -36,7 +36,7 @@
                 </thead>
                 @foreach($rooms as $room)
                     <tr>
-                        <td>{{$room->name}}</td>
+                        <td><a href="{{route('admin.detail',$room->id)}}" >{{$room->name}}</a></td>
                         <td>{{$room->address}}</td>
                         <td>{{$room->pricePerMonth}}</td>
                         <td>{{$room->area}}</td>
@@ -47,15 +47,17 @@
                                 Không
                             @endif</td>
 
-                        <td><a class="btn btn-outline-secondary"  href="{{route('room.edit',$room->id)}}" >Update</a></td>
-                        <td><a class="btn btn-outline-secondary" href="{{route('room.destroy',$room->id)}}" >Delete</a></td>
+                        <td><a class="btn btn-outline-secondary" href="{{route('room.edit',$room->id)}}">Update</a></td>
+                        <td><a class="btn btn-outline-secondary" href="{{route('room.destroy',$room->id)}}">Delete</a>
+                        </td>
+
                     </tr>
                     @endforeach
 
-                </tbody>
+                    </tbody>
             </table>
         </div>
-        <a class="btn btn-outline-secondary"  href="{{route('room.create')}}">Create</a>
+        <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Create</a>
 
 
     </div>

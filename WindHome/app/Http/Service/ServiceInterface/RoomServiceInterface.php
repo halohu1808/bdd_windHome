@@ -18,4 +18,5 @@ interface RoomServiceInterface
 
     public function booking($id);
 
+    public function save($obj);
 }
