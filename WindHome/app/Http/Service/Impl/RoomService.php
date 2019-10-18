@@ -44,4 +44,10 @@ class RoomService implements RoomServiceInterface
         $room = $this->roomRepository->findById($id);
         $this->roomRepository->destroy($room);
     }
+
+    public function save($obj)
+    {
+
+      return   $this->roomRepository->save($obj);
+    }
 }
