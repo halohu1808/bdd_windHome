@@ -13,20 +13,39 @@ class StatusSeeder extends Seeder
     public function run()
     {
         $status=new Status();
-        $status->status='Còn Phòng';
+        $status->name='Còn Phòng';
         $status->save();
 
         $status=new Status();
-        $status->status='Đã Cho Thuê';
+        $status->name='Đã Cho Thuê';
         $status->save();
 
         $status=new Status();
-        $status->status='Đang Chờ Duyệt ';
+        $status->name='Giữ Phòng';
         $status->save();
 
         $status=new Status();
-        $status->status='Đang Chờ Hủy';
+        $status->name='Muốn Hủy Hợp Đồng';
         $status->save();
+
+        $status=new Status();
+        $status->name='Hợp Đồng Thực Thi';
+        $status->save();
+
+        $status=new Status();
+        $status->name='Hợp Đồng Kết Thúc';
+        $status->save();
+
+        $status=new Status();
+        $status->name='Khách Giữ Chỗ';
+        $status->save();
+
+        $status=new Status();
+        $status->name='Khách Muốn Hủy Hợp Đồng';
+        $status->save();
+
+
+
 
 
 
