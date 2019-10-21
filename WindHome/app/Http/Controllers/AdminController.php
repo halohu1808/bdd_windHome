@@ -23,7 +23,8 @@ class AdminController extends Controller
     {
         $room = $this->roomService->findById($id);
         $room->status = "Còn Phòng";
-        $this->roomService->save($room);
+        $this->roomService->save($room); // Sang viet sai, phai lay gia tri tu day moi dung
+
         return view('adminSite.roomDetail', compact('room'));
     }
 

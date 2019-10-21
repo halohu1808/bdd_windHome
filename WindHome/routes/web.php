@@ -51,11 +51,12 @@ Route::group(['prefix' => 'rooms'], function () {
     Route::post('/update/{id}', 'RoomController@update')->name('room.update');
     Route::get('/delete/{id}', 'RoomController@destroy')->name('room.destroy');
     Route::get('/detail/{id}', 'RoomController@show')->name('room.detail');
-    Route::post('/booking/{id}','RoomController@booking')->name('room.booking');
+    Route::get('/booking/{id}','RoomController@booking')->name('room.booking');
 
 });
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/detail/{id}', 'AdminController@index')->name('admin.detail');
     Route::get('/editOn/{id}','AdminController@editStatusOn')->name('admin.editStatusOn');
     Route::get('/editOff/{id}','AdminController@editStatusOff')->name('admin.editStatusOff');
+
 });

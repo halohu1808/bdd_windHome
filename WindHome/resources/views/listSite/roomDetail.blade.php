@@ -49,9 +49,7 @@
                         <label> Diện tích: {{$room->area}} m2 </label><br>
                         <label> Thời gian thuê tối thiểu: {{$room->minRentTime}} tháng </label><br>
                         <label> Trạng thái:
-                            @if (isset($room->status)) Còn phòng
-                            @else Hết phòng
-                            @endif
+                            {{$room->status}}
                         </label><br>
 
                     </div>
@@ -122,14 +120,18 @@
                         </div>
                     </div>
                     <div class="pt-2">
-                        <button type="button" class="btn btn-success btn-lg btn-block">ĐẶT PHÒNG</button>
-                    </div>
+                        @if($room->status == 'còn phòng')
+                        <a class="btn btn-success btn-lg btn-block" href="{{route('room.booking',$room->id)}}">ĐẶT
+                            PHÒNG</a>
+                        @else {{$room->status}}
+                        @endif
 
+                    </div>
                 </form>
             </div>
 
         </div>
-<hr>
+        <hr>
         <div class="row">
             <div class="col-md-7">
                 <h2 class="text-danger">Mô tả</h2>
@@ -175,7 +177,8 @@
                                 </div>
                             </div>
                             <div class="col-md-8 p-3">
-                                <img class="img-fluid" alt="Responsive image" src="https://image.thanhnien.vn/660/uploaded/tuyenth/2019_01_09/lisa-1_mwvm.jpg">
+                                <img class="img-fluid" alt="Responsive image"
+                                     src="https://image.thanhnien.vn/660/uploaded/tuyenth/2019_01_09/lisa-1_mwvm.jpg">
                             </div>
 
                         </div>
@@ -189,7 +192,8 @@
                                 </div>
                             </div>
                             <div class="col-md-8 p-3">
-                                <img class="img-fluid" alt="Responsive image" src="https://image.thanhnien.vn/660/uploaded/tuyenth/2019_01_09/lisa-1_mwvm.jpg">
+                                <img class="img-fluid" alt="Responsive image"
+                                     src="https://image.thanhnien.vn/660/uploaded/tuyenth/2019_01_09/lisa-1_mwvm.jpg">
                             </div>
 
                         </div>
@@ -203,12 +207,12 @@
                                 </div>
                             </div>
                             <div class="col-md-8 p-3">
-                                <img class="img-fluid" alt="Responsive image" src="https://image.thanhnien.vn/660/uploaded/tuyenth/2019_01_09/lisa-1_mwvm.jpg">
+                                <img class="img-fluid" alt="Responsive image"
+                                     src="https://image.thanhnien.vn/660/uploaded/tuyenth/2019_01_09/lisa-1_mwvm.jpg">
                             </div>
 
                         </div>
                     </div>
-
 
 
                 </div>
