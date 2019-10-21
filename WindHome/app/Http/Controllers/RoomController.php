@@ -8,7 +8,8 @@ use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use App\Room;
 use Illuminate\Http\Request;
 
-class RoomController extends Controller
+class
+RoomController extends Controller
 {
     protected $roomService;
 

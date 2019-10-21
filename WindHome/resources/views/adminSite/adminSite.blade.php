@@ -41,11 +41,7 @@
                         <td>{{$room->pricePerMonth}}</td>
                         <td>{{$room->area}}</td>
                         <td>{{$room->guest}}</td>
-                        <td>@if(isset($room->status))
-                                Có
-                            @else
-                                Không
-                            @endif</td>
+                        <td>{{$room->status->name}}</td>
 
                         <td><a class="btn btn-outline-secondary" href="{{route('room.edit',$room->id)}}">Update</a></td>
                         <td><a class="btn btn-outline-secondary" href="{{route('room.destroy',$room->id)}}">Delete</a>

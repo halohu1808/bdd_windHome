@@ -1,6 +1,8 @@
 @extends('layout.home')
+@section('sideBar')
+    @include('adminSite.sideBarAdmin')
+@endsection
 @section('content')
-
     <div class="container">
 
         <div class="row pt-5">
@@ -24,7 +26,7 @@
                         <label> Diện tích: {{$room->area}} m2 </label><br>
                         <label> Thời gian thuê tối thiểu: {{$room->minRentTime}} tháng </label><br>
                         <label> Trạng thái:
-                             {{$room->status}}
+                            {{$room->status->name}}
                         </label><br>
 
                         <hr>
@@ -81,42 +83,42 @@
                         </div>
                     </div>
                     <hr>
+                    @if($room->statusId==3)
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary">Hủy Yêu Cầu</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary">Tạo Hợp Đồng</button>
+                            </div>
+                        </div>
+                    @elseif($room->statusId==2)
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary">Huỷ Hợp Đồng</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary">Sửa Hợp Đồng</button>
+                            </div>
+                        </div>
+                    @elseif($room->statusId==4)
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary">Hủy Yêu Cầu</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary">Đồng Ý</button>
+                            </div>
+                        </div>
+                    @elseif($room->statusId==1)
+                    @endif
+
                 </form>
             </div>
 
         </div>
-        <div class="row pt-2">
-            <h3 class="font-weight-bold text-success text-justify" >Thông tin hợp đồng</h3>
-            <br>
-            <table class="table table-bordered">
-                <thead class="thead-dark">
-                <th>#</th>
-                <th>Tên người thuê</th>
-                <th>Ngày thuê</th>
-                <th>Ngày kết thúc</th>
-                <th>Số thời gian còn lại</th>
-                <th>Tình trạng</th>
-                </thead>
-                <tbody>
-                <td></td>
-                <td>Giáp Văn Sáng</td>
-                <td>10-12-2018</td>
-                <td>10-11-2019</td>
-                <td>3 tháng</td>
-                <td>{{$room->status}}</td>
-                </tbody>
-            </table>
-        </div>
         <br>
-        <div class="row pt-2">
-            <div class="pt-2">
-                <a href="{{route('admin.editStatusOn',$room->id)}}" class="btn btn-outline-secondary btn-lg">Còn phòng</a>
-            </div>
-            <div class="pt-2">
-                <a  href="{{route('admin.editStatusOff',$room->id)}}" class="btn btn-outline-secondary btn-lg  ml-lg-5">Hết Phòng</a>
-            </div>
-        </div>
+        <br>
 
-    </div>
 
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -19,7 +20,7 @@ class AdminController extends Controller
         return view('adminSite.roomDetail', compact('room'));
     }
 
-    public function editStatusOn($id)
+    public function editStatus(Request $request, $id)
     {
         $room = $this->roomService->findById($id);
         $room->status = "Còn Phòng";
@@ -32,6 +33,7 @@ class AdminController extends Controller
     {
         $room = $this->roomService->findById($id);
         $room->status = "Đã Cho Thuê";
+//        $room->status = $request->status;
         $this->roomService->save($room);
         return view('adminSite.roomDetail', compact('room'));
     }

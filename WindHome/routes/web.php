@@ -58,5 +58,4 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/detail/{id}', 'AdminController@index')->name('admin.detail');
     Route::get('/editOn/{id}','AdminController@editStatusOn')->name('admin.editStatusOn');
     Route::get('/editOff/{id}','AdminController@editStatusOff')->name('admin.editStatusOff');
-
 });

@@ -10,7 +10,7 @@
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Phòng</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                    <a href="#">Tất cả</a>
+                    <a href="{{route('room.index')}}">Tất cả</a>
                 </li>
                 <li>
                     <a href="#">Đang cho thuê</a>
@@ -35,7 +35,18 @@
         </li>
         {{--Comment--}}
         <li>
-            <a href="#">Comment</a>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Hợp Đồng</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="#">Tất cả</a>
+                </li>
+                <li>
+                    <a href="#">Tạo hợp đồng</a>
+                </li>
+                <li>
+                    <a href="#">Đang thuê nhà</a>
+                </li>
+            </ul>
         </li>
 
 
