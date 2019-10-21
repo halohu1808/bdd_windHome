@@ -30,7 +30,7 @@
 <body>
 {{--Header--}}
 <div class="sticky-top">
-    @include('layout.header')
+    @include('layout.headerUser')
 </div>
 
 

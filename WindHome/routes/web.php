@@ -13,23 +13,18 @@
 
 // Hải viết Route vớ vẩn để test giao diện tí thôi!
 
-
-Route::get('/adminSite', function () {
-    return view('adminSite.adminSite');
+Route::get('/test', function () {
+    return view('listSite.test');
 });
-Route::get('/homeSearch', function () {
+
+Route::get('/home', function () {
     return view('homeSite.homeSearch');
-});
-
-Route::get('/roomDetail', function () {
-    return view('listSite.roomDetail');
-});
+})->name('home');
 // Xóa sau khi làm xong giao diện
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
@@ -38,6 +33,7 @@ Route::group(['prefix' => 'comments'], function () {
     Route::get('/', 'CommentController@index')->name('comment.index');
     Route::get('/create', 'CommentController@create')->name('comment.create');
     Route::post('/create', 'CommentController@store')->name('comment.store');
+
 
 });
 
@@ -53,6 +49,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
+//Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
+
 Route::group(['prefix' => 'rooms'], function () {
     Route::get('/list','RoomController@list')->name('room.list');
     Route::get('/', 'RoomController@index')->name('room.index');
@@ -62,5 +60,12 @@ Route::group(['prefix' => 'rooms'], function () {
     Route::post('/update/{id}', 'RoomController@update')->name('room.update');
     Route::get('/delete/{id}', 'RoomController@destroy')->name('room.destroy');
     Route::get('/detail/{id}', 'RoomController@show')->name('room.detail');
+
+});
+
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/edit/{id}', 'UserController@edit')->name('user.edit');
+    Route::post('/update/{id}', 'UserController@update')->name('user.update');
+    Route::get('/detail/{id}', 'UserController@show')->name('user.detail');
 
 });

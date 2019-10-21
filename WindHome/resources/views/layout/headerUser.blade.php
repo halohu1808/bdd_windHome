@@ -43,9 +43,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                <a class="pl-4" href="{{route('room.index')}}"> Trang quản lí</a> {{--Hải thêm để demo--}}
-
-                                <a class="pl-4" href="{{route('user.detail', Auth::user()->id)}}"> Hồ sơ cá nhân</a>
+                                <a class="pl-4" href="{{route('user.detail')}}"> Hồ sơ cá nhân</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

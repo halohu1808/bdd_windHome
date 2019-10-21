@@ -9,7 +9,9 @@
         <div class="col-md-4">
 
         </div>
-        <div class="col-md-4 bg-light border rounded " style="opacity: 1" >
+
+        <div class="col-md-4 bg-light border rounded" >
+
             <form class="p-3 rounded">
                 <div class="form-group">
                     <label>Địa điểm</label>
@@ -27,7 +29,8 @@
                         <option>5</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-outline-secondary">Tìm</button>
+{{--                <button type="submit" class="btn btn-outline-secondary">Tìm</button>--}}
+                <a class="btn btn-outline-secondary" href="{{route("room.list")}}" > Tìm Kiếm</a>
             </form>
 
         </div>

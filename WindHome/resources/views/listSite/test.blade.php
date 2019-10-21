@@ -1,4 +1,8 @@
 @extends('layout.home')
+@section('sideBar')
+    @include('listSite.filterSideBar')
+@endsection
+
 @section('content')
 
     <div class="container">

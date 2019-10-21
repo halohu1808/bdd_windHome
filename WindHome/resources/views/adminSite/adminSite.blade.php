@@ -38,7 +38,7 @@
                     <tr>
                         <td>{{$room->name}}</td>
                         <td>{{$room->address}}</td>
-                        <td>{{$room->pricePerMonth}}</td>
+                        <td>{{number_format($room->pricePerMonth)}}</td>
                         <td>{{$room->area}}</td>
                         <td>{{$room->guest}}</td>
                         <td>@if(isset($room->status))
