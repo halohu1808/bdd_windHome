@@ -28,10 +28,11 @@ class CreateRoomsTable extends Migration
             $table->boolean('wifi')->nullable();
             $table->boolean('cooking')->nullable();
             $table->boolean('airCondition')->nullable();
-            $table->integer('status')->nullable();
             $table->double('lat')->nullable();
             $table->double('lng')->nullable();
             $table->string('image')->nullable();
+            $table->bigInteger('statusId')->unsigned();
+            $table->foreign('statusId')->references('id')->on('statuses');
             $table->timestamps();
         });
     }

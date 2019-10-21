@@ -28,7 +28,7 @@ class rooms extends Seeder
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
-        $room->status = 1;
+        $room->statusId = 1;
         $room->lat = 50;
         $room->lng = 100;
         $room->image="a3.jpg";
@@ -48,7 +48,7 @@ class rooms extends Seeder
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
-        $room->status = 2;
+        $room->statusId = 2;
         $room->lat = 50;
         $room->lng = 100;
         $room->image="a4.jpg";
@@ -68,7 +68,7 @@ class rooms extends Seeder
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
-        $room->status =3;
+        $room->statusId =3;
         $room->lat = 50;
         $room->lng = 100;
         $room->image="a3.jpg";
@@ -88,7 +88,7 @@ class rooms extends Seeder
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
-        $room->status = 4;
+        $room->statusId = 4;
         $room->lat = 50;
         $room->lng = 100;
         $room->image="a4.jpg";
@@ -108,7 +108,7 @@ class rooms extends Seeder
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
-        $room->status = 1;
+        $room->statusId = 1;
         $room->lat = 50;
         $room->lng = 100;
         $room->image="a3.jpg";
