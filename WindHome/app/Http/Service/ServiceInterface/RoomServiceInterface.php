@@ -16,5 +16,7 @@ interface RoomServiceInterface
 
     public function destroy($id);
 
+    public function booking($id);
+
     public function save($obj);
 }

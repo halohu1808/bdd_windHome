@@ -7,7 +7,17 @@
         <div class="row pl-5">
             <h2>Tạo phòng mới</h2>
         </div>
-
+{{--        ERROR MESSENGER--}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+{{--        END MESSENGER--}}
         <hr>
         <form method="POST" action="{{route('room.store')}}">
             @csrf
@@ -22,14 +32,20 @@
                         <label>Địa chỉ</label>
                         <input type="text" class="form-control" name="address" placeholder="Đường,quận,thành phố...">
                     </div>
+
+
                     <div class="form-group">
                         <label>Thành Phố</label>
-                        <input type="text" class="form-control" name="city" placeholder="Đường,quận,thành phố...">
+                        <select class="custom-select" name="city">
+                            <option selected>Thành phố</option>
+                            @foreach($data as $key => $item)
+                                <option value="{{$item['name']}}"> {{$item['name']}} </option>
+                            @endforeach
+                        </select>
+
                     </div>
-                    <div class="form-group">
-                        <label>Quốc Gia</label>
-                        <input type="text" class="form-control" name="country" placeholder="Đường,quận,thành phố...">
-                    </div>
+
+
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label>Số người</label>
@@ -76,7 +92,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="wifi"  value="1">
+                                <input class="form-check-input" type="checkbox" name="wifi" value="1">
                                 <label class="form-check-label">wifi</label>
                             </div>
                         </div>
@@ -94,7 +110,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="cooking"  value="0">
+                                <input class="form-check-input" type="checkbox" name="cooking" value="0">
                                 <label class="form-check-label">Nấu ăn</label>
                             </div>
                         </div>
