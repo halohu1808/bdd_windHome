@@ -14,4 +14,9 @@ class ContractRepositoryEloquent extends RepositoryEloquent implements ContractR
     {
         return Contract::class;
     }
+
+    public function save($obj)
+    {
+        return $obj->save();
+    }
 }

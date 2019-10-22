@@ -2,8 +2,6 @@
 
 
 namespace App\Http\Repository\Eloquent;
-
-
 use App\Http\Repository\Contract\RoomRepositoryInterface;
 use App\Room;
 
@@ -17,6 +15,6 @@ class RoomRepositoryEloquent extends RepositoryEloquent implements RoomRepositor
 
     public function save($obj)
     {
-        $obj->save();
+        return $obj->save();
     }
 }

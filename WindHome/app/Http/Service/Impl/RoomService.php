@@ -45,9 +45,16 @@ class RoomService implements RoomServiceInterface
         $this->roomRepository->destroy($room);
     }
 
+    //Hai-code
+    public function booking($id)
+    {
+        $room = $this->roomRepository->findById($id);
+        $room->statusId = "3";
+        $this->roomRepository->save($room);
+    }
+
     public function save($obj)
     {
-
-      return   $this->roomRepository->save($obj);
+        return $this->roomRepository->save($obj);
     }
 }
