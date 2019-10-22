@@ -49,7 +49,7 @@ class RoomService implements RoomServiceInterface
     public function booking($id)
     {
         $room = $this->roomRepository->findById($id);
-        $room->status = "Chờ duyệt";
+        $room->statusId = "3";
         $this->roomRepository->save($room);
     }
 

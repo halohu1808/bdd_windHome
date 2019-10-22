@@ -26,7 +26,7 @@
                     <div class="card-body alert bg-white">
                         <a href="#"><h5 class="card-title">Phòng {{$room->name}}</h5></a>
                         <p class="blockquote-footer">
-                           {{$room->status}}
+                           {{$room->status->name}}
                         </p>
 
                         <div class="row">

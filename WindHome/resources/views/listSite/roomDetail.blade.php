@@ -38,7 +38,8 @@
 
             <div class="col-md-5">
 
-                <form class="bg-white p-3">
+                <form class="bg-white p-3" method="POST" action="{{route('room.booking')}}" >
+                @csrf
                     <div>
                         <h1 class="font-weight-bold text-danger"> {{$room->name}}</h1>
                         <label> {{$room->address}}, {{ $room->city }}</label>
@@ -49,7 +50,7 @@
                         <label> Diện tích: {{$room->area}} m2 </label><br>
                         <label> Thời gian thuê tối thiểu: {{$room->minRentTime}} tháng </label><br>
                         <label> Trạng thái:
-                            {{$room->status}}
+                            {{$room->status->name}}
                         </label><br>
 
                     </div>
@@ -116,14 +117,16 @@
                     <div class="pt-2">
                         <label>Thời Gian Thuê</label>
                         <div class="input-group input-group-sm mb-3">
-                            <input type="number" class="form-control" aria-describedby="inputGroup-sizing-sm">
+                            <input type="number" name="rentTime" class="form-control" aria-describedby="inputGroup-sizing-sm">
                         </div>
+                        <input type="text" name="roomId" value="{{$room->id}}" style="visibility: hidden">
                     </div>
                     <div class="pt-2">
-                        @if($room->status == 'còn phòng')
-                        <a class="btn btn-success btn-lg btn-block" href="{{route('room.booking',$room->id)}}">ĐẶT
-                            PHÒNG</a>
-                        @else {{$room->status}}
+                        @if($room->status->id == 1)
+                            <button class="btn btn-success btn-lg btn-block" type="submit" > ĐẶT PHÒNG</button>
+
+{{--                        <a class="btn btn-success btn-lg btn-block" href="{{route('room.booking',$room->id )}}"></a>--}}
+                        @else {{$room->status->name}}
                         @endif
 
                     </div>

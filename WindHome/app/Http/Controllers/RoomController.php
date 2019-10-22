@@ -3,19 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\createRoom;
-use App\Http\Service\Impl\RoomService;
+use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use App\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class
 RoomController extends Controller
 {
     protected $roomService;
+    protected $contractService;
 
-    public function __construct(RoomServiceInterface $roomService)
+    public function __construct(RoomServiceInterface $roomService, ContractServiceInterface $contractService)
     {
         $this->roomService = $roomService;
+        $this->contractService = $contractService;
     }
 
     public function list()
@@ -69,10 +72,15 @@ RoomController extends Controller
     }
 
     //Hai-code
-    public function booking($id)
+    public function booking(Request $request)
     {
-        $this->roomService->booking($id);
-        $room = $this->roomService->findById($id);
+        $userId = Auth::user()->id;
+        $room = $this->roomService->findById($request->roomId);
+        $this->roomService->booking($request->roomId);
+        $room = $this->roomService->findById($request->roomId);
+        $this->contractService->booking($request,$room,$userId);
+
+        $room = $this->roomService->findById($request->roomId);
         return view('listSite.roomDetail', compact('room'));
     }
 
