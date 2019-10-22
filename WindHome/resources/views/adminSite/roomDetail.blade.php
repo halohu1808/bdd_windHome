@@ -89,7 +89,7 @@
                                 <button type="submit" class="btn btn-primary">Hủy Yêu Cầu</button>
                             </div>
                             <div class="col-md-6">
-                                <a href="{{route('contract.create')}}" type="submit" class="btn btn-primary">Tạo Hợp Đồng</a>
+                                <a href="{{route('contract.run',$room->id)}}" type="submit" class="btn btn-primary">Tạo Hợp Đồng</a>
                             </div>
                         </div>
                     @elseif($room->statusId==2)

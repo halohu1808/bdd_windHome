@@ -49,8 +49,8 @@
 
                     </tr>
                     @endforeach
-
                     </tbody>
+
             </table>
         </div>
         <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Create</a>
