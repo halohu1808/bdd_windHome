@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Contract;
+use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use Illuminate\Http\Request;
 
 class ContractController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $contractService;
+
+    public function __construct(ContractServiceInterface $contractService)
+    {
+        $this->contractService = $contractService;
+    }
+
     public function index()
     {
-        //
+
     }
 
     /**
@@ -24,24 +27,26 @@ class ContractController extends Controller
      */
     public function create()
     {
-        //
+        return view('contracts.createContract');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $this->contractService->store($request);
+        return redirect()->route('room.index');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Contract  $contract
+     * @param \App\Contract $contract
      * @return \Illuminate\Http\Response
      */
     public function show(Contract $contract)
@@ -52,7 +57,7 @@ class ContractController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Contract  $contract
+     * @param \App\Contract $contract
      * @return \Illuminate\Http\Response
      */
     public function edit(Contract $contract)
@@ -63,8 +68,8 @@ class ContractController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Contract  $contract
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Contract $contract
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Contract $contract)
@@ -75,7 +80,7 @@ class ContractController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Contract  $contract
+     * @param \App\Contract $contract
      * @return \Illuminate\Http\Response
      */
     public function destroy(Contract $contract)
