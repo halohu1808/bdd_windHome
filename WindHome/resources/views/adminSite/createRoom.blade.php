@@ -9,7 +9,7 @@
         </div>
 
         <hr>
-        <form method="POST" action="{{route('room.store')}}">
+        <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('room.store')}}">
             @csrf
             <div class="row pl-5 pr-5 pt-3">
 
@@ -49,9 +49,8 @@
                     </div>
                     <div class="form-group">
                         <label>Ảnh</label>
-                        <input type="file" class="form-control" name="image" placeholder="20m2...">
+                        <input required type="file" class="form-control" name="images[]" placeholder="address" multiple>
                     </div>
-
                 </div>
 
 

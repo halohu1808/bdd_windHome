@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Service\Impl\RoomService;
+use App\Http\Service\ServiceInterface\ImageServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
+use App\Image;
 use App\Room;
 use Illuminate\Http\Request;
 
-class RoomController extends Controller
+class
+RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +18,18 @@ class RoomController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $roomService;
+    protected $imageService;
 
-    public function __construct(RoomServiceInterface $roomService)
+    public function __construct(RoomServiceInterface $roomService, ImageServiceInterface $imageService)
     {
         $this->roomService = $roomService;
+        $this->imageService = $imageService;
     }
 
     public function list()
     {
-        $rooms=$this->roomService->getAll()->sortByDesc('created_at');  // <- Sort theo phòng mới tạo
-        return view('listSite.listPage',compact('rooms'));
+        $rooms = $this->roomService->getAll()->sortByDesc('created_at');  // <- Sort theo phòng mới tạo
+        return view('listSite.listPage', compact('rooms'));
     }
 
     public function index()
@@ -52,7 +57,38 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        $this->roomService->store($request);
+        $room = new Room();
+        $room->name = $request->name;
+        $room->address = $request->address;
+        $room->city = $request->city;
+        $room->country = $request->country;
+        $room->pricePerMonth = $request->pricePerMonth;
+        $room->minRentTime = $request->minRentTime;
+        $room->bathRoom = $request->bathRoom;
+        $room->area = $request->area;
+        $room->guest = $request->guest;
+        $room->parking = $request->parking;
+        $room->wifi = $request->wifi;
+        $room->cooking = $request->cooking;
+        $room->airCondition = $request->airCondition;
+        $room->status = $request->status;
+        $room->lat = $request->lat;
+        $room->lng = $request->lng;
+        $room->save();
+
+        if ($files = $request->file('images')) {
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
+                $fileName = str_random(4) . "_" . $name;
+                $file->move('img', $fileName);
+
+                $image = new Image();
+                $image->roomId = $room->id;
+                $image->images = $fileName;
+                $image->save();
+            }
+        }
+
         return redirect()->route('room.index');
     }
 

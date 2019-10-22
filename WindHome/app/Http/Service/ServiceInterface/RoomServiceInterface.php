@@ -15,4 +15,6 @@ interface RoomServiceInterface
     public function findById($id);
 
     public function destroy($id);
+
+    public function save($obj);
 }

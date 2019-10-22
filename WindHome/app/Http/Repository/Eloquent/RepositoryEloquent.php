@@ -30,7 +30,8 @@ abstract class RepositoryEloquent implements RepositoryInterface
 
     public function store($data)
     {
-        $this->model->create($data);
+        return $this->model->create($data);
+
     }
 
     public function update($obj, array $data)

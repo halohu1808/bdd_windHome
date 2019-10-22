@@ -6,6 +6,7 @@ namespace App\Http\Service\Impl;
 
 use App\Http\Repository\Contract\RoomRepositoryInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
+use App\Room;
 
 class RoomService implements RoomServiceInterface
 {
@@ -21,10 +22,19 @@ class RoomService implements RoomServiceInterface
         return $this->roomRepository->getAll();
     }
 
-    public function store($request)
+    public function store($data)
     {
-        $data = $request->all();
-        $this->roomRepository->store($data);
+//        if($request->hasFile('image')){
+//
+//            $file = $request->file('image');
+//            $fileName = $file->getClientOriginalName();
+//            $file->move('img',$fileName);
+//        } else{
+//            echo "Chưa có file";
+//        };
+
+        return $this->roomRepository->store($data);
+
     }
 
     public function update($request, $id)
@@ -43,5 +53,11 @@ class RoomService implements RoomServiceInterface
     {
         $room = $this->roomRepository->findById($id);
         $this->roomRepository->destroy($room);
+    }
+
+    public function save($obj)
+    {
+
+        return $this->roomRepository->save($obj);
     }
 }

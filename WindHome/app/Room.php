@@ -8,4 +8,9 @@ class Room extends Model
 {
 //    protected $table = 'rooms';
     protected $guarded = [];
+
+    public function images()
+    {
+        return $this->hasMany('App\Image', 'roomId','id');
+    }
 }
