@@ -33,12 +33,6 @@ Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
 
-Route::group(['prefix' => 'comments'], function () {
-    Route::get('/', 'CommentController@index')->name('comment.index');
-    Route::get('/create', 'CommentController@create')->name('comment.create');
-    Route::post('/create', 'CommentController@store')->name('comment.store');
-
-});
 
 //Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
 
@@ -58,4 +52,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/detail/{id}', 'AdminController@index')->name('admin.detail');
     Route::get('/editOn/{id}','AdminController@editStatusOn')->name('admin.editStatusOn');
     Route::get('/editOff/{id}','AdminController@editStatusOff')->name('admin.editStatusOff');
+});
+Route::group(['prefix'=>'contracts'],function (){
+   Route::get('/create','ContractController@create')->name('contract.create');
+   Route::post('/create','ContractController@store')->name('contract.store');
 });
