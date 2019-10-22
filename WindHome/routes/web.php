@@ -54,6 +54,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/editOff/{id}','AdminController@editStatusOff')->name('admin.editStatusOff');
 });
 Route::group(['prefix'=>'contracts'],function (){
-   Route::get('/create','ContractController@create')->name('contract.create');
+   Route::get('/edit/{id}','ContractController@run')->name('contract.run');
    Route::post('/create','ContractController@store')->name('contract.store');
 });

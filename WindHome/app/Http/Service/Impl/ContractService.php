@@ -19,9 +19,9 @@ class ContractService implements ContractServiceInterface
     }
 
 
-    public function booking($request,$room,$userId)
+    public function booking($request, $room, $userId)
     {
-       // co roomId va rentTime
+        // co roomId va rentTime
         $contract = new Contract();
         $contract->price = $room['pricePerMonth'];
         $contract->rentTime = $request->rentTime;
@@ -33,5 +33,21 @@ class ContractService implements ContractServiceInterface
 
         $this->contractRepository->save($contract);
 
+    }
+
+    public function findById($id)
+    {
+        return $this->contractRepository->findById($id);
+    }
+
+    public function findByRoomId($id)
+    {
+        return $this->contractRepository->findByRoomId($id);
+    }
+
+    public function store($request)
+    {
+        $data = $request->all();
+        $this->contractRepository->store($data);
     }
 }

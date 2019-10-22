@@ -19,4 +19,9 @@ class ContractRepositoryEloquent extends RepositoryEloquent implements ContractR
     {
         return $obj->save();
     }
+
+    public function findByRoomId($id)
+    {
+        return $contract = Contract::where('userId', $id)->get();
+    }
 }
