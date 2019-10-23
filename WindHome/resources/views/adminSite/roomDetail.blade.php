@@ -86,33 +86,32 @@
                     @if($room->statusId==3)
                         <div class="row">
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary">Hủy Yêu Cầu</button>
+                                <a href="{{route('contract.cancel',$room->id)}}" class="btn btn-primary">Hủy Yêu Cầu</a>
                             </div>
                             <div class="col-md-6">
-                                <a href="{{route('contract.run',$room->id)}}" type="submit" class="btn btn-primary">Tạo Hợp Đồng</a>
+                                <a href="{{route('contract.run',$room->id)}}" class="btn btn-primary">Tạo Hợp Đồng</a>
                             </div>
                         </div>
                     @elseif($room->statusId==2)
                         <div class="row">
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary">Huỷ Hợp Đồng</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary">Sửa Hợp Đồng</button>
+                                <a href="{{route('contract.endContract',$room->id)}}" class="btn btn-primary">Huỷ Hợp
+                                    Đồng</a>
                             </div>
                         </div>
+                        {{--                        Hai code 2 truong hop--}}
                     @elseif($room->statusId==4)
                         <div class="row">
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary">Hủy Yêu Cầu</button>
+                                <a href="{{route('contract.cancelEnd',$room->id)}}" class="btn btn-primary">Hủy Yêu
+                                    Cầu</a>
                             </div>
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary">Đồng Ý</button>
+                                <a href="{{route('contract.end',$room->id)}}" class="btn btn-primary">Đồng Ý</a>
                             </div>
                         </div>
                     @elseif($room->statusId==1)
                     @endif
-
                 </form>
             </div>
 
