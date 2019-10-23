@@ -17,7 +17,7 @@ class CreateRoomsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('address')->nullable();
-            $table->string('city');
+            $table->integer('cityId');
             $table->string('country')->nullable();
             $table->integer('pricePerMonth');
             $table->integer('minRentTime');
@@ -28,10 +28,11 @@ class CreateRoomsTable extends Migration
             $table->boolean('wifi')->nullable();
             $table->boolean('cooking')->nullable();
             $table->boolean('airCondition')->nullable();
-            $table->boolean('status')->nullable();
             $table->double('lat')->nullable();
             $table->double('lng')->nullable();
             $table->string('image')->nullable();
+            $table->bigInteger('statusId')->unsigned()->default(1);
+            $table->foreign('statusId')->references('id')->on('statuses');
             $table->timestamps();
         });
     }
