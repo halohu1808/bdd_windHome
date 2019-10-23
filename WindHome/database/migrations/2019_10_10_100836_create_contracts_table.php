@@ -19,7 +19,7 @@ class CreateContractsTable extends Migration
             $table->date('endTime')->nullable();
             $table->integer('price');
             $table->integer('rentTime');
-            $table->bigInteger('statusId')->unsigned();
+            $table->bigInteger('statusId')->unsigned()->default(7);
             $table->foreign('statusId')->references('id')->on('statuses');
             $table->bigInteger('userId')->unsigned();
             $table->foreign('userId')->references('id')->on('users');

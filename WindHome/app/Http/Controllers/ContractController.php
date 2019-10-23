@@ -20,7 +20,8 @@ class ContractController extends Controller
 
     public function index()
     {
-
+        $contracts = Contract::all();
+        return view('contracts.listContract', compact('contracts'));
     }
 
 
@@ -29,12 +30,6 @@ class ContractController extends Controller
         return view('contracts.createContract');
     }
 
-    public function store(Request $request)
-    {
-        $this->contractService->store($request);
-//        return redirect()->route('room.index');
-
-    }
 
     /**
      * Display the specified resource.
@@ -60,26 +55,60 @@ class ContractController extends Controller
         return view('contracts.editContract', compact('room', 'contract'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Contract $contract
-     * @return \Illuminate\Http\Response
-     */
+    public function store(Request $request)
+    {
+        $contract = $this->contractService->store($request);
+        $roomId = $contract->room->id;
+        $this->roomService->changeStatusWhenCreateContract($roomId);
+
+
+        return redirect()->route('room.index');
+
+    }
+
     public function update(Request $request, Contract $contract)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Contract $contract
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Contract $contract)
     {
         //
     }
+
+    public function cancel($id)
+    {
+        $this->contractService->cancel($id);
+        $this->roomService->changeStatusWhenNotOk($id);
+        return redirect()->route('room.index');
+
+    }
+
+    public function endContract($id)
+    {
+        $this->roomService->endContract($id);
+        $this->contractService->endContract($id);
+        return redirect()->route('room.index');
+    }
+
+    public function edit()
+    {
+        return view('contracts.editContract');
+    }
+
+
+    //Hai code
+    public function end($id){
+        $this->roomService->end($id);
+        $this->contractService->end($id);
+    }
+
+    public function cancelEnd($id){
+        $this->roomService->cancelEnd($id);
+        $this->contractService->cancelEnd($id);
+    }
+
+
+
 }

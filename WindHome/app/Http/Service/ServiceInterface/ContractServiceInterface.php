@@ -16,4 +16,19 @@ interface ContractServiceInterface
 
     public function findByRoomId($id);
 
+    public function findContractStatusRun($id);
+
+    public function getAll();
+
+    public function save($obj);
+
+    public function cancel($id);
+
+    public function endContract($id);
+
+    public function end($id);
+
+    public function cancelEnd($id);
+
+
 }

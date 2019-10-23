@@ -9,4 +9,6 @@ interface RoomRepositoryInterface extends RepositoryInterface
 
     public function save($obj);
 
+
+
 }
