@@ -16,7 +16,7 @@
                     <a href="#">Đang cho thuê</a>
                 </li>
                 <li>
-                    <a href="#">Thêm phòng mới</a>
+                    <a href="{{route('room.create')}}">Thêm phòng mới</a>
                 </li>
             </ul>
         </li>

@@ -9,9 +9,14 @@ class Room extends Model
 //    protected $table = 'rooms';
     protected $guarded = [];
 
+
+    public function images()
+    {
+        return $this->hasMany('App\Image', 'roomId', 'id');
+    }
     public function status()
     {
-        return $this->belongsTo('App\Status', 'statusId', 'id');
+        return $this->belongsTo('App\Status','statusId','id');
     }
 
     public function contract()

@@ -14,4 +14,9 @@ class ImageRepositoryEloquent extends RepositoryEloquent implements ImageReposit
     {
         return Image::class;
     }
+
+    public function save($obj)
+    {
+        $obj->save();
+    }
 }

@@ -19,7 +19,7 @@
         @endif
 {{--        END MESSENGER--}}
         <hr>
-        <form method="POST" action="{{route('room.store')}}">
+        <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('room.store')}}">
             @csrf
             <div class="row pl-5 pr-5 pt-3">
 
@@ -36,10 +36,10 @@
 
                     <div class="form-group">
                         <label>Thành Phố</label>
-                        <select class="custom-select" name="city">
+                        <select class="custom-select" name="cityId" >
                             <option selected>Thành phố</option>
                             @foreach($data as $key => $item)
-                                <option value="{{$item['name']}}"> {{$item['name']}} </option>
+                                <option value="{{$item['id']}}"> {{$item['name']}} </option>
                             @endforeach
                         </select>
 
@@ -65,10 +65,10 @@
                     </div>
                     <div class="form-group">
                         <label>Ảnh</label>
-                        <input type="file" class="form-control" name="image" placeholder="20m2...">
+                        <input required type="file" class="form-control" name="images[]" placeholder="address" multiple>
                     </div>
-
                 </div>
+
 
                 <div class="col-md-6">
                     <div class="form-group">
