@@ -117,6 +117,11 @@ RoomController extends Controller
         return redirect()->route('room.index');
     }
 
+    public function managerUser()
+    {
+        return view('users.managerUser');
+    }
+
     //Hai-code
     public function booking(Request $request)
     {

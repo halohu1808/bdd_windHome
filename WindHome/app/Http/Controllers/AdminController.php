@@ -14,28 +14,17 @@ class AdminController extends Controller
         $this->roomService = $roomService;
     }
 
-    public function index($id)
+    public function index()
+    {
+        $rooms = $this->roomService->getAll();
+        return view('adminSite.adminSite', compact('rooms'));
+    }
+
+    public function detail($id)
     {
         $room = $this->roomService->findById($id);
         return view('adminSite.roomDetail', compact('room'));
     }
 
-    public function editStatus(Request $request, $id)
-    {
-        $room = $this->roomService->findById($id);
-        $room->status = "Còn Phòng";
-        $this->roomService->save($room); // Sang viet sai, phai lay gia tri tu day moi dung
-
-        return view('adminSite.roomDetail', compact('room'));
-    }
-
-    public function editStatusOff($id)
-    {
-        $room = $this->roomService->findById($id);
-        $room->status = "Đã Cho Thuê";
-//        $room->status = $request->status;
-        $this->roomService->save($room);
-        return view('adminSite.roomDetail', compact('room'));
-    }
 
 }
