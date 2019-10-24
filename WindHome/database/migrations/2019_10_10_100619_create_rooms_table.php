@@ -16,19 +16,20 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('address');
+            $table->string('address')->nullable();
+            $table->integer('cityId');
             $table->integer('pricePerMonth');
             $table->integer('minRentTime');
-            $table->boolean('bathRoom');
-            $table->integer('area');
-            $table->smallInteger('guest');
-            $table->boolean('parking');
-            $table->boolean('wifi');
-            $table->boolean('cooking');
-            $table->boolean('airCondition');
-            $table->boolean('status');
-            $table->double('lat');
-            $table->double('lng');
+            $table->boolean('bathRoom')->nullable();
+            $table->integer('area')->nullable();
+            $table->smallInteger('guest')->nullable();
+            $table->boolean('parking')->nullable();
+            $table->boolean('wifi')->nullable();
+            $table->boolean('cooking')->nullable();
+            $table->boolean('airCondition')->nullable();
+            $table->bigInteger('statusId')->unsigned()->default(1);
+            $table->foreign('statusId')->references('id')->on('statuses');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

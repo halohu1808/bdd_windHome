@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use Illuminate\Http\Request;
-
+use App\Http\Service\Impl\CommentService;
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $commentService;
+
+    public function __construct(CommentService $commentService)
+    {
+        $this->commentService = $commentService;
+    }
+
     public function index()
     {
-        //
+        $comments = $this->commentService->getAll();
+        return view('comments.list', compact('comments'));
     }
 
     /**
@@ -22,9 +25,9 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($userId, $roomId)
     {
-        //
+        return view('comments.create', compact('userId', 'roomId'));
     }
 
     /**
@@ -35,7 +38,9 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->commentService->store($request);
+        return redirect()->route('comment.index');
+
     }
 
     /**
@@ -55,9 +60,10 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit($id)
     {
-        //
+        $comment = $this->commentService->update($id);
+        return view('comments.edit', compact('comment'));
     }
 
     /**
@@ -67,9 +73,10 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, $id)
     {
-        //
+        $this->commentService->update($request, $id);
+        return redirect()->route('room.index');
     }
 
     /**
@@ -78,8 +85,9 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy($id)
     {
-        //
+        $this->commentService->destroy($id);
+        return redirect()->route('room.index');
     }
 }
