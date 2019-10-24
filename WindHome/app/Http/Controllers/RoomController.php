@@ -2,33 +2,42 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Service\Impl\RoomService;
 use App\Http\Service\ServiceInterface\ImageServiceInterface;
+
+use App\Http\Requests\createRoom;
+use App\Http\Service\ServiceInterface\ContractServiceInterface;
+
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use App\Image;
 use App\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class
 RoomController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     protected $roomService;
+    protected $contractService;
     protected $imageService;
 
-    public function __construct(RoomServiceInterface $roomService, ImageServiceInterface $imageService)
+    public function __construct(RoomServiceInterface $roomService, ImageServiceInterface $imageService, ContractServiceInterface $contractService)
     {
         $this->roomService = $roomService;
         $this->imageService = $imageService;
+        $this->contractService = $contractService;
+
+
     }
+
 
     public function list()
     {
+
         $rooms = $this->roomService->getAll()->sortByDesc('created_at');  // <- Sort theo phòng mới tạo
+
+
         return view('listSite.listPage', compact('rooms'));
     }
 
@@ -38,29 +47,20 @@ RoomController extends Controller
         return view('adminSite.adminSite', compact('rooms'));
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('adminSite.createRoom');
+        $jsonString = file_get_contents(base_path('public/city.json'));
+        $data = json_decode($jsonString, true);
+//        dd($data[0]['name']);
+        return view('adminSite.createRoom', compact('data'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(createRoom $request)
     {
         $room = new Room();
         $room->name = $request->name;
         $room->address = $request->address;
-        $room->city = $request->city;
+        $room->cityId = $request->cityId;
         $room->country = $request->country;
         $room->pricePerMonth = $request->pricePerMonth;
         $room->minRentTime = $request->minRentTime;
@@ -71,7 +71,7 @@ RoomController extends Controller
         $room->wifi = $request->wifi;
         $room->cooking = $request->cooking;
         $room->airCondition = $request->airCondition;
-        $room->status = $request->status;
+//        $room->status = $request->status;
         $room->lat = $request->lat;
         $room->lng = $request->lng;
         $room->save();
@@ -80,7 +80,7 @@ RoomController extends Controller
             foreach ($files as $file) {
                 $name = $file->getClientOriginalName();
                 $fileName = str_random(4) . "_" . $name;
-                $file->move('img', $fileName);
+                $file->move('storage/img/home/', $fileName);
 
                 $image = new Image();
                 $image->roomId = $room->id;
@@ -92,52 +92,43 @@ RoomController extends Controller
         return redirect()->route('room.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Room $room
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $room = $this->roomService->findById($id);
         return view('listSite.roomDetail', compact('room'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Room $room
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $room = $this->roomService->findById($id);
         return view('rooms.edit', compact('room'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Room $room
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(createRoom $request, $id)
     {
         $this->roomService->update($request, $id);
         return redirect()->route('room.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Room $room
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
+//        $this->imageService->destroy($id);
         $this->roomService->destroy($id);
         return redirect()->route('room.index');
     }
+
+    //Hai-code
+    public function booking(Request $request)
+    {
+        $userId = Auth::user()->id;
+        $room = $this->roomService->findById($request->roomId);
+        $this->roomService->booking($request->roomId);
+        $room = $this->roomService->findById($request->roomId);
+        $this->contractService->booking($request, $room, $userId);
+
+        $room = $this->roomService->findById($request->roomId);
+        return view('listSite.roomDetail', compact('room'));
+    }
+
+
 }

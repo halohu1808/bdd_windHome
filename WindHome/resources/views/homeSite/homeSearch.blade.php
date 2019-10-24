@@ -34,46 +34,8 @@
                 </form>
 
             </div>
-            <div class="col-md-4">
-
-            </div>
-
-
-    <div class="row pt-5 ">
-        <div class="col-md-4">
 
         </div>
-
-        <div class="col-md-4 bg-light border rounded" >
-
-            <form class="p-3 rounded">
-                <div class="form-group">
-                    <label>Địa điểm</label>
-                    <input type="text" class="form-control" name="where" placeholder="">
-                    <small class="form-text text-muted">Bạn muốn thuê nhà ở đâu?</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Số người</label>
-                    <select class="form-control" name="guest">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-{{--                <button type="submit" class="btn btn-outline-secondary">Tìm</button>--}}
-                <a class="btn btn-outline-secondary" href="{{route("room.list")}}" > Tìm Kiếm</a>
-            </form>
-
-        </div>
-        <div class="col-md-4">
-
-
-        </div>
-
-
     </div>
 
 

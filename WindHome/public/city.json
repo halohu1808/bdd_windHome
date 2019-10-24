@@ -1,0 +1,42 @@
+[
+    {
+        "id": "1",
+        "name": "An Giang"
+    },
+    {
+        "id": "2",
+        "name": "Bà Rịa - Vũng Tàu"
+    },
+    {
+        "id": "3",
+        "name": "Bắc Giang"
+    },
+    {
+        "id": "4",
+        "name": "Bắc Kạn"
+    },
+    {
+        "id": "5",
+        "name": "Bạc Liêu"
+    },
+    {
+        "id": "6",
+        "name": "Bắc Ninh"
+    },
+    {
+        "id": "7",
+        "name": "Bến Tre"
+    },
+    {
+        "id": "8",
+        "name": "Bình Định"
+    },
+    {
+        "id": "9",
+        "name": "Bình Dương"
+    },
+    {
+        "id": "10",
+        "name": "Bình Phước"
+    }
+]

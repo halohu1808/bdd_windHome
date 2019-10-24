@@ -17,6 +17,10 @@ Route::get('/test', function () {
     return view('listSite.test');
 });
 
+Route::get('/', function () {
+    return view('homeSite.homeSearch');
+});
+
 Route::get('/home', function () {
     return view('homeSite.homeSearch');
 })->name('home');
@@ -27,6 +31,7 @@ Auth::routes();
 
 Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
+
 
 
 Route::group(['prefix' => 'comments'], function () {
@@ -49,6 +54,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
+
 //Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
 
 Route::group(['prefix' => 'rooms'], function () {
@@ -60,6 +66,7 @@ Route::group(['prefix' => 'rooms'], function () {
     Route::post('/update/{id}', 'RoomController@update')->name('room.update');
     Route::get('/delete/{id}', 'RoomController@destroy')->name('room.destroy');
     Route::get('/detail/{id}', 'RoomController@show')->name('room.detail');
+    Route::post('/booking','RoomController@booking')->name('room.booking');
 
 });
 
@@ -73,6 +80,12 @@ Route::group(['prefix' => 'user'], function () {
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/detail/{id}', 'AdminController@index')->name('admin.detail');
     Route::post('/edit/{id}','AdminController@editStatus')->name('admin.editStatus');
+    Route::get('/editOn/{id}','AdminController@editStatusOn')->name('admin.editStatusOn');
+    Route::get('/editOff/{id}','AdminController@editStatusOff')->name('admin.editStatusOff');
+});
 
+Route::group(['prefix'=>'contracts'],function (){
+   Route::get('/create','ContractController@create')->name('contract.create');
+   Route::post('/create','ContractController@store')->name('contract.store');
 
 });

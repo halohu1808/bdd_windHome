@@ -27,4 +27,10 @@ class ImageService implements ImageServiceInterface
         $this->imageRepository->store($data);
     }
 
+    public function destroy($roomId)
+    {
+        $img = $this->roomRepository->findById($roomId);
+        $this->roomRepository->destroy($img);
+    }
+
 }
