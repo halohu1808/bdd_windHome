@@ -35,29 +35,6 @@ class ImageService implements ImageServiceInterface
     }
 
 
-
-    public function __construct(ImageRepositoryInterface $imageRepository)
-    {
-        $this->imageRepository = $imageRepository;
-    }
-    public function getAll()
-    {
-        return $this->imageRepository->getAll();
-    }
-
-    public function store($request)
-    {
-
-        $data = $request->all();
-        $this->imageRepository->store($data);
-    }
-
-    public function destroy($roomId)
-    {
-        $img = $this->roomRepository->findById($roomId);
-        $this->roomRepository->destroy($img);
-    }
-
     public function getFirstImageByRoomId($roomId)
     {
         return $this->imageRepository->findFirstImageByRoomId($roomId);
