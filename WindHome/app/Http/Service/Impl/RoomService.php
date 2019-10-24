@@ -6,6 +6,7 @@ namespace App\Http\Service\Impl;
 
 use App\Http\Repository\Contract\RoomRepositoryInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
+use App\Room;
 
 class RoomService implements RoomServiceInterface
 {
@@ -21,10 +22,9 @@ class RoomService implements RoomServiceInterface
         return $this->roomRepository->getAll();
     }
 
-    public function store($request)
+    public function store($data)
     {
-        $data = $request->all();
-        $this->roomRepository->store($data);
+        return $this->roomRepository->store($data);
     }
 
     public function update($request, $id)
@@ -44,8 +44,6 @@ class RoomService implements RoomServiceInterface
         $room = $this->roomRepository->findById($id);
         $this->roomRepository->destroy($room);
     }
-
-
 
     public function save($obj)
     {
@@ -81,12 +79,12 @@ class RoomService implements RoomServiceInterface
         $this->roomRepository->save($room);
     }
 
-    public function end($id){
+    public function end($id)
+    {
         $room = $this->roomRepository->findById($id);
         $room->statusId = "1";
         $this->roomRepository->save($room);
     }
-
 
     public function cancelEnd($id)
     {
@@ -94,7 +92,5 @@ class RoomService implements RoomServiceInterface
         $room->statusId = "2";
         $this->roomRepository->save($room);
     }
-
-
 
 }
