@@ -2,10 +2,8 @@
 
 use App\Room;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-
-class rooms extends Seeder
+class RoomsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -128,8 +126,5 @@ Chúng tôi sử dụng ngôn ngữ của bạn!
 
 Biệt thự ven hồ Lake side Forest đã chào đón khách Booking.com từ Ngày 17 Tháng 4 Năm 2019.";
         $room->save();
-
     }
 }
-
-

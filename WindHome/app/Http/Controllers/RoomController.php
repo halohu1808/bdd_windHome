@@ -27,18 +27,22 @@ RoomController extends Controller
         $this->roomService = $roomService;
         $this->imageService = $imageService;
         $this->contractService = $contractService;
-
-
     }
 
 
     public function list()
     {
 
-        $rooms = $this->roomService->getAll()->sortByDesc('created_at');  // <- Sort theo phòng mới tạo
+        $rooms = $this->roomService->getAll()->sortByDesc('created_at');// <- Sort theo phòng mới tạo
+        $images=[];
+
+        foreach ($rooms as $room){
+            $image = $this->imageService->getFirstImageByRoomId($room->id);
+            array_push($images, $image);
+        }
 
 
-        return view('listSite.listPage', compact('rooms'));
+        return view('listSite.listPage', compact('rooms', 'images'));
     }
 
     public function index()
@@ -95,13 +99,15 @@ RoomController extends Controller
     public function show($id)
     {
         $room = $this->roomService->findById($id);
-        return view('listSite.roomDetail', compact('room'));
+        $images = $this->imageService->getAllImageByRoomId($id);
+
+        return view('listSite.roomDetail', compact('room', 'images'));
     }
 
     public function edit($id)
     {
         $room = $this->roomService->findById($id);
-        return view('rooms.edit', compact('room'));
+        return view('roomsSeeder.edit', compact('room'));
     }
 
     public function update(createRoom $request, $id)
