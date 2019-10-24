@@ -28,20 +28,20 @@ class UserController extends Controller
     public function show($id)
     {
         $user = $this->userService->findById($id);
-        return view('users.detail', compact('user'));
+        return view('usersSeeder.detail', compact('user'));
     }
 
     public function edit($id)
     {
         $user = $this->userService->findById($id);
-        return view('users.edit', compact('user'));
+        return view('usersSeeder.edit', compact('user'));
     }
 
     public function update(Request $request, $id)
     {
         $this->userService->update($request, $id);
         $user=$this->userService->findById($id);
-        return view('users.detail',compact('user'));
+        return view('usersSeeder.detail',compact('user'));
     }
 
 }
