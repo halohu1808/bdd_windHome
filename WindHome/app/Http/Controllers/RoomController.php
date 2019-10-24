@@ -35,10 +35,19 @@ RoomController extends Controller
     public function list()
     {
 
-        $rooms = $this->roomService->getAll()->sortByDesc('created_at');  // <- Sort theo phòng mới tạo
 
 
-        return view('listSite.listPage', compact('rooms'));
+        $rooms = $this->roomService->getAll()->sortByDesc('created_at');// <- Sort theo phòng mới tạo
+        $images=[];
+
+        foreach ($rooms as $room){
+            $image = $this->imageService->getFirstImageByRoomId($room->id);
+            array_push($images, $image);
+        }
+
+
+        return view('listSite.listPage', compact('rooms', 'images'));
+
     }
 
     public function index()
@@ -61,7 +70,7 @@ RoomController extends Controller
         $room->name = $request->name;
         $room->address = $request->address;
         $room->cityId = $request->cityId;
-        $room->country = $request->country;
+
         $room->pricePerMonth = $request->pricePerMonth;
         $room->minRentTime = $request->minRentTime;
         $room->bathRoom = $request->bathRoom;
@@ -72,8 +81,6 @@ RoomController extends Controller
         $room->cooking = $request->cooking;
         $room->airCondition = $request->airCondition;
 //        $room->status = $request->status;
-        $room->lat = $request->lat;
-        $room->lng = $request->lng;
         $room->save();
 
         if ($files = $request->file('images')) {
@@ -95,7 +102,9 @@ RoomController extends Controller
     public function show($id)
     {
         $room = $this->roomService->findById($id);
-        return view('listSite.roomDetail', compact('room'));
+        $images = $this->imageService->getAllImageByRoomId($id);
+
+        return view('listSite.roomDetail', compact('room', 'images'));
     }
 
     public function edit($id)
@@ -112,7 +121,7 @@ RoomController extends Controller
 
     public function destroy($id)
     {
-//        $this->imageService->destroy($id);
+        $this->imageService->destroy($id);
         $this->roomService->destroy($id);
         return redirect()->route('room.index');
     }

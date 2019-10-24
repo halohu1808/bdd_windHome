@@ -33,7 +33,23 @@ Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
 
-Route::group(['prefix' => 'room', 'middleware' => 'admin'], function () {
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/list','RoomController@list')->name('room.list');
+    Route::get('/', 'RoomController@index')->name('room.index');
+    Route::get('/create', 'RoomController@create')->name('room.create');
+    Route::post('/create', 'RoomController@store')->name('room.store');
+    Route::get('/update/{id}', 'RoomController@edit')->name('room.edit');
+    Route::post('/update/{id}', 'RoomController@update')->name('room.update');
+    Route::get('/delete/{id}', 'RoomController@destroy')->name('room.destroy');
+    Route::get('/detail/{id}', 'RoomController@show')->name('room.detail');
+
+});
+
+//Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
+
+Route::group(['prefix' => 'rooms'], function () {
+    Route::get('/list', 'RoomController@list')->name('room.list');
     Route::get('/', 'RoomController@index')->name('room.index');
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
@@ -42,6 +58,7 @@ Route::group(['prefix' => 'room', 'middleware' => 'admin'], function () {
     Route::get('/delete/{id}', 'RoomController@destroy')->name('room.destroy');
 
 });
+
 
 //Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
 Route::group(['prefix' => 'roomUser'], function () {
@@ -58,6 +75,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/detail/{id}', 'UserController@show')->name('user.detail');
 });
 
+
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
     Route::get('/detail/{id}', 'AdminController@detail')->name('admin.detail');
@@ -67,7 +85,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 });
 
 
-Route::group(['prefix' => 'contracts', 'middleware' => 'admin'], function () {
+
+Route::group(['prefix' => 'contracts'], function () {
     Route::get('/edit/{id}', 'ContractController@run')->name('contract.run');
     Route::post('/create', 'ContractController@store')->name('contract.store');
     Route::get('/cancel/{id}', 'ContractController@cancel')->name('contract.cancel');

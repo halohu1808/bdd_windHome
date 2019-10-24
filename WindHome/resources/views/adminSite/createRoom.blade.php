@@ -75,18 +75,7 @@
                         <label>Diện tích</label>
                         <input type="text" class="form-control" name="area" placeholder="20m2...">
                     </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Kinh độ</label>
-                            <input type="text" class="form-control" name="lat"
-                                   placeholder="">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Vĩ độ</label>
-                            <input type="text" class="form-control" name="lng"
-                                   placeholder="">
-                        </div>
-                    </div>
+
                     <label>Thông tin thêm</label>
                     <hr>
                     <div class="row">
