@@ -19,11 +19,11 @@
         <div class="card-deck row">
 
             {{--            bat dau FOR--}}
-            @foreach($rooms as $room)
+            @foreach($rooms as $key => $room)
 
                 <div class="col-md-3 pt-5">
                     <img class="card-img-top"
-                         src={{asset("storage/img/home/". $room->image)}}>
+                         src={{asset("storage/img/home/". $images[$key]->images)}}>
                     <div class="card-body alert bg-white">
                         <a href="#"><h5 class="card-title">Phòng {{$room->name}}</h5></a>
                         <p class="blockquote-footer">

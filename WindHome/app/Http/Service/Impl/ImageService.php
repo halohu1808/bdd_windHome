@@ -33,4 +33,14 @@ class ImageService implements ImageServiceInterface
         $this->roomRepository->destroy($img);
     }
 
+    public function getFirstImageByRoomId($roomId)
+    {
+        return $this->imageRepository->findFirstImageByRoomId($roomId);
+
+    }
+
+    public function getAllImageByRoomId($roomId)
+    {
+        return $this->imageRepository->findAllImageByRoomId($roomId);
+    }
 }
