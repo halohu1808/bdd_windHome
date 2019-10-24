@@ -35,20 +35,19 @@
         </li>
         {{--Comment--}}
         <li>
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Hợp Đồng</a>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Hợp đồng</a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
                     <a href="#">Tất cả</a>
                 </li>
                 <li>
-                    <a href="#">Tạo hợp đồng</a>
+                    <a href="#">Đang chờ thuê</a>
                 </li>
                 <li>
-                    <a href="#">Đang thuê nhà</a>
+                    <a href="#">Đang chờ Hủy</a>
                 </li>
             </ul>
         </li>
-
 
     </ul>
 </nav>

@@ -24,17 +24,7 @@ class RoomService implements RoomServiceInterface
 
     public function store($data)
     {
-//        if($request->hasFile('image')){
-//
-//            $file = $request->file('image');
-//            $fileName = $file->getClientOriginalName();
-//            $file->move('img',$fileName);
-//        } else{
-//            echo "Chưa có file";
-//        };
-
         return $this->roomRepository->store($data);
-
     }
 
     public function update($request, $id)
@@ -55,6 +45,32 @@ class RoomService implements RoomServiceInterface
         $this->roomRepository->destroy($room);
     }
 
+    public function save($obj)
+    {
+        return $this->roomRepository->save($obj);
+    }
+
+    public function endContract($id)
+    {
+        $room = $this->roomRepository->findById($id);
+        $room->statusId = 1;
+        $this->roomRepository->save($room);
+    }
+
+    public function changeStatusWhenCreateContract($id)
+    {
+        $room = $this->roomRepository->findById($id);
+        $room->statusId = 2;
+        $this->roomRepository->save($room);
+    }
+
+    public function changeStatusWhenNotOk($id)
+    {
+        $room = $this->roomRepository->findById($id);
+        $room->statusId = 1;
+        $this->roomRepository->save($room);
+    }
+
     //Hai-code
     public function booking($id)
     {
@@ -63,10 +79,18 @@ class RoomService implements RoomServiceInterface
         $this->roomRepository->save($room);
     }
 
-
-    public function save($obj)
+    public function end($id)
     {
-
-        return $this->roomRepository->save($obj);
+        $room = $this->roomRepository->findById($id);
+        $room->statusId = "1";
+        $this->roomRepository->save($room);
     }
+
+    public function cancelEnd($id)
+    {
+        $room = $this->roomRepository->findById($id);
+        $room->statusId = "2";
+        $this->roomRepository->save($room);
+    }
+
 }

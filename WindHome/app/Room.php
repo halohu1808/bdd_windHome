@@ -17,6 +17,10 @@ class Room extends Model
     public function status()
     {
         return $this->belongsTo('App\Status','statusId','id');
+    }
 
+    public function contract()
+    {
+        return $this->hasMany('App\Contract', 'roomId', 'id');
     }
 }

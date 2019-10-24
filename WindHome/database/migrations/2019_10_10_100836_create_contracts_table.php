@@ -15,11 +15,11 @@ class CreateContractsTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('startTime');
+            $table->date('startTime')->nullable();
             $table->date('endTime')->nullable();
             $table->integer('price');
             $table->integer('rentTime');
-            $table->bigInteger('statusId')->unsigned();
+            $table->bigInteger('statusId')->unsigned()->default(7);
             $table->foreign('statusId')->references('id')->on('statuses');
             $table->bigInteger('userId')->unsigned();
             $table->foreign('userId')->references('id')->on('users');

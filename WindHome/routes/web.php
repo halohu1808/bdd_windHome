@@ -33,12 +33,10 @@ Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
 
-
 Route::group(['prefix' => 'comments'], function () {
     Route::get('/', 'CommentController@index')->name('comment.index');
     Route::get('/create', 'CommentController@create')->name('comment.create');
     Route::post('/create', 'CommentController@store')->name('comment.store');
-
 
 });
 
@@ -54,7 +52,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-
 //Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
 
 Route::group(['prefix' => 'rooms'], function () {
@@ -66,7 +63,7 @@ Route::group(['prefix' => 'rooms'], function () {
     Route::post('/update/{id}', 'RoomController@update')->name('room.update');
     Route::get('/delete/{id}', 'RoomController@destroy')->name('room.destroy');
     Route::get('/detail/{id}', 'RoomController@show')->name('room.detail');
-    Route::post('/booking','RoomController@booking')->name('room.booking');
+    Route::post('/booking', 'RoomController@booking')->name('room.booking');
 
 });
 
@@ -84,8 +81,16 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/editOff/{id}','AdminController@editStatusOff')->name('admin.editStatusOff');
 });
 
-Route::group(['prefix'=>'contracts'],function (){
-   Route::get('/create','ContractController@create')->name('contract.create');
-   Route::post('/create','ContractController@store')->name('contract.store');
+
+Route::group(['prefix' => 'contracts'], function () {
+    Route::get('/edit/{id}', 'ContractController@run')->name('contract.run');
+    Route::post('/create', 'ContractController@store')->name('contract.store');
+    Route::get('/cancel/{id}', 'ContractController@cancel')->name('contract.cancel');
+    Route::get('/end/{id}', 'ContractController@endContract')->name('contract.endContract');
+    Route::get('/list', 'ContractController@index')->name('contract.index');
+    //Hai code
+    Route::get('/end/{id}', 'ContractController@end')->name('contract.end');
+    Route::get('/cancelEnd/{id}', 'ContractController@cancelEnd')->name('contract.cancelEnd');
+
 
 });
