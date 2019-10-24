@@ -86,8 +86,7 @@ class ContractService implements ContractServiceInterface
     {
         //status Hop Dong
         $contract = $this->contractRepository->findContractStatusEndRequest($id);
-        $contract[0]->statusId = "6";
-//        dd($contract[0]);
+        $contract[0]->statusId = 6;
         $this->contractRepository->save($contract[0]);
 
     }
@@ -96,7 +95,7 @@ class ContractService implements ContractServiceInterface
     {
         $contract = $this->contractRepository->findContractStatusEndRequest($id);
         $contract[0]->statusId = "5";
-//        dd($contract[0]);
+//     dd($contract[0]);
         $this->contractRepository->save($contract[0]);
 
     }
