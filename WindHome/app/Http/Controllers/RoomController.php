@@ -65,7 +65,6 @@ RoomController extends Controller
         $room->name = $request->name;
         $room->address = $request->address;
         $room->cityId = $request->cityId;
-        $room->country = $request->country;
         $room->pricePerMonth = $request->pricePerMonth;
         $room->minRentTime = $request->minRentTime;
         $room->bathRoom = $request->bathRoom;
@@ -76,8 +75,6 @@ RoomController extends Controller
         $room->cooking = $request->cooking;
         $room->airCondition = $request->airCondition;
 //        $room->status = $request->status;
-        $room->lat = $request->lat;
-        $room->lng = $request->lng;
         $room->save();
 
         if ($files = $request->file('images')) {
@@ -107,7 +104,7 @@ RoomController extends Controller
     public function edit($id)
     {
         $room = $this->roomService->findById($id);
-        return view('roomsSeeder.edit', compact('room'));
+        return view('rooms.edit', compact('room'));
     }
 
     public function update(createRoom $request, $id)
