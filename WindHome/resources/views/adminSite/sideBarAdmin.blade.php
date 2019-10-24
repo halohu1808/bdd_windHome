@@ -24,6 +24,8 @@
                 </li>
                 <li>
                     <a href="{{route('adminRoute.roomEndRequest')}}">Muốn hủy hợp đồng </a>
+
+                    <a href="{{route('room.create')}}">Thêm phòng mới</a>
                 </li>
             </ul>
         </li>

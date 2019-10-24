@@ -27,11 +27,10 @@ class createRoom extends FormRequest
 //            'name' => 'required|unique:posts|max:255',
             'name' => 'required',
             'address' => 'required',
-            'city' => 'required',
+            'cityId' => 'required',
             'pricePerMonth' => 'required',
             'minRentTime' => 'required',
             'guest' => 'required',
-            'status' => 'required',
         ];
     }
 }

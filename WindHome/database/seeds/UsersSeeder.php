@@ -2,9 +2,8 @@
 
 use App\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
-class users extends Seeder
+class UsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -52,7 +51,6 @@ class users extends Seeder
         $user->address = 'Ha Noi';
         $user->roll = '2';
         $user->save();
-
 
     }
 }
