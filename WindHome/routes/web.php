@@ -63,3 +63,21 @@ Route::group(['prefix' => 'contracts'], function () {
     Route::get('/cancelEnd/{id}', 'ContractController@cancelEnd')->name('contract.cancelEnd');
 
 });
+
+Route::group(['prefix' => 'adminRoute'], function () {
+//    Phong
+    Route::get('/roomAvailable', 'RouterAdminController@roomAvailable')->name('adminRoute.roomAvailable');
+    Route::get('/roomRented', 'RouterAdminController@roomRented')->name('adminRoute.roomRented');
+    Route::get('/roomKeeping', 'RouterAdminController@roomKeeping')->name('adminRoute.roomKeeping');
+    Route::get('/roomEndRequest', 'RouterAdminController@roomEndRequest')->name('adminRoute.roomEndRequest');
+
+//    Hop Dong
+
+    Route::get('/contractRun', 'RouterAdminController@contractRun')->name('adminRoute.contractRun');
+    Route::get('/contractEnd', 'RouterAdminController@contractEnd')->name('adminRoute.contractEnd');
+    Route::get('/contractEndRequest', 'RouterAdminController@contractEndRequest')->name('adminRoute.contractEndRequest');
+    Route::get('/contractKeepRequest', 'RouterAdminController@contractKeepRequest')->name('adminRoute.contractKeepRequest');
+});
+
+
+

@@ -4,50 +4,73 @@
     </div>
 
     <ul class="list-unstyled components">
-        <p>Admin Site</p>
-        {{--            Phòng--}}
+        <p>TRANG ADMIN</p>
+
+        {{--Phòng--}}
         <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Phòng</a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
+            <a href="#roomSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Phòng</a>
+            <ul class="collapse list-unstyled" id="roomSubmenu">
                 <li>
                     <a href="{{route('room.index')}}">Tất cả</a>
                 </li>
                 <li>
-                    <a href="#">Đang cho thuê</a>
+                    <a href="{{route('adminRoute.roomAvailable')}}">Phòng còn</a>
                 </li>
                 <li>
-                    <a href="#">Thêm phòng mới</a>
+                    <a href="{{route('adminRoute.roomRented')}}">Phòng đã thuê</a>
+                </li>
+                <li>
+                    <a href="{{route('adminRoute.roomKeeping')}}">Đang giữ chỗ </a>
+                </li>
+                <li>
+                    <a href="{{route('adminRoute.roomEndRequest')}}">Muốn hủy hợp đồng </a>
                 </li>
             </ul>
         </li>
+
         {{-- quản lí user--}}
         <li>
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Khách
-                hàng</a>
-            <ul class="collapse list-unstyled" id="pageSubmenu">
+            <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Khách
+                Hàng</a>
+            <ul class="collapse list-unstyled" id="userSubmenu">
                 <li>
                     <a href="#">Tất cả</a>
+                </li>
+                <li>
+                    <a href="#">Giữ chỗ</a>
                 </li>
                 <li>
                     <a href="#">Đang thuê nhà</a>
                 </li>
+                <li>
+                    <a href="#">Muốn hủy hợp đồng</a>
+                </li>
+
             </ul>
         </li>
-        {{--Comment--}}
+
+        {{-- contract--}}
         <li>
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Hợp đồng</a>
-            <ul class="collapse list-unstyled" id="pageSubmenu">
+            <a href="#contractSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Hợp Đồng</a>
+            <ul class="collapse list-unstyled" id="contractSubmenu">
                 <li>
                     <a href="#">Tất cả</a>
                 </li>
                 <li>
-                    <a href="#">Đang chờ thuê</a>
+                    <a href="{{route('adminRoute.contractRun')}}">Đang thực thi</a>
                 </li>
                 <li>
-                    <a href="#">Đang chờ Hủy</a>
+                    <a href="{{route('adminRoute.contractEnd')}}">Kết thúc</a>
+                </li>
+                <li>
+                    <a href="{{route('adminRoute.contractKeepRequest')}}">Giữ chỗ</a>
+                </li>
+                <li>
+                    <a href="{{route('adminRoute.contractEndRequest')}}">Muốn hủy hợp đồng</a>
                 </li>
             </ul>
         </li>
+
 
     </ul>
 </nav>
