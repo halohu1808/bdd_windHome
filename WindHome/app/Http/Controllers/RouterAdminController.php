@@ -54,7 +54,7 @@ class RouterAdminController extends Controller
     public function contractAll()
     {
         $contracts = Contract::all();
-        dd($contracts);
+        //dd($contracts);
         return view('adminSite.contractSite', compact('contracts'));
     }
 
