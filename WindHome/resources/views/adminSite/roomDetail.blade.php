@@ -9,7 +9,9 @@
             <div class="col-md-7">
 
 
-                <img src={{asset("storage/img/home/". $room->image)}} class="img-fluid" alt="Responsive image">
+                <div class="carousel-item active">
+                    <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100" alt="...">
+                </div>
             </div>
 
             <div class="col-md-5">

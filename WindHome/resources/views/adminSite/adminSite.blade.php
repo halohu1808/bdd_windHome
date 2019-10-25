@@ -36,17 +36,12 @@
                 </thead>
                 @foreach($rooms as $room)
                     <tr>
-                        <td><a href="{{route('admin.detail',$room->id)}}" >{{$room->name}}</a></td>
+                        <td><a href="{{route('admin.detail',$room->id)}}">{{$room->name}}</a></td>
                         <td>{{$room->address}}</td>
                         <td>{{number_format($room->pricePerMonth)}}</td>
                         <td>{{$room->area}}</td>
                         <td>{{$room->guest}}</td>
                         <td>{{$room->status->name}}</td>
-
-                        <td><a class="btn btn-outline-secondary" href="{{route('room.edit',$room->id)}}">Update</a></td>
-                        <td><a class="btn btn-outline-secondary" href="{{route('room.destroy',$room->id)}}">Delete</a>
-                        </td>
-
                     </tr>
                     @endforeach
                     </tbody>
