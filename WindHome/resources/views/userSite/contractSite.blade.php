@@ -1,6 +1,6 @@
 @extends('layout.home')
 @section('sideBar')
-    @include('adminSite.sideBarAdmin')
+    @include('userSite.sideBarUser')
 @endsection
 
 @section('content')

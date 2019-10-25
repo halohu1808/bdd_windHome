@@ -27,10 +27,7 @@ RoomController extends Controller
         $this->roomService = $roomService;
         $this->imageService = $imageService;
         $this->contractService = $contractService;
-
-
     }
-
 
     public function list()
     {
@@ -43,10 +40,7 @@ RoomController extends Controller
             $image = $this->imageService->getFirstImageByRoomId($room->id);
             array_push($images, $image);
         }
-
-
         return view('listSite.listPage', compact('rooms', 'images'));
-
     }
 
     public function index()
