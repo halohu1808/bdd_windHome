@@ -134,8 +134,8 @@ RoomController extends Controller
     public function booking(Request $request)
     {
         $userId = Auth::user()->id;
-        $room = $this->roomService->findById($request->roomId);
-        $this->roomService->booking($request->roomId);
+//        $room = $this->roomService->findById($request->roomId);
+        $room = $this->roomService->booking($request->roomId);
         $this->contractService->booking($request, $room, $userId);
         $images = $this->imageService->getAllImageByRoomId($request->roomId);
         return view('listSite.roomDetail', compact('room', 'images'));

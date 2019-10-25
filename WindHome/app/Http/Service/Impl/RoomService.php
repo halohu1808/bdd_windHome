@@ -77,6 +77,7 @@ class RoomService implements RoomServiceInterface
         $room = $this->roomRepository->findById($id);
         $room->statusId = "3";
         $this->roomRepository->save($room);
+        return $room;
     }
 
     public function end($id)

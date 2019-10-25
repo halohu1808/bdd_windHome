@@ -5,12 +5,12 @@
 
         <div class="row pt-5">
             <div class="col-md-7">
-{{--                {{$imgLength = count($imagesSeeder) }}--}}
+                {{--                {{$imgLength = count($imagesSeeder) }}--}}
 
-{{--                <img src={{asset("storage/img/home/". $room->image)}} class="img-fluid" alt="Responsive image">--}}
-{{--                --}}{{--thông tin thêm--}}
+                {{--                <img src={{asset("storage/img/home/". $room->image)}} class="img-fluid" alt="Responsive image">--}}
+                {{--                --}}{{--thông tin thêm--}}
 
-{{-- Hiển thị nhiều ảnh trong trang detail               --}}
+                {{-- Hiển thị nhiều ảnh trong trang detail               --}}
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -23,10 +23,11 @@
                         </div>
 
                         @foreach($images as $key => $image)
-                        <div class="carousel-item">
-                            <img src={{asset("storage/img/home/". $images[$key]->images)}} class="d-block w-100" alt="...">
-{{--                            {{count($imagesSeeder)}}--}}
-                        </div>
+                            <div class="carousel-item">
+                                <img src={{asset("storage/img/home/". $images[$key]->images)}} class="d-block w-100"
+                                alt="...">
+                                {{--                            {{count($imagesSeeder)}}--}}
+                            </div>
 
                         @endforeach
                     </div>
@@ -39,9 +40,6 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-
-
-
 
 
                 <div class="row pt-2">
@@ -74,8 +72,8 @@
 
             <div class="col-md-5">
 
-                <form class="bg-white p-3" method="POST" action="{{route('room.booking')}}" >
-                @csrf
+                <form class="bg-white p-3" method="POST" action="{{route('room.booking')}}">
+                    @csrf
                     <div>
                         <h1 class="font-weight-bold text-danger"> {{$room->name}}</h1>
                         <label> {{$room->address}}, {{ $room->city }}</label>
@@ -153,15 +151,16 @@
                     <div class="pt-2">
                         <label>Thời Gian Thuê</label>
                         <div class="input-group input-group-sm mb-3">
-                            <input type="number" name="rentTime" class="form-control" aria-describedby="inputGroup-sizing-sm">
+                            <input type="number" name="rentTime" class="form-control"
+                                   aria-describedby="inputGroup-sizing-sm" required>
                         </div>
                         <input type="text" name="roomId" value="{{$room->id}}" style="visibility: hidden">
                     </div>
                     <div class="pt-2">
                         @if($room->status->id == 1)
-                            <button class="btn btn-success btn-lg btn-block" type="submit" > ĐẶT PHÒNG</button>
+                            <button class="btn btn-success btn-lg btn-block" type="submit"> ĐẶT PHÒNG</button>
 
-{{--                        <a class="btn btn-success btn-lg btn-block" href="{{route('room.booking',$room->id )}}"></a>--}}
+                            {{--                        <a class="btn btn-success btn-lg btn-block" href="{{route('room.booking',$room->id )}}"></a>--}}
                         @else {{$room->status->name}}
                         @endif
 

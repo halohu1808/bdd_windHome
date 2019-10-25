@@ -89,7 +89,7 @@ class ContractController extends Controller
     {
         $this->roomService->endContract($id);
         $this->contractService->endContract($id);
-        return redirect()->route('room.index');
+        return redirect()->route('admin.index');
     }
 
     public function edit()
