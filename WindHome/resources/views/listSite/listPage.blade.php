@@ -19,7 +19,10 @@
         <div class="card-deck row">
 
             {{--            bat dau FOR--}}
+
+  
             @foreach($rooms as $key => $room)
+
 
                 <div class="col-md-3 pt-5">
                     <img class="card-img-top"

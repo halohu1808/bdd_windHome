@@ -11,6 +11,7 @@ class ImageService implements ImageServiceInterface
 {
     protected $imageRepository;
 
+
     public function __construct(ImageRepositoryInterface $imageRepository)
     {
         $this->imageRepository = $imageRepository;
@@ -32,6 +33,7 @@ class ImageService implements ImageServiceInterface
         $img = $this->roomRepository->findById($roomId);
         $this->roomRepository->destroy($img);
     }
+
 
     public function getFirstImageByRoomId($roomId)
     {

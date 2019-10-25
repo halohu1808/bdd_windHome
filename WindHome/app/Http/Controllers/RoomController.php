@@ -27,22 +27,26 @@ RoomController extends Controller
         $this->roomService = $roomService;
         $this->imageService = $imageService;
         $this->contractService = $contractService;
+
+
     }
 
 
     public function list()
     {
 
-        $rooms = $this->roomService->getAll()->sortByDesc('created_at');// <- Sort theo phòng mới tạo
-        $images=[];
 
-        foreach ($rooms as $room){
+        $rooms = $this->roomService->getAll()->sortByDesc('created_at');// <- Sort theo phòng mới tạo
+        $images = [];
+
+        foreach ($rooms as $room) {
             $image = $this->imageService->getFirstImageByRoomId($room->id);
             array_push($images, $image);
         }
 
 
         return view('listSite.listPage', compact('rooms', 'images'));
+
     }
 
     public function index()
@@ -65,6 +69,7 @@ RoomController extends Controller
         $room->name = $request->name;
         $room->address = $request->address;
         $room->cityId = $request->cityId;
+
         $room->pricePerMonth = $request->pricePerMonth;
         $room->minRentTime = $request->minRentTime;
         $room->bathRoom = $request->bathRoom;
@@ -115,9 +120,14 @@ RoomController extends Controller
 
     public function destroy($id)
     {
-//        $this->imageService->destroy($id);
+        $this->imageService->destroy($id);
         $this->roomService->destroy($id);
         return redirect()->route('room.index');
+    }
+
+    public function managerUser()
+    {
+        return view('users.managerUser');
     }
 
     //Hai-code
@@ -126,11 +136,9 @@ RoomController extends Controller
         $userId = Auth::user()->id;
         $room = $this->roomService->findById($request->roomId);
         $this->roomService->booking($request->roomId);
-        $room = $this->roomService->findById($request->roomId);
         $this->contractService->booking($request, $room, $userId);
-
-        $room = $this->roomService->findById($request->roomId);
-        return view('listSite.roomDetail', compact('room'));
+        $images = $this->imageService->getAllImageByRoomId($request->roomId);
+        return view('listSite.roomDetail', compact('room', 'images'));
     }
 
 
