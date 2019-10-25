@@ -63,7 +63,7 @@ Route::group(['prefix' => 'rooms'], function () {
 Route::group(['prefix' => 'roomUser'], function () {
     Route::get('/list', 'RoomController@list')->name('room.list');/// not admin
     Route::get('/detail/{id}', 'RoomController@show')->name('room.detail');//not admin
-    Route::post('/booking', 'RoomController@booking')->name('room.booking'); // not admin
+    Route::post('/booking', 'RoomController@booking')->middleware('login')->name('room.booking'); // not admin
     Route::get('/userSite', 'RoomController@managerUser')->name('managerUser');
 });
 
