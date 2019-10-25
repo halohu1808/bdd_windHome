@@ -99,17 +99,18 @@ class ContractController extends Controller
 
 
     //Hai code
-    public function end($id){
+    public function end($id)
+    {
         $this->contractService->end($id);
         $this->roomService->end($id);
 
     }
 
-    public function cancelEnd($id){
+    public function cancelEnd($id)
+    {
         $this->roomService->cancelEnd($id);
         $this->contractService->cancelEnd($id);
     }
-
 
 
 }
