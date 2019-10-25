@@ -85,7 +85,7 @@ Route::group(['prefix' => 'contracts','middleware'=>'admin'], function () {
 
 });
 
-Route::group(['prefix' => 'adminRoute'], function () {
+Route::group(['prefix' => 'adminRoute','middleware'=>'admin'], function () {
 //    Phong
     Route::get('/roomAvailable', 'RouterAdminController@roomAvailable')->name('adminRoute.roomAvailable');
     Route::get('/roomRented', 'RouterAdminController@roomRented')->name('adminRoute.roomRented');
@@ -105,7 +105,7 @@ Route::group(['prefix' => 'adminRoute'], function () {
 });
 
 
-Route::group(['prefix' => 'userRoute'], function () {
+Route::group(['prefix' => 'userRoute','middleware'=>'login'], function () {
 
     Route::get('/userSite', 'RouterUserController@userSite')->name('userRoute.userSite');
     Route::get('/allContract', 'RouterUserController@allContract')->name('userRoute.allContract');
