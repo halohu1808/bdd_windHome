@@ -96,3 +96,27 @@ Route::group(['prefix' => 'contracts'], function () {
 
 
 });
+
+Route::group(['prefix' => 'adminRoute'], function () {
+//    Phong
+    Route::get('/roomAvailable', 'RouterAdminController@roomAvailable')->name('adminRoute.roomAvailable');
+    Route::get('/roomRented', 'RouterAdminController@roomRented')->name('adminRoute.roomRented');
+    Route::get('/roomKeeping', 'RouterAdminController@roomKeeping')->name('adminRoute.roomKeeping');
+    Route::get('/roomEndRequest', 'RouterAdminController@roomEndRequest')->name('adminRoute.roomEndRequest');
+
+//    Hop Dong
+    Route::get('/contractAll', 'RouterAdminController@contractAll')->name('adminRoute.contractAll');
+    Route::get('/contractRun', 'RouterAdminController@contractRun')->name('adminRoute.contractRun');
+    Route::get('/contractEnd', 'RouterAdminController@contractEnd')->name('adminRoute.contractEnd');
+    Route::get('/contractEndRequest', 'RouterAdminController@contractEndRequest')->name('adminRoute.contractEndRequest');
+    Route::get('/contractKeepRequest', 'RouterAdminController@contractKeepRequest')->name('adminRoute.contractKeepRequest');
+
+    //    User
+    Route::get('/userAll', 'RouterAdminController@userAll')->name('adminRoute.userAll');
+    Route::get('/userKeep', 'RouterAdminController@userKeep')->name('adminRoute.userKeep');
+    Route::get('/userRenting', 'RouterAdminController@userRenting')->name('adminRoute.userRenting');
+    Route::get('/userEndRequest', 'RouterAdminController@userEndRequest')->name('adminRoute.userEndRequest');
+});
+
+
+

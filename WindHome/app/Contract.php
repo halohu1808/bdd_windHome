@@ -13,4 +13,14 @@ class Contract extends Model
         return $this->belongsTo('App\Room', 'roomId', 'id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'userId', 'id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo('App\Status', 'statusId', 'id');
+    }
+
 }
