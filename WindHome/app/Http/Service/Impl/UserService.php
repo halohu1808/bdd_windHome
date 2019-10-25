@@ -6,6 +6,7 @@ namespace App\Http\Service\Impl;
 
 use App\Http\Repository\Contract\UserRepositoryInterface;
 use App\Http\Service\ServiceInterface\UserServiceInterface;
+use App\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserService implements UserServiceInterface
@@ -32,6 +33,7 @@ class UserService implements UserServiceInterface
     {
         $user = $this->userRepository->findById($id);
         $data = $request->all();
+        $data['password'] = Hash::make($request->password);
         $this->userRepository->update($user, $data);
     }
 
