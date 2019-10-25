@@ -51,6 +51,13 @@ class RouterAdminController extends Controller
 
 
 // Hop Dong
+    public function contractAll()
+    {
+        $contracts = Contract::all();
+        dd($contracts);
+        return view('adminSite.contractSite', compact('contracts'));
+    }
+
     public function contractRun()
     {
         $contracts = Contract::where('statusId', 5)->get();
@@ -69,10 +76,15 @@ class RouterAdminController extends Controller
         return view('adminSite.contractSite', compact('contracts'));
 
     }
-    public function contractKeepRequest(){
+
+    public function contractKeepRequest()
+    {
         $contracts = Contract::where('statusId', 7)->get();
         return view('adminSite.contractSite', compact('contracts'));
     }
+
+//    User
+
 
 
 }

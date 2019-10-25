@@ -33,9 +33,8 @@ Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
 
-
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/list','RoomController@list')->name('room.list');
+    Route::get('/list', 'RoomController@list')->name('room.list');
     Route::get('/', 'RoomController@index')->name('room.index');
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
@@ -85,7 +84,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 });
 
 
-
 Route::group(['prefix' => 'contracts'], function () {
     Route::get('/edit/{id}', 'ContractController@run')->name('contract.run');
     Route::post('/create', 'ContractController@store')->name('contract.store');
@@ -107,11 +105,17 @@ Route::group(['prefix' => 'adminRoute'], function () {
     Route::get('/roomEndRequest', 'RouterAdminController@roomEndRequest')->name('adminRoute.roomEndRequest');
 
 //    Hop Dong
-
+    Route::get('/contractAll', 'RouterAdminController@contractAll')->name('adminRoute.contractAll');
     Route::get('/contractRun', 'RouterAdminController@contractRun')->name('adminRoute.contractRun');
     Route::get('/contractEnd', 'RouterAdminController@contractEnd')->name('adminRoute.contractEnd');
     Route::get('/contractEndRequest', 'RouterAdminController@contractEndRequest')->name('adminRoute.contractEndRequest');
     Route::get('/contractKeepRequest', 'RouterAdminController@contractKeepRequest')->name('adminRoute.contractKeepRequest');
+
+    //    User
+    Route::get('/userAll', 'RouterAdminController@userAll')->name('adminRoute.userAll');
+    Route::get('/userKeep', 'RouterAdminController@userKeep')->name('adminRoute.userKeep');
+    Route::get('/userRenting', 'RouterAdminController@userRenting')->name('adminRoute.userRenting');
+    Route::get('/userEndRequest', 'RouterAdminController@userEndRequest')->name('adminRoute.userEndRequest');
 });
 
 

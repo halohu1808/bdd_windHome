@@ -56,7 +56,7 @@
             <a href="#contractSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Hợp Đồng</a>
             <ul class="collapse list-unstyled" id="contractSubmenu">
                 <li>
-                    <a href="#">Tất cả</a>
+                    <a href="{{route('adminRoute.contractAll')}}">Tất cả</a>
                 </li>
                 <li>
                     <a href="{{route('adminRoute.contractRun')}}">Đang thực thi</a>
