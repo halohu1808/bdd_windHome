@@ -1,6 +1,6 @@
 @extends('layout.home')
 @section('sideBar')
-    @include('adminSite.sideBarAdmin')
+    @include('userSite.sideBarUser')
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
 
         <div class="row">
             <div class="col-md-6">
-                <h2>PHÒNG</h2>
+                <h2></h2>
             </div>
             <div class="col-md-6">
                 <form id="test" class="form-inline" style="float: right">
@@ -18,7 +18,6 @@
                 </form>
             </div>
         </div>
-
 
         <div class="row pt-5">
             <table class="table table-hover">
@@ -53,8 +52,15 @@
 
             </table>
         </div>
-        <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Create</a>
 
 
     </div>
+
+
+
 @endsection
+
+
+
+
+
