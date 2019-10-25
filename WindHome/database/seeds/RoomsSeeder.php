@@ -55,7 +55,7 @@ Flamingo Dai Lai Resort đã chào đón khách Booking.com từ Ngày 25 Tháng
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
-        $room->statusId = 2;
+        $room->statusId = 1;
         $room->description = "Trải nghiệm dịch vụ đẳng cấp thế giới ở Flamingo Dai Lai - Forest In The Sky
 Flamingo Dai Lai - Forest In The Sky có nhà hàng, bể bơi ngoài trời, trung tâm thể dục và quán bar ở Ngọc Quang. Resort 5 sao này có vườn và phòng nghỉ gắn máy điều hòa với Wi-Fi miễn phí cùng phòng tắm riêng. Chỗ nghỉ có thể sắp xếp chỗ đỗ xe riêng kèm phụ phí.
 
@@ -85,7 +85,7 @@ Flamingo Dai Lai - Forest In The Sky đã chào đón khách Booking.com từ Ng
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
-        $room->statusId = 3;
+        $room->statusId = 1;
         $room->description = "Happy Villa Royal Bird by Flamingo Villa Owner ở thôn Ngọc Quang này cung cấp chỗ nghỉ, xe đạp/xe máy miễn phí, hồ bơi ngoài trời theo mùa, trung tâm thể dục, quán bar và khu vườn. Biệt thự cũng có tầm nhìn ra vườn và Wi-Fi miễn phí trong toàn khuôn viên.
 
 Tất cả phòng nghỉ tại đây đều có khu vực ghế ngồi, truyền hình cáp màn hình phẳng và phòng tắm riêng với máy sấy tóc, chậu rửa vệ sinh (bidet), vòi sen cùng bồn tắm.
@@ -112,7 +112,7 @@ Happy Villa Royal Bird by Flamingo Villa Owner đã chào đón khách Booking.c
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
-        $room->statusId = 4;
+        $room->statusId = 1;
         $room->description = " Một trong những chỗ nghỉ bán chạy nhất ở Ngọc Quang của chúng tôi!
 Nằm ở thôn Ngọc Quang, Biệt thự ven hồ Lake side Forest cung cấp chỗ nghỉ với nhà hàng.
 
