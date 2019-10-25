@@ -9,7 +9,8 @@
 
         <div class="row">
             <div class="col-md-6">
-                <h2>HỢP ĐỒNG</h2>
+                <h2>KHÁCH HÀNG</h2>
+
             </div>
             <div class="col-md-6">
                 <form id="test" class="form-inline" style="float: right">
@@ -24,27 +25,28 @@
             <table class="table table-hover">
                 <thead class="thead-light">
                 <tr>
-                    <th>Mã số</th>
-                    <th>Phòng</th>
-                    <th>Khách</th>
-                    <th>Giá/thang</th>
-                    <th>Thời Gian Thuê</th>
-                    <th>Trạng Thái</th>
+                    <th>Stt</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+
                 </tr>
                 </thead>
-                @foreach($contracts as $contract)
+                @foreach($users as $key => $user)
                     <tr>
-                        <td>{{$contract->id}} </td>
-                        <td><a href="{{route('admin.detail',$contract->id)}}">{{$contract->room->name}}</a></td>
-                        <td>{{$contract->user->name }}</td>
-                        <td>{{$contract->room->pricePerMonth}}</td>
-                        <td>{{$contract->rentTime}}</td>
-                        <td>{{$contract->status->name}}</td>
+                        <td> {{++$key}}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->phone}}</td>
+                        <td>{{$user->address}}</td>
                     </tr>
                     @endforeach
                     </tbody>
+
             </table>
         </div>
+        <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Create</a>
 
 
     </div>

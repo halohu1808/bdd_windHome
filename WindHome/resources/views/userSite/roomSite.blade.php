@@ -1,6 +1,6 @@
 @extends('layout.home')
 @section('sideBar')
-    @include('adminSite.sideBarAdmin')
+    @include('userSite.sideBarUser')
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
 
         <div class="row">
             <div class="col-md-6">
-                <h2>PHÒNG</h2>
+                <h2></h2>
             </div>
             <div class="col-md-6">
                 <form id="test" class="form-inline" style="float: right">
@@ -18,7 +18,6 @@
                 </form>
             </div>
         </div>
-
 
         <div class="row pt-5">
             <table class="table table-hover">
@@ -36,20 +35,32 @@
                 </thead>
                 @foreach($rooms as $room)
                     <tr>
-                        <td><a href="{{route('admin.detail',$room->id)}}">{{$room->name}}</a></td>
+                        <td><a href="{{route('admin.detail',$room->id)}}" >{{$room->name}}</a></td>
                         <td>{{$room->address}}</td>
                         <td>{{number_format($room->pricePerMonth)}}</td>
                         <td>{{$room->area}}</td>
                         <td>{{$room->guest}}</td>
                         <td>{{$room->status->name}}</td>
+
+                        <td><a class="btn btn-outline-secondary" href="{{route('room.edit',$room->id)}}">Update</a></td>
+                        <td><a class="btn btn-outline-secondary" href="{{route('room.destroy',$room->id)}}">Delete</a>
+                        </td>
+
                     </tr>
                     @endforeach
                     </tbody>
 
             </table>
         </div>
-        <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Create</a>
 
 
     </div>
+
+
+
 @endsection
+
+
+
+
+

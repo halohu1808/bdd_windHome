@@ -48,7 +48,7 @@
                                     <a class="pl-4" href="{{route('room.index')}}"> Trang quản
                                         lí</a> {{--Hải thêm để demo--}}
                                     @else
-                                    <a class="pl-4" href="{{route('managerUser')}}"> Trang quản
+                                    <a class="pl-4" href="{{route('userRoute.userSite')}}"> Trang quản
                                         lí</a> {{--Hải thêm để demo--}}
                                 @endif
 

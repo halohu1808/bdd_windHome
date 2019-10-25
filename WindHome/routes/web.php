@@ -52,7 +52,7 @@ Route::group(['prefix' => 'roomUser'], function () {
     Route::get('/list', 'RoomController@list')->name('room.list');/// not admin
     Route::get('/detail/{id}', 'RoomController@show')->name('room.detail');//not admin
     Route::post('/booking', 'RoomController@booking')->middleware('login')->name('room.booking'); // not admin
-    Route::get('/userSite', 'RoomController@managerUser')->name('managerUser');
+
 });
 
 
@@ -85,7 +85,7 @@ Route::group(['prefix' => 'contracts','middleware'=>'admin'], function () {
 
 });
 
-Route::group(['prefix' => 'adminRoute'], function () {
+Route::group(['prefix' => 'adminRoute','middleware'=>'admin'], function () {
 //    Phong
     Route::get('/roomAvailable', 'RouterAdminController@roomAvailable')->name('adminRoute.roomAvailable');
     Route::get('/roomRented', 'RouterAdminController@roomRented')->name('adminRoute.roomRented');
@@ -101,10 +101,17 @@ Route::group(['prefix' => 'adminRoute'], function () {
 
     //    User
     Route::get('/userAll', 'RouterAdminController@userAll')->name('adminRoute.userAll');
-    Route::get('/userKeep', 'RouterAdminController@userKeep')->name('adminRoute.userKeep');
-    Route::get('/userRenting', 'RouterAdminController@userRenting')->name('adminRoute.userRenting');
-    Route::get('/userEndRequest', 'RouterAdminController@userEndRequest')->name('adminRoute.userEndRequest');
+
 });
 
 
+Route::group(['prefix' => 'userRoute','middleware'=>'login'], function () {
 
+    Route::get('/userSite', 'RouterUserController@userSite')->name('userRoute.userSite');
+    Route::get('/allContract', 'RouterUserController@allContract')->name('userRoute.allContract');
+    Route::get('/contractRun', 'RouterUserController@contractRun')->name('userRoute.contractRun');
+    Route::get('/contractKeepRequest', 'RouterUserController@contractKeepRequest')->name('userRoute.contractKeepRequest');
+    Route::get('/contractEndRequest', 'RouterUserController@contractEndRequest')->name('userRoute.contractEndRequest');
+    Route::get('/contractEnd', 'RouterUserController@contractEnd')->name('userRoute.contractEnd');
+
+});

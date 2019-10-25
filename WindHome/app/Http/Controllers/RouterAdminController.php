@@ -6,6 +6,7 @@ use App\Contract;
 use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use App\Room;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -54,7 +55,7 @@ class RouterAdminController extends Controller
     public function contractAll()
     {
         $contracts = Contract::all();
-        dd($contracts);
+//        dd($contracts);
         return view('adminSite.contractSite', compact('contracts'));
     }
 
@@ -84,7 +85,12 @@ class RouterAdminController extends Controller
     }
 
 //    User
-
+    public function userAll()
+    {
+        $users = User::all();
+//        dd($users);
+        return view('adminSite.userSite', compact('users'));
+    }
 
 
 }
