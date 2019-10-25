@@ -33,9 +33,8 @@ Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
 
-
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/list','RoomController@list')->name('room.list');
+    Route::get('/list', 'RoomController@list')->name('room.list');
     Route::get('/', 'RoomController@index')->name('room.index');
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
@@ -64,7 +63,7 @@ Route::group(['prefix' => 'rooms'], function () {
 Route::group(['prefix' => 'roomUser'], function () {
     Route::get('/list', 'RoomController@list')->name('room.list');/// not admin
     Route::get('/detail/{id}', 'RoomController@show')->name('room.detail');//not admin
-    Route::post('/booking', 'RoomController@booking')->name('room.booking'); // not admin
+    Route::post('/booking', 'RoomController@booking')->middleware('login')->name('room.booking'); // not admin
     Route::get('/userSite', 'RoomController@managerUser')->name('managerUser');
 });
 
@@ -83,7 +82,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
 });
-
 
 
 Route::group(['prefix' => 'contracts'], function () {

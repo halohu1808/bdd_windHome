@@ -36,11 +36,10 @@ RoomController extends Controller
     {
 
 
-
         $rooms = $this->roomService->getAll()->sortByDesc('created_at');// <- Sort theo phòng mới tạo
-        $images=[];
+        $images = [];
 
-        foreach ($rooms as $room){
+        foreach ($rooms as $room) {
             $image = $this->imageService->getFirstImageByRoomId($room->id);
             array_push($images, $image);
         }
@@ -137,11 +136,9 @@ RoomController extends Controller
         $userId = Auth::user()->id;
         $room = $this->roomService->findById($request->roomId);
         $this->roomService->booking($request->roomId);
-        $room = $this->roomService->findById($request->roomId);
         $this->contractService->booking($request, $room, $userId);
-
-        $room = $this->roomService->findById($request->roomId);
-        return view('listSite.roomDetail', compact('room'));
+        $images = $this->imageService->getAllImageByRoomId($request->roomId);
+        return view('listSite.roomDetail', compact('room', 'images'));
     }
 
 
