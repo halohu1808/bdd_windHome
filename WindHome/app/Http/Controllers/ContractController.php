@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contract;
+use App\Http\Requests\ContractRequest;
 use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use Illuminate\Http\Request;
@@ -55,7 +56,7 @@ class ContractController extends Controller
         return view('contracts.editContract', compact('room', 'contract'));
     }
 
-    public function store(Request $request)
+    public function store(ContractRequest $request)
     {
         $contract = $this->contractService->store($request);
         $roomId = $contract->room->id;
@@ -66,16 +67,6 @@ class ContractController extends Controller
 
     }
 
-    public function update(Request $request, Contract $contract)
-    {
-        //
-    }
-
-
-    public function destroy(Contract $contract)
-    {
-        //
-    }
 
     public function cancel($id)
     {

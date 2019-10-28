@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\BookkingRequest;
 use App\Http\Service\Impl\RoomService;
 use App\Http\Service\ServiceInterface\ImageServiceInterface;
 
@@ -31,7 +32,6 @@ RoomController extends Controller
 
     public function list()
     {
-
 
         $rooms = $this->roomService->getAll()->sortByDesc('created_at');// <- Sort theo phòng mới tạo
         $images = [];
@@ -73,7 +73,6 @@ RoomController extends Controller
         $room->wifi = $request->wifi;
         $room->cooking = $request->cooking;
         $room->airCondition = $request->airCondition;
-//        $room->status = $request->status;
         $room->save();
 
         if ($files = $request->file('images')) {
@@ -125,7 +124,7 @@ RoomController extends Controller
     }
 
     //Hai-code
-    public function booking(Request $request)
+    public function booking(BookkingRequest $request)
     {
         $userId = Auth::user()->id;
 //        $room = $this->roomService->findById($request->roomId);
