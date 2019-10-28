@@ -35,7 +35,7 @@
                 </thead>
                 @foreach($rooms as $room)
                     <tr>
-                        <td><a href="{{route('admin.detail',$room->id)}}" >{{$room->name}}</a></td>
+                        <td><a href="{{route('userSite.roomDetail',$room->id)}}" >{{$room->name}}</a></td>
                         <td>{{$room->address}}</td>
                         <td>{{number_format($room->pricePerMonth)}}</td>
                         <td>{{$room->area}}</td>

@@ -38,15 +38,6 @@
                 <li>
                     <a href="{{route('adminRoute.userAll')}}">Tất cả</a>
                 </li>
-{{--                <li>--}}
-{{--                    <a href="#">Giữ chỗ</a>--}}
-{{--                </li>--}}
-{{--                <li>--}}
-{{--                    <a href="#">Đang thuê nhà</a>--}}
-{{--                </li>--}}
-{{--                <li>--}}
-{{--                    <a href="#">Muốn hủy hợp đồng</a>--}}
-{{--                </li>--}}
             </ul>
         </li>
 

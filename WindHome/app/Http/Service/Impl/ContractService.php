@@ -47,6 +47,7 @@ class ContractService implements ContractServiceInterface
 
     public function findByRoomId($id)
     {
+//        find contract by room Id -> sai
         return $this->contractRepository->findByRoomId($id);
     }
 
@@ -104,5 +105,18 @@ class ContractService implements ContractServiceInterface
 //     dd($contract[0]);
         $this->contractRepository->save($contract[0]);
 
+    }
+
+    public function deleteContract($contractId)
+    {
+       $contract = $this->findById($contractId);
+       $this->contractRepository->destroy($contract);
+    }
+
+    public function cancelRoom($id)
+    {
+        $contract = $this->contractRepository->findById($id);
+        $contract->statusId = "8";
+        $this->contractRepository->save($contract);
     }
 }

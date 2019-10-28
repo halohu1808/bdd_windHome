@@ -30,5 +30,9 @@ interface ContractServiceInterface
 
     public function cancelEnd($id);
 
+    public function deleteContract($id);
+
+    public function cancelRoom($id);
+
 
 }

@@ -58,6 +58,7 @@ class RouterAdminController extends Controller
         return view('adminSite.contractSite', compact('contracts'));
     }
 
+//    Hai Code
     public function contractRun()
     {
         $contracts = Contract::where('statusId', 5)->get();
@@ -87,7 +88,6 @@ class RouterAdminController extends Controller
     public function userAll()
     {
         $users = User::all();
-//        dd($users);
         return view('adminSite.userSite', compact('users'));
     }
 

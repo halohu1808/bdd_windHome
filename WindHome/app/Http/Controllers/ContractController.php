@@ -25,32 +25,14 @@ class ContractController extends Controller
         return view('contracts.listContract', compact('contracts'));
     }
 
-
     public function create()
     {
         return view('contracts.createContract');
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Contract $contract
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Contract $contract)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Contract $contract
-     * @return \Illuminate\Http\Response
-     */
     public function run($id)
     {
+//        $id = roomId
         $room = $this->roomService->findById($id);
         $contract = $this->contractService->findByRoomId($id);
         return view('contracts.editContract', compact('room', 'contract'));
@@ -62,19 +44,14 @@ class ContractController extends Controller
         $this->contractService->store($request, $id);
         $roomId = $contract->room->id;
         $this->roomService->changeStatusWhenCreateContract($roomId);
-
-
         return redirect()->route('room.index');
-
     }
-
 
     public function cancel($id)
     {
         $this->contractService->cancel($id);
         $this->roomService->changeStatusWhenNotOk($id);
         return redirect()->route('room.index');
-
     }
 
     public function endContract($id)
@@ -89,13 +66,11 @@ class ContractController extends Controller
         return view('contracts.editContract');
     }
 
-
     //Hai code
     public function end($id)
     {
         $this->contractService->end($id);
         $this->roomService->end($id);
-
     }
 
     public function cancelEnd($id)
