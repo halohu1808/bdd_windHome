@@ -19,7 +19,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{route('contract.store')}}">
+        <form method="POST" action="{{route('contract.store',$contract[0]->id)}}">
             @csrf
             <div class="row pl-5 pr-5 pt-3">
 

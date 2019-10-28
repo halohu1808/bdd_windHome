@@ -56,9 +56,10 @@ class ContractController extends Controller
         return view('contracts.editContract', compact('room', 'contract'));
     }
 
-    public function store(ContractRequest $request)
+    public function store(ContractRequest $request, $id)
     {
-        $contract = $this->contractService->store($request);
+        $contract = $this->contractService->findById($id);
+        $this->contractService->store($request, $id);
         $roomId = $contract->room->id;
         $this->roomService->changeStatusWhenCreateContract($roomId);
 
