@@ -70,11 +70,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'login'], function () {
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
 });
-
-
 Route::group(['prefix' => 'contracts','middleware'=>'admin'], function () {
     Route::get('/edit/{id}', 'ContractController@run')->name('contract.run');
-    Route::post('/create', 'ContractController@store')->name('contract.store');
+    Route::post('/create/{id}', 'ContractController@store')->name('contract.store');
     Route::get('/cancel/{id}', 'ContractController@cancel')->name('contract.cancel');
     Route::get('/endContract/{id}', 'ContractController@endContract')->name('contract.endContract');
     Route::get('/list', 'ContractController@index')->name('contract.index');

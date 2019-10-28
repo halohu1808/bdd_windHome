@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contract;
+use App\Http\Requests\ContractRequest;
 use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use Illuminate\Http\Request;
@@ -37,9 +38,10 @@ class ContractController extends Controller
         return view('contracts.editContract', compact('room', 'contract'));
     }
 
-    public function store(Request $request)
+    public function store(ContractRequest $request, $id)
     {
-        $contract = $this->contractService->store($request);
+        $contract = $this->contractService->findById($id);
+        $this->contractService->store($request, $id);
         $roomId = $contract->room->id;
         $this->roomService->changeStatusWhenCreateContract($roomId);
         return redirect()->route('room.index');

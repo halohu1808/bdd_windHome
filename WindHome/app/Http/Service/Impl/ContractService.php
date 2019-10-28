@@ -51,39 +51,44 @@ class ContractService implements ContractServiceInterface
         return $this->contractRepository->findByRoomId($id);
     }
 
-    public function store($request)
+    public function store($request, $id)
     {
-
+        $contract = $this->contractRepository->findById($id);
         $data = $request->all();
-        return $this->contractRepository->store($data);
+        return $this->contractRepository->update($contract, $data);
     }
 
-    public function findContractStatusRun($id)
+    public
+    function findContractStatusRun($id)
     {
         return $this->contractRepository->findContractStatusRun($id);
     }
 
-    public function save($obj)
+    public
+    function save($obj)
     {
         return $this->contractRepository->save($obj);
     }
 
-    public function cancel($id)
+    public
+    function cancel($id)
     {
 
         $contract = $this->contractRepository->findByRoomId($id);
         $contract[0]->delete();
     }
 
-    public function endContract($id)
+    public
+    function endContract($id)
     {
         $contract = $this->contractRepository->findContractStatusRun($id);
         $contract[0]->statusId = 6;
         $this->contractRepository->save($contract[0]);
     }
 
-    //    Hai code
-    public function end($id)
+//    Hai code
+    public
+    function end($id)
     {
         //status Hop Dong
         $contract = $this->contractRepository->findContractStatusEndRequest($id);
@@ -92,7 +97,8 @@ class ContractService implements ContractServiceInterface
 
     }
 
-    public function cancelEnd($id)
+    public
+    function cancelEnd($id)
     {
         $contract = $this->contractRepository->findContractStatusEndRequest($id);
         $contract[0]->statusId = "5";

@@ -10,7 +10,7 @@ interface ContractServiceInterface
 
     public function booking($request, $room, $userId);
 
-    public function store($request);
+    public function store($request, $id);
 
     public function findById($id);
 

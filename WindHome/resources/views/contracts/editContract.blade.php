@@ -8,7 +8,18 @@
             <h2>Tạo hợp đồng</h2>
         </div>
         <hr>
-        <form method="POST" action="{{route('contract.store')}}">
+        {{--        ERROR MESSENGER--}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form method="POST" action="{{route('contract.store',$contract[0]->id)}}">
             @csrf
             <div class="row pl-5 pr-5 pt-3">
 
@@ -23,12 +34,12 @@
                     {{--                    </div>--}}
                     <div class="form-group">
                         <label>Giá phòng</label>
-                        <input type="number" class="form-control" name="price" placeholder=".VNĐ">
+                        <input type="text" class="form-control" name="price" required/>
                     </div>
                     <div class="form-group">
                         <label>Thời gian thuê</label>
-                        <input type="number" class="form-control" name="rentTime" placeholder="Tháng"
-                               value="{{$contract[0]->rentTime}}">
+                        <input type="text" class="form-control" name="rentTime" placeholder="Tháng"
+                               value="{{$contract[0]->rentTime}}" required>
                     </div>
                 </div>
                 <div class="col-md-6">

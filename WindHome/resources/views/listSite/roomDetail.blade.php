@@ -86,7 +86,6 @@
                         <label> Trạng thái:
                             {{$room->status->name}}
                         </label><br>
-
                     </div>
 
                     <div class="row pt-2">
@@ -154,6 +153,15 @@
                             <input type="number" name="rentTime" class="form-control"
                                    aria-describedby="inputGroup-sizing-sm" required>
                         </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <input type="text" name="roomId" value="{{$room->id}}" style="visibility: hidden">
                     </div>
                     <div class="pt-2">
