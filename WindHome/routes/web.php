@@ -63,7 +63,7 @@ Route::group(['prefix' => 'user'], function () {
 });
 
 
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'login'], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
     Route::get('/detail/{id}', 'AdminController@detail')->name('admin.detail');
     Route::post('/edit/{id}', 'AdminController@editStatus')->name('admin.editStatus');
@@ -82,8 +82,16 @@ Route::group(['prefix' => 'contracts','middleware'=>'admin'], function () {
     Route::get('/end/{id}', 'ContractController@end')->name('contract.end');
     Route::get('/cancelEnd/{id}', 'ContractController@cancelEnd')->name('contract.cancelEnd');
 
+});
+
+//User Action - Hải Viết - UserActionController
+Route::group(['prefix' => 'userAction','middleware'=>'admin'], function () {
+//    Route::get('cancelBookingRequest/{roomId}/{contractId}', 'UserActionController@cancelBookingRequest')->name('UserAction.cancelBookingRequest');
+
 
 });
+
+
 
 Route::group(['prefix' => 'adminRoute','middleware'=>'admin'], function () {
 //    Phong
@@ -113,5 +121,8 @@ Route::group(['prefix' => 'userRoute','middleware'=>'login'], function () {
     Route::get('/contractKeepRequest', 'RouterUserController@contractKeepRequest')->name('userRoute.contractKeepRequest');
     Route::get('/contractEndRequest', 'RouterUserController@contractEndRequest')->name('userRoute.contractEndRequest');
     Route::get('/contractEnd', 'RouterUserController@contractEnd')->name('userRoute.contractEnd');
+    Route::get('/contractDetail/{id}', 'RouterUserController@contractDetail')->name('userRoute.contractDetail');
+    Route::get('cancelBookingRequest/{roomId}/{contractId}', 'UserActionController@cancelBookingRequest')->name('UserAction.cancelBookingRequest');
+    Route::get('cancelRoom/{roomId}/{contractId}', 'UserActionController@cancelRoom')->name('UserAction.cancelRoom');
 
 });

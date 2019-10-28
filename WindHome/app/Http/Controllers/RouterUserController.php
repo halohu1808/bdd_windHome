@@ -64,5 +64,15 @@ class RouterUserController extends Controller
         return view('userSite.contractSite', compact('contracts'));
     }
 
+    public function contractDetail($contractId)
+    {
+
+        $contract = $this->contractService->findById($contractId);
+        $room = $this->roomService->findById($contract->roomId);
+        $images = $this->imageService->getAllImageByRoomId($contractId);
+        return view('userSite.contractDetail', compact('room','contractId','images'));
+
+    }
+
 
 }

@@ -94,4 +94,18 @@ class RoomService implements RoomServiceInterface
         $this->roomRepository->save($room);
     }
 
+    public function cancelBookingRequest($roomId)
+    {
+        $room = $this->roomRepository->findById($roomId);
+        $room->statusId = "1";
+        $this->roomRepository->save($room);
+    }
+
+
+    public function cancelRoom($id)
+    {
+        $room = $this->roomRepository->findById($id);
+        $room->statusId = "4";
+        $this->roomRepository->save($room);
+    }
 }
