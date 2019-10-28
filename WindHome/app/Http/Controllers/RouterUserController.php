@@ -40,6 +40,8 @@ class RouterUserController extends Controller
     {
         $userId = Auth::user()->id;
         $contracts = Contract::where('userId', $userId)->where('statusId', 5)->get();
+        $room = $this->roomService->findById($contracts->roomId);
+        dd($room);
         return view('userSite.contractSite', compact('contracts'));
     }
 
@@ -66,10 +68,9 @@ class RouterUserController extends Controller
 
     public function contractDetail($contractId)
     {
-
         $contract = $this->contractService->findById($contractId);
         $room = $this->roomService->findById($contract->roomId);
-        $images = $this->imageService->getAllImageByRoomId($contractId);
+        $images = $this->imageService->getAllImageByRoomId($contract->roomId);
         return view('userSite.contractDetail', compact('room','contractId','images'));
 
     }

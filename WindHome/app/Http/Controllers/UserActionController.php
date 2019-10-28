@@ -25,14 +25,14 @@ class UserActionController extends Controller
 
         $this->roomService->cancelBookingRequest($roomId);
         $this->contractService->deleteContract($contractId);
-        return view('userSite.contractSite');
+        return redirect()->route('userRoute.allContract');
     }
 
     public function cancelRoom($roomId, $contractId)
     {
         $this->roomService->cancelRoom($roomId);
         $this->contractService->cancelRoom($contractId);
-        return view('userSite.contractSite');
+        return redirect()->route('userRoute.allContract');
 
     }
 

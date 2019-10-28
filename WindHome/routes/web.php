@@ -101,6 +101,7 @@ Route::group(['prefix' => 'adminRoute','middleware'=>'admin'], function () {
 //    Hop Dong
     Route::get('/contractAll', 'RouterAdminController@contractAll')->name('adminRoute.contractAll');
     Route::get('/contractRun', 'RouterAdminController@contractRun')->name('adminRoute.contractRun');
+
     Route::get('/contractEnd', 'RouterAdminController@contractEnd')->name('adminRoute.contractEnd');
     Route::get('/contractEndRequest', 'RouterAdminController@contractEndRequest')->name('adminRoute.contractEndRequest');
     Route::get('/contractKeepRequest', 'RouterAdminController@contractKeepRequest')->name('adminRoute.contractKeepRequest');
