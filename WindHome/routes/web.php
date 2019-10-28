@@ -70,8 +70,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
 });
-
-
 Route::group(['prefix' => 'contracts','middleware'=>'admin'], function () {
     Route::get('/edit/{id}', 'ContractController@run')->name('contract.run');
     Route::post('/create', 'ContractController@store')->name('contract.store');
