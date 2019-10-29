@@ -3,7 +3,7 @@
 
 namespace App\Http\Service\Impl;
 
-
+use Carbon\Carbon;
 use App\Contract;
 use App\Http\Repository\Contract\ContractRepositoryInterface;
 use App\Http\Service\ServiceInterface\ContractServiceInterface;
@@ -81,8 +81,10 @@ class ContractService implements ContractServiceInterface
     public
     function endContract($id)
     {
+        $currentTime = Carbon::now()->toDateString();
         $contract = $this->contractRepository->findContractStatusRun($id);
         $contract[0]->statusId = 6;
+        $contract[0]->endTime = $currentTime;
         $this->contractRepository->save($contract[0]);
     }
 

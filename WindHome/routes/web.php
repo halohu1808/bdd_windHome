@@ -63,13 +63,14 @@ Route::group(['prefix' => 'user'], function () {
 });
 
 
-Route::group(['prefix' => 'admin', 'middleware' => 'login'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
     Route::get('/detail/{id}', 'AdminController@detail')->name('admin.detail');
     Route::post('/edit/{id}', 'AdminController@editStatus')->name('admin.editStatus');
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
 });
+
 Route::group(['prefix' => 'contracts','middleware'=>'admin'], function () {
     Route::get('/edit/{id}', 'ContractController@run')->name('contract.run');
     Route::post('/create/{id}', 'ContractController@store')->name('contract.store');
@@ -101,10 +102,11 @@ Route::group(['prefix' => 'adminRoute','middleware'=>'admin'], function () {
 //    Hop Dong
     Route::get('/contractAll', 'RouterAdminController@contractAll')->name('adminRoute.contractAll');
     Route::get('/contractRun', 'RouterAdminController@contractRun')->name('adminRoute.contractRun');
-
     Route::get('/contractEnd', 'RouterAdminController@contractEnd')->name('adminRoute.contractEnd');
     Route::get('/contractEndRequest', 'RouterAdminController@contractEndRequest')->name('adminRoute.contractEndRequest');
     Route::get('/contractKeepRequest', 'RouterAdminController@contractKeepRequest')->name('adminRoute.contractKeepRequest');
+    Route::get('/contractDetail/{id}','RouterAdminController@contractDetail')->name('adminRoute.contractDetail');
+
 
     //    User
     Route::get('/userAll', 'RouterAdminController@userAll')->name('adminRoute.userAll');

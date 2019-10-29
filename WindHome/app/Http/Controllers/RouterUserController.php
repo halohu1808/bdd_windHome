@@ -9,6 +9,8 @@ use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use App\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use function Sodium\add;
 
 class RouterUserController extends Controller
 {
@@ -40,8 +42,6 @@ class RouterUserController extends Controller
     {
         $userId = Auth::user()->id;
         $contracts = Contract::where('userId', $userId)->where('statusId', 5)->get();
-        $room = $this->roomService->findById($contracts->roomId);
-        dd($room);
         return view('userSite.contractSite', compact('contracts'));
     }
 
@@ -71,8 +71,17 @@ class RouterUserController extends Controller
         $contract = $this->contractService->findById($contractId);
         $room = $this->roomService->findById($contract->roomId);
         $images = $this->imageService->getAllImageByRoomId($contract->roomId);
-        return view('userSite.contractDetail', compact('room','contractId','images'));
 
+        //Time
+        $rentime = $contract->rentTime;
+        $startTime = strtotime($contract->startTime);
+        $timeFormat = date('Y-m-d',$startTime);
+        $carbonStartTime = Carbon::create($timeFormat);
+        $carbonNow = Carbon::now();
+        $endTime1 = $carbonStartTime->addMonth($rentime);
+        $timeLeft = $endTime1->diffInDays($carbonNow);
+        $endTime = $endTime1->toDateString();
+        return view('userSite.contractDetail', compact('room', 'contract', 'images','endTime','timeLeft'));
     }
 
 

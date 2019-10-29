@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
 use App\Http\Requests\BookkingRequest;
 use App\Http\Service\Impl\RoomService;
 use App\Http\Service\ServiceInterface\ImageServiceInterface;
