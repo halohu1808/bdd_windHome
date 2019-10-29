@@ -73,10 +73,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/create', 'RoomController@store')->name('room.store');
 });
 
-
 Route::group(['prefix' => 'contracts','middleware'=>'admin'], function () {
     Route::get('/edit/{id}', 'ContractController@run')->name('contract.run');
-    Route::post('/create', 'ContractController@store')->name('contract.store');
+    Route::post('/create/{id}', 'ContractController@store')->name('contract.store');
     Route::get('/cancel/{id}', 'ContractController@cancel')->name('contract.cancel');
     Route::get('/endContract/{id}', 'ContractController@endContract')->name('contract.endContract');
     Route::get('/list', 'ContractController@index')->name('contract.index');
@@ -84,8 +83,16 @@ Route::group(['prefix' => 'contracts','middleware'=>'admin'], function () {
     Route::get('/end/{id}', 'ContractController@end')->name('contract.end');
     Route::get('/cancelEnd/{id}', 'ContractController@cancelEnd')->name('contract.cancelEnd');
 
+});
+
+//User Action - Hải Viết - UserActionController
+Route::group(['prefix' => 'userAction','middleware'=>'admin'], function () {
+//    Route::get('cancelBookingRequest/{roomId}/{contractId}', 'UserActionController@cancelBookingRequest')->name('UserAction.cancelBookingRequest');
+
 
 });
+
+
 
 Route::group(['prefix' => 'adminRoute','middleware'=>'admin'], function () {
 //    Phong
@@ -100,6 +107,8 @@ Route::group(['prefix' => 'adminRoute','middleware'=>'admin'], function () {
     Route::get('/contractEnd', 'RouterAdminController@contractEnd')->name('adminRoute.contractEnd');
     Route::get('/contractEndRequest', 'RouterAdminController@contractEndRequest')->name('adminRoute.contractEndRequest');
     Route::get('/contractKeepRequest', 'RouterAdminController@contractKeepRequest')->name('adminRoute.contractKeepRequest');
+    Route::get('/contractDetail/{id}','RouterAdminController@contractDetail')->name('adminRoute.contractDetail');
+
 
     //    User
     Route::get('/userAll', 'RouterAdminController@userAll')->name('adminRoute.userAll');
@@ -115,5 +124,8 @@ Route::group(['prefix' => 'userRoute','middleware'=>'login'], function () {
     Route::get('/contractKeepRequest', 'RouterUserController@contractKeepRequest')->name('userRoute.contractKeepRequest');
     Route::get('/contractEndRequest', 'RouterUserController@contractEndRequest')->name('userRoute.contractEndRequest');
     Route::get('/contractEnd', 'RouterUserController@contractEnd')->name('userRoute.contractEnd');
+    Route::get('/contractDetail/{id}', 'RouterUserController@contractDetail')->name('userRoute.contractDetail');
+    Route::get('cancelBookingRequest/{roomId}/{contractId}', 'UserActionController@cancelBookingRequest')->name('UserAction.cancelBookingRequest');
+    Route::get('cancelRoom/{roomId}/{contractId}', 'UserActionController@cancelRoom')->name('UserAction.cancelRoom');
 
 });

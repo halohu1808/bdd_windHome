@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Contract;
 use App\Http\Service\ServiceInterface\ContractServiceInterface;
+use App\Http\Service\ServiceInterface\ImageServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use App\Room;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,10 +17,12 @@ class RouterAdminController extends Controller
 
     protected $roomService;
     protected $contractService;
+    protected $imageService;
 
-    public function __construct(RoomServiceInterface $roomService, ContractServiceInterface $contractService)
+    public function __construct(RoomServiceInterface $roomService, ImageServiceInterface $imageService, ContractServiceInterface $contractService)
     {
         $this->roomService = $roomService;
+        $this->imageService = $imageService;
         $this->contractService = $contractService;
     }
 
@@ -55,10 +59,10 @@ class RouterAdminController extends Controller
     public function contractAll()
     {
         $contracts = Contract::all();
-//        dd($contracts);
         return view('adminSite.contractSite', compact('contracts'));
     }
 
+//    Hai Code
     public function contractRun()
     {
         $contracts = Contract::where('statusId', 5)->get();
@@ -84,11 +88,30 @@ class RouterAdminController extends Controller
         return view('adminSite.contractSite', compact('contracts'));
     }
 
+    public function contractDetail($id)
+    {
+        $contract = $this->contractService->findById($id);
+        $room = $this->roomService->findById($contract->roomId);
+        $images = $this->imageService->getAllImageByRoomId($contract->roomId);
+
+        //Time
+        $rentime = $contract->rentTime;
+        $startTime = strtotime($contract->startTime);
+        $timeFormat = date('Y-m-d', $startTime);
+        $carbonStartTime = Carbon::create($timeFormat);
+        $carbonNow = Carbon::now();
+        $endTime1 = $carbonStartTime->addMonth($rentime);
+        $timeLeft = $endTime1->diffInDays($carbonNow);
+        $endTime = $endTime1->toDateString();
+
+        return view('adminSite.contractDetail', compact('room', 'contract', 'images', 'endTime', 'timeLeft'));
+    }
+
+
 //    User
     public function userAll()
     {
         $users = User::all();
-//        dd($users);
         return view('adminSite.userSite', compact('users'));
     }
 

@@ -35,7 +35,7 @@
                 @foreach($contracts as $contract)
                     <tr>
                         <td>{{$contract->id}} </td>
-                        <td><a href="{{route('admin.detail',$contract->id)}}">{{$contract->room->name}}</a></td>
+                        <td><a href="{{route('userRoute.contractDetail',$contract->id)}}">{{$contract->room->name}}</a></td>
                         <td>{{$contract->user->name }}</td>
                         <td>{{$contract->room->pricePerMonth}}</td>
                         <td>{{$contract->rentTime}}</td>

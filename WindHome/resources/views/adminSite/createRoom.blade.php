@@ -6,8 +6,10 @@
     <div id="content">
         <div class="row pl-5">
             <h2>Tạo phòng mới</h2>
+{{--            {{config('const.ROLLADMIN')}}--}}
+
         </div>
-{{--        ERROR MESSENGER--}}
+        {{--        ERROR MESSENGER--}}
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -17,7 +19,7 @@
                 </ul>
             </div>
         @endif
-{{--        END MESSENGER--}}
+        {{--        END MESSENGER--}}
         <hr>
         <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('room.store')}}">
             @csrf
@@ -36,7 +38,7 @@
 
                     <div class="form-group">
                         <label>Thành Phố</label>
-                        <select class="custom-select" name="cityId" >
+                        <select class="custom-select" name="cityId">
                             <option selected>Thành phố</option>
                             @foreach($data as $key => $item)
                                 <option value="{{$item['id']}}"> {{$item['name']}} </option>
@@ -109,12 +111,7 @@
                                 <label class="form-check-label">Điều hòa</label>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="airCondition" value="0">
-                                <label class="form-check-label">Tình Trạng</label>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

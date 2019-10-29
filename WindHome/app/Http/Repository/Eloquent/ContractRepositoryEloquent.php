@@ -35,4 +35,9 @@ class ContractRepositoryEloquent extends RepositoryEloquent implements ContractR
     {
         return $contract = Contract::where('roomId', $id)->where('statusId', 8)->get();
     }
+
+    public function findContractStatusKeepRequest($id)
+    {
+       return $contract = Contract::where('roomId', $id)->where('statusId', 3)->get();
+    }
 }

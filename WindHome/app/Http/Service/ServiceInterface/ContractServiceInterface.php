@@ -10,7 +10,7 @@ interface ContractServiceInterface
 
     public function booking($request, $room, $userId);
 
-    public function store($request);
+    public function store($request, $id);
 
     public function findById($id);
 
@@ -29,6 +29,10 @@ interface ContractServiceInterface
     public function end($id);
 
     public function cancelEnd($id);
+
+    public function deleteContract($id);
+
+    public function cancelRoom($id);
 
 
 }
