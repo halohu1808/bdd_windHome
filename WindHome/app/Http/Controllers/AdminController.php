@@ -2,40 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Service\ServiceInterface\ImageServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     protected $roomService;
+    protected $imageService;
 
-    public function __construct(RoomServiceInterface $roomService)
+    public function __construct(RoomServiceInterface $roomService, ImageServiceInterface $imageService)
     {
         $this->roomService = $roomService;
+        $this->imageService = $imageService;
     }
 
-    public function index($id)
+    public function index()
     {
-        $room = $this->roomService->findById($id);
-        return view('adminSite.roomDetail', compact('room'));
+        $rooms = $this->roomService->getAll();
+        return view('adminSite.adminSite', compact('rooms'));
     }
 
-    public function editStatus(Request $request, $id)
+    public function detail($id)
     {
+        $images = $this->imageService->getAllImageByRoomId($id);
         $room = $this->roomService->findById($id);
-        $room->status = "Còn Phòng";
-        $this->roomService->save($room); // Sang viet sai, phai lay gia tri tu day moi dung
-
-        return view('adminSite.roomDetail', compact('room'));
+        return view('adminSite.roomDetail', compact('room', 'images'));
     }
 
-    public function editStatusOff($id)
-    {
-        $room = $this->roomService->findById($id);
-        $room->status = "Đã Cho Thuê";
-//        $room->status = $request->status;
-        $this->roomService->save($room);
-        return view('adminSite.roomDetail', compact('room'));
-    }
 
 }

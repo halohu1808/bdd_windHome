@@ -27,11 +27,21 @@ class createRoom extends FormRequest
 //            'name' => 'required|unique:posts|max:255',
             'name' => 'required',
             'address' => 'required',
-            'city' => 'required',
+            'cityId' => 'required',
             'pricePerMonth' => 'required',
             'minRentTime' => 'required',
             'guest' => 'required',
-            'status' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return ['name.required' => 'Tên không được để trống',
+            'address.required' => 'Địa chỉ không được để trống',
+            'cityId.required' => 'Tên thành phố không được để trống',
+            'pricePerMonth.required' => 'Tiên thuê không được để trống',
+            'minRentTime.required' => 'Thời gian không được để trống',
+            'guest.required' => 'Số người không được để trống'
         ];
     }
 }

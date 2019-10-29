@@ -3,7 +3,7 @@
 
 namespace App\Http\Service\Impl;
 
-
+use Carbon\Carbon;
 use App\Contract;
 use App\Http\Repository\Contract\ContractRepositoryInterface;
 use App\Http\Service\ServiceInterface\ContractServiceInterface;
@@ -47,57 +47,78 @@ class ContractService implements ContractServiceInterface
 
     public function findByRoomId($id)
     {
+//        find contract by room Id -> sai
         return $this->contractRepository->findByRoomId($id);
     }
 
-    public function store($request)
+    public function store($request, $id)
     {
-
+        $contract = $this->contractRepository->findById($id);
         $data = $request->all();
-        return $this->contractRepository->store($data);
+        return $this->contractRepository->update($contract, $data);
     }
 
-    public function findContractStatusRun($id)
+    public
+    function findContractStatusRun($id)
     {
         return $this->contractRepository->findContractStatusRun($id);
     }
 
-    public function save($obj)
+    public
+    function save($obj)
     {
         return $this->contractRepository->save($obj);
     }
 
-    public function cancel($id)
+    public
+    function cancel($id)
     {
 
         $contract = $this->contractRepository->findByRoomId($id);
         $contract[0]->delete();
     }
 
-    public function endContract($id)
+    public
+    function endContract($id)
     {
+        $currentTime = Carbon::now()->toDateString();
         $contract = $this->contractRepository->findContractStatusRun($id);
         $contract[0]->statusId = 6;
+        $contract[0]->endTime = $currentTime;
         $this->contractRepository->save($contract[0]);
     }
 
-    //    Hai code
-    public function end($id)
+//    Hai code
+    public
+    function end($id)
     {
         //status Hop Dong
         $contract = $this->contractRepository->findContractStatusEndRequest($id);
-        $contract[0]->statusId = "6";
-//        dd($contract[0]);
+        $contract[0]->statusId = 6;
         $this->contractRepository->save($contract[0]);
 
     }
 
-    public function cancelEnd($id)
+    public
+    function cancelEnd($id)
     {
         $contract = $this->contractRepository->findContractStatusEndRequest($id);
         $contract[0]->statusId = "5";
-//        dd($contract[0]);
+//     dd($contract[0]);
         $this->contractRepository->save($contract[0]);
 
+    }
+
+    public function deleteContract($contractId)
+    {
+       $contract = $this->findById($contractId);
+       $this->contractRepository->destroy($contract);
+    }
+
+    public function cancelRoom($id)
+    {
+        $contract = $this->contractRepository->findById($id);
+        $contract->statusId = "8";
+        $this->contractRepository->save($contract);
     }
 }

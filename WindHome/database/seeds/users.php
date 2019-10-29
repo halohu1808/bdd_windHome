@@ -26,7 +26,7 @@ class users extends Seeder
         $user = new User();
         $user->id = 2;
         $user->name = 'Luong Manh Hai';
-        $user->email = 'hailm@gmail.com';
+        $user->email = 'hai@gmail.com';
         $user->password = Hash::make('12345');    // co the dung bcrypt de bam;
         $user->phone = '0888888888';
         $user->address = 'Ha Noi';
@@ -35,16 +35,6 @@ class users extends Seeder
 
         $user = new User();
         $user->id = 3;
-        $user->name = 'Nguyen Son Hai';
-        $user->email = 'hains@gmail.com';
-        $user->password = Hash::make('12345');    // co the dung bcrypt de bam;
-        $user->phone = '0888888888';
-        $user->address = 'Phu Tho';
-        $user->roll = '1';
-        $user->save();
-
-        $user = new User();
-        $user->id = 4;
         $user->name = 'Tran Van Huy';
         $user->email = 'huy@gmail.com';
         $user->password = Hash::make('12345');    // co the dung bcrypt de bam;
@@ -54,9 +44,9 @@ class users extends Seeder
         $user->save();
 
         $user = new User();
-        $user->id = 5;
-        $user->name = 'Nguyen Dinh Huy';
-        $user->email = 'huynd@gmail.com';
+        $user->id = 4;
+        $user->name = 'Dam Quang Duc';
+        $user->email = 'duc@gmail.com';
         $user->password = Hash::make('12345');    // co the dung bcrypt de bam;
         $user->phone = '0888888888';
         $user->address = 'Ha Noi';

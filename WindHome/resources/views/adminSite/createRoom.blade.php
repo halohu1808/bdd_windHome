@@ -6,8 +6,10 @@
     <div id="content">
         <div class="row pl-5">
             <h2>Tạo phòng mới</h2>
+{{--            {{config('const.ROLLADMIN')}}--}}
+
         </div>
-{{--        ERROR MESSENGER--}}
+        {{--        ERROR MESSENGER--}}
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -17,9 +19,9 @@
                 </ul>
             </div>
         @endif
-{{--        END MESSENGER--}}
+        {{--        END MESSENGER--}}
         <hr>
-        <form method="POST" action="{{route('room.store')}}">
+        <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('room.store')}}">
             @csrf
             <div class="row pl-5 pr-5 pt-3">
 
@@ -36,10 +38,10 @@
 
                     <div class="form-group">
                         <label>Thành Phố</label>
-                        <select class="custom-select" name="city">
+                        <select class="custom-select" name="cityId">
                             <option selected>Thành phố</option>
                             @foreach($data as $key => $item)
-                                <option value="{{$item['name']}}"> {{$item['name']}} </option>
+                                <option value="{{$item['id']}}"> {{$item['name']}} </option>
                             @endforeach
                         </select>
 
@@ -65,28 +67,17 @@
                     </div>
                     <div class="form-group">
                         <label>Ảnh</label>
-                        <input type="file" class="form-control" name="image" placeholder="20m2...">
+                        <input required type="file" class="form-control" name="images[]" placeholder="address" multiple>
                     </div>
-
                 </div>
+
 
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Diện tích</label>
                         <input type="text" class="form-control" name="area" placeholder="20m2...">
                     </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Kinh độ</label>
-                            <input type="text" class="form-control" name="lat"
-                                   placeholder="">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Vĩ độ</label>
-                            <input type="text" class="form-control" name="lng"
-                                   placeholder="">
-                        </div>
-                    </div>
+
                     <label>Thông tin thêm</label>
                     <hr>
                     <div class="row">
@@ -120,12 +111,7 @@
                                 <label class="form-check-label">Điều hòa</label>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="airCondition" value="0">
-                                <label class="form-check-label">Tình Trạng</label>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

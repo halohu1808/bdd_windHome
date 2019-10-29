@@ -5,9 +5,43 @@
 
         <div class="row pt-5">
             <div class="col-md-7">
+                {{--                {{$imgLength = count($imagesSeeder) }}--}}
 
-                <img src={{asset("storage/img/home/". $room->image)}} class="img-fluid" alt="Responsive image">
-                {{--thông tin thêm--}}
+                {{--                <img src={{asset("storage/img/home/". $room->image)}} class="img-fluid" alt="Responsive image">--}}
+                {{--                --}}{{--thông tin thêm--}}
+
+                {{-- Hiển thị nhiều ảnh trong trang detail               --}}
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100" alt="...">
+                        </div>
+
+                        @foreach($images as $key => $image)
+                            <div class="carousel-item">
+                                <img src={{asset("storage/img/home/". $images[$key]->images)}} class="d-block w-100"
+                                alt="...">
+                                {{--                            {{count($imagesSeeder)}}--}}
+                            </div>
+
+                        @endforeach
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+
                 <div class="row pt-2">
                     <table class="table table-borderless">
                         <tr>
@@ -38,8 +72,8 @@
 
             <div class="col-md-5">
 
-                <form class="bg-white p-3" method="POST" action="{{route('room.booking')}}" >
-                @csrf
+                <form class="bg-white p-3" method="POST" action="{{route('room.booking')}}">
+                    @csrf
                     <div>
                         <h1 class="font-weight-bold text-danger"> {{$room->name}}</h1>
                         <label> {{$room->address}}, {{ $room->city }}</label>
@@ -52,7 +86,6 @@
                         <label> Trạng thái:
                             {{$room->status->name}}
                         </label><br>
-
                     </div>
 
                     <div class="row pt-2">
@@ -117,15 +150,25 @@
                     <div class="pt-2">
                         <label>Thời Gian Thuê</label>
                         <div class="input-group input-group-sm mb-3">
-                            <input type="number" name="rentTime" class="form-control" aria-describedby="inputGroup-sizing-sm">
+                            <input type="number" name="rentTime" class="form-control"
+                                   aria-describedby="inputGroup-sizing-sm" required>
                         </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <input type="text" name="roomId" value="{{$room->id}}" style="visibility: hidden">
                     </div>
                     <div class="pt-2">
                         @if($room->status->id == 1)
-                            <button class="btn btn-success btn-lg btn-block" type="submit" > ĐẶT PHÒNG</button>
+                            <button class="btn btn-success btn-lg btn-block" type="submit"> ĐẶT PHÒNG</button>
 
-{{--                        <a class="btn btn-success btn-lg btn-block" href="{{route('room.booking',$room->id )}}"></a>--}}
+                            {{--                        <a class="btn btn-success btn-lg btn-block" href="{{route('room.booking',$room->id )}}"></a>--}}
                         @else {{$room->status->name}}
                         @endif
 

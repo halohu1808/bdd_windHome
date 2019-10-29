@@ -1,0 +1,15 @@
+<?php
+return [
+
+    'ROLEADMIN' => 1,
+    'ROLLUSER' => 2,
+    'STATUSCONPHONG' => 1,
+    'STATUSDACHOTHUE' => 2,
+    'STATUSGIUPHONG' => 3,
+    'STATUSHUYHOPDONG' => 4,
+    'STATUSHOPDONGTHUCTHI' => 5,
+    'STATUSHOPDONGKETTHUC' => 6,
+    'STATUSKHACHGIUCHO' => 7,
+    'KHACHMUONHUY' => 8,
+
+];
