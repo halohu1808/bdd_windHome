@@ -20,8 +20,8 @@
 
             {{--            bat dau FOR--}}
 
-  
-            @foreach($rooms as $key => $room)
+{{--            {{$img = 0}}--}}
+            @foreach($roomsSort as $key => $room)
 
 
                 <div class="col-md-3 pt-5">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-
+{{--                {{$img++}}--}}
             @endforeach
         </div>
 

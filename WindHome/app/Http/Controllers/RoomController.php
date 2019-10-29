@@ -31,14 +31,20 @@ RoomController extends Controller
     public function list()
     {
 
+<<<<<<< HEAD
+
+        $rooms = $this->roomService->getAll();
+=======
         $rooms = $this->roomService->getAll()->sortByDesc('created_at');// <- Sort theo phòng mới tạo
+>>>>>>> fe25bce9d30293e06a1e332164e1536ba18efe1e
         $images = [];
 
         foreach ($rooms as $room) {
             $image = $this->imageService->getFirstImageByRoomId($room->id);
             array_push($images, $image);
         }
-        return view('listSite.listPage', compact('rooms', 'images'));
+        $roomsSort = $this->roomService->getAll()->sortByDesc('created_at');// <- Sort theo phòng mới tạo
+        return view('listSite.listPage', compact('roomsSort', 'images'));
     }
 
     public function index()
