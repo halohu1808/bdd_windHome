@@ -1,5 +1,6 @@
 <?php
 
+use App\City;
 use Illuminate\Database\Seeder;
 
 class CitiesSeeder extends Seeder
