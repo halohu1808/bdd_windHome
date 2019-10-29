@@ -1,8 +1,10 @@
 @extends('layout.home')
 @section('sideBar')
-    @include('userSite.sideBarUser')
+    @include('adminSite.sideBarAdmin')
 @endsection
+
 @section('content')
+
     <div class="container">
 
         <div class="row pt-5">
@@ -121,7 +123,7 @@
         <br>
         <br>
         <div class="row pt-5">
-{{--            Ngay bat dau, ket thuc thue nha--}}
+            {{--            Ngay bat dau, ket thuc thue nha--}}
             <table class="table">
                 <thead>
                 <tr>
@@ -149,6 +151,5 @@
 
         </div>
     </div>
-
 
 @endsection
