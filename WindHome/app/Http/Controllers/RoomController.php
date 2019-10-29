@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\City;
 use App\Http\Requests\BookkingRequest;
 use App\Http\Service\Impl\RoomService;
 use App\Http\Service\ServiceInterface\ImageServiceInterface;
@@ -49,10 +51,12 @@ RoomController extends Controller
 
     public function create()
     {
-        $jsonString = file_get_contents(base_path('public/city.json'));
-        $data = json_decode($jsonString, true);
+//        $jsonString = file_get_contents(base_path('public/city.json'));
+//        $data = json_decode($jsonString, true);
 //        dd($data[0]['name']);
-        return view('adminSite.createRoom', compact('data'));
+        $cities = City::all();
+
+        return view('adminSite.createRoom', compact('cities'));
     }
 
     public function store(createRoom $request)
