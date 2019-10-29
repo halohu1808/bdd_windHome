@@ -14,8 +14,8 @@ class UsersSeeder extends Seeder
     {
         $user = new User();
         $user->id = 1;
-        $user->name = 'Giap Van Sang';
-        $user->email = 'sang@gmail.com';
+        $user->name = 'Admin';
+        $user->email = 'admin@gmail.com';
         $user->password = Hash::make('12345');    // co the dung bcrypt de bam;
         $user->phone = '0888888888';
         $user->address = 'Ha Noi';

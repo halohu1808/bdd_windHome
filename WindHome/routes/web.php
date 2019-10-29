@@ -33,10 +33,9 @@ Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
 
-
 //Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
 
-Route::group(['prefix' => 'rooms','middleware'=>'admin'], function () {
+Route::group(['prefix' => 'rooms', 'middleware' => 'admin'], function () {
     Route::get('/', 'RoomController@index')->name('room.index');
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
@@ -63,14 +62,14 @@ Route::group(['prefix' => 'user'], function () {
 });
 
 
-Route::group(['prefix' => 'admin', 'middleware' => 'login'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
     Route::get('/detail/{id}', 'AdminController@detail')->name('admin.detail');
     Route::post('/edit/{id}', 'AdminController@editStatus')->name('admin.editStatus');
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
 });
-Route::group(['prefix' => 'contracts','middleware'=>'admin'], function () {
+Route::group(['prefix' => 'contracts', 'middleware' => 'admin'], function () {
     Route::get('/edit/{id}', 'ContractController@run')->name('contract.run');
     Route::post('/create/{id}', 'ContractController@store')->name('contract.store');
     Route::get('/cancel/{id}', 'ContractController@cancel')->name('contract.cancel');
@@ -83,15 +82,14 @@ Route::group(['prefix' => 'contracts','middleware'=>'admin'], function () {
 });
 
 //User Action - Hải Viết - UserActionController
-Route::group(['prefix' => 'userAction','middleware'=>'admin'], function () {
+Route::group(['prefix' => 'userAction', 'middleware' => 'admin'], function () {
 //    Route::get('cancelBookingRequest/{roomId}/{contractId}', 'UserActionController@cancelBookingRequest')->name('UserAction.cancelBookingRequest');
 
 
 });
 
 
-
-Route::group(['prefix' => 'adminRoute','middleware'=>'admin'], function () {
+Route::group(['prefix' => 'adminRoute', 'middleware' => 'admin'], function () {
 //    Phong
     Route::get('/roomAvailable', 'RouterAdminController@roomAvailable')->name('adminRoute.roomAvailable');
     Route::get('/roomRented', 'RouterAdminController@roomRented')->name('adminRoute.roomRented');
@@ -112,7 +110,7 @@ Route::group(['prefix' => 'adminRoute','middleware'=>'admin'], function () {
 });
 
 
-Route::group(['prefix' => 'userRoute','middleware'=>'login'], function () {
+Route::group(['prefix' => 'userRoute', 'middleware' => 'login'], function () {
 
     Route::get('/userSite', 'RouterUserController@userSite')->name('userRoute.userSite');
     Route::get('/allContract', 'RouterUserController@allContract')->name('userRoute.allContract');

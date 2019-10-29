@@ -47,7 +47,7 @@
                                 @if(Auth::user()->roll==1)
                                     <a class="pl-4" href="{{route('room.index')}}"> Trang quản
                                         lí</a> {{--Hải thêm để demo--}}
-                                    @else
+                                @else
                                     <a class="pl-4" href="{{route('userRoute.userSite')}}"> Trang quản
                                         lí</a> {{--Hải thêm để demo--}}
                                 @endif

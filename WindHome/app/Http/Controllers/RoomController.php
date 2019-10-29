@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\City;
 use App\Http\Requests\BookkingRequest;
 use App\Http\Service\Impl\RoomService;
 use App\Http\Service\ServiceInterface\ImageServiceInterface;
@@ -33,14 +34,18 @@ RoomController extends Controller
     public function list()
     {
 
-        $rooms = $this->roomService->getAll()->sortByDesc('created_at');// <- Sort theo phòng mới tạo
+        $rooms = $this->roomService->getAll();
         $images = [];
 
         foreach ($rooms as $room) {
             $image = $this->imageService->getFirstImageByRoomId($room->id);
             array_push($images, $image);
+
+//            array_reverse($images);
+//            dd($images);
         }
-        return view('listSite.listPage', compact('rooms', 'images'));
+        $roomsSort = $this->roomService->getAll()->sortByDesc('created_at');// <- Sort theo phòng mới tạo
+        return view('listSite.listPage', compact('roomsSort', 'images'));
     }
 
     public function index()
@@ -51,10 +56,12 @@ RoomController extends Controller
 
     public function create()
     {
-        $jsonString = file_get_contents(base_path('public/city.json'));
-        $data = json_decode($jsonString, true);
+//        $jsonString = file_get_contents(base_path('public/city.json'));
+//        $data = json_decode($jsonString, true);
 //        dd($data[0]['name']);
-        return view('adminSite.createRoom', compact('data'));
+        $cities = City::all();
+
+        return view('adminSite.createRoom', compact('cities'));
     }
 
     public function store(createRoom $request)
