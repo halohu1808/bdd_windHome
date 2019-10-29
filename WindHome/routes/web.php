@@ -58,6 +58,8 @@ Route::group(['prefix' => 'roomUser'], function () {
 
 Route::group(['prefix' => 'user'], function () {
     Route::get('/edit/{id}', 'UserController@edit')->name('user.edit');
+    Route::get('/changePassword/{id}', 'UserController@changePassword')->name('user.changePassword');
+    Route::post('/updatePassword/{id}', 'UserController@updatePassword')->name('user.updatePassword');
     Route::post('/update/{id}', 'UserController@update')->name('user.update');
     Route::get('/detail/{id}', 'UserController@show')->name('user.detail');
 });

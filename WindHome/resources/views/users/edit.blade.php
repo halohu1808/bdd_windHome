@@ -32,21 +32,21 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
-                            <input type="text" name = "password" class="form-control" id="inputPassword" placeholder="Password" value = "{{$user-> password}}">
-                        </div>
-                    </div>
+{{--                    <div class="form-group row">--}}
+{{--                        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>--}}
+{{--                        <div class="col-sm-10">--}}
+{{--                            <input type="text" name = "password" class="form-control" id="inputPassword" placeholder="Password" value = "{{$user-> password}}">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Phone</label>
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Số điện thoại</label>
                         <div class="col-sm-10">
                             <input type="text" name = "phone" class="form-control" id="inputPassword" placeholder="{{$user -> phone}}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Address</label>
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Địa chỉ</label>
                         <div class="col-sm-10">
                             <input type="text" name = "address" class="form-control" id="inputPassword" placeholder="{{$user -> address}}">
                         </div>

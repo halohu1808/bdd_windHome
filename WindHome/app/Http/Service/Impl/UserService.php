@@ -7,7 +7,9 @@ namespace App\Http\Service\Impl;
 use App\Http\Repository\Contract\UserRepositoryInterface;
 use App\Http\Service\ServiceInterface\UserServiceInterface;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UserService implements UserServiceInterface
 {
@@ -35,6 +37,24 @@ class UserService implements UserServiceInterface
         $data = $request->all();
         $data['password'] = Hash::make($request->password);
         $this->userRepository->update($user, $data);
+        Session::flash('message', 'Cập nhật hồ sơ thành công');
+    }
+
+    public function updatePassword($request, $id)
+    {
+        $user = $this->userRepository->findById($id);
+        $data = [];
+
+
+        if(Hash::check($request->passwordOld, $user->password)){
+            $data['password'] = Hash::make($request->passwordNew);
+            $this->userRepository->update($user, $data);
+            Session::flash('message', 'Đổi mật khẩu thành công');
+
+        } else {
+            Session::flash('message', 'Đổi mật khẩu không thành công');
+            return view('users.changePassword', compact('user'));
+        }
     }
 
     public function findById($id)
