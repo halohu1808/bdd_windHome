@@ -32,13 +32,7 @@ RoomController extends Controller
 
     public function list()
     {
-
-<<<<<<< HEAD
-
         $rooms = $this->roomService->getAll();
-=======
-        $rooms = $this->roomService->getAll()->sortByDesc('created_at');// <- Sort theo phòng mới tạo
->>>>>>> fe25bce9d30293e06a1e332164e1536ba18efe1e
         $images = [];
 
         foreach ($rooms as $room) {

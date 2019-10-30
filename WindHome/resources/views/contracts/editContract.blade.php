@@ -32,10 +32,13 @@
                     {{--                        <label>Ngày kết thúc</label>--}}
                     {{--                        <input type="date" class="form-control" name="endTime" placeholder="Ngày kết thúc">--}}
                     {{--                    </div>--}}
+
                     <div class="form-group">
                         <label>Giá phòng</label>
-                        <input type="text" class="form-control" name="price" required/>
+                        <input type="text" class="form-control" name="price" value = '{{$contract[0]->room->pricePerMonth}}'  hidden/>
+                        <p>{{$contract[0]->room->pricePerMonth}}</p>
                     </div>
+
                     <div class="form-group">
                         <label>Thời gian thuê</label>
                         <input type="text" class="form-control" name="rentTime" placeholder="Tháng"
