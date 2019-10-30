@@ -38,7 +38,7 @@ class UsersRequest extends FormRequest
         return [
             'passwordOld.required' => 'Mật khẩu cũ không được để trống',
             'passwordNew.required' => 'Mật khẩu mới không được để trống',
-            'passwordNew.required|min:8' => 'Mật khẩu mới phải nhiều hơn 8 ký tự',
+            'passwordNew.required|min' => 'Mật khẩu mới phải nhiều hơn 8 ký tự',
             'passwordConfirm.required' => 'Mật khẩu mới không được để trống',
             'passwordConfirm.required|same:passwordNew' => 'Mật khẩu mới không được để trống',
 

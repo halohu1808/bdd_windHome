@@ -76,7 +76,7 @@
                     @csrf
                     <div>
                         <h1 class="font-weight-bold text-danger"> {{$room->name}}</h1>
-                        <label> {{$room->address}}, {{ $room->city }}</label>
+                        <label> {{$room->address}}, {{ $room->city->name }}</label>
                         <hr>
                     </div>
                     <div>
@@ -151,7 +151,7 @@
                         <label>Thời Gian Thuê</label>
                         <div class="input-group input-group-sm mb-3">
                             <input type="number" name="rentTime" class="form-control"
-                                   aria-describedby="inputGroup-sizing-sm" required>
+                                   aria-describedby="inputGroup-sizing-sm" placeholder="{{$room->minRentTime}} tháng" required>
                         </div>
                         @if ($errors->any())
                             <div class="alert alert-danger">
