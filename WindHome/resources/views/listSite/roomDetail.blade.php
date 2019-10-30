@@ -76,7 +76,7 @@
                     @csrf
                     <div>
                         <h1 class="font-weight-bold text-danger"> {{$room->name}}</h1>
-                        <label> {{$room->address}}, {{ $room->city }}</label>
+                        <label> {{$room->address}}, {{ $room->city->name }}</label>
                         <hr>
                     </div>
                     <div>
