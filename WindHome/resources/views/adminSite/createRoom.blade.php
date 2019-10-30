@@ -118,6 +118,7 @@
             <hr>
             <div class="pl-5">
                 <button type="submit" class="btn btn-primary">Thêm mới</button>
+                <button class="btn btn-danger" onclick="window.history.go(-1); return false;">Hủy</button>
             </div>
         </form>
     </div>

@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\UsersRequest;
 use App\Http\Service\ServiceInterface\UserServiceInterface;
 use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
@@ -37,9 +39,22 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function changePassword($id)
+    {
+        $user = $this->userService->findById($id);
+        return view('users.changePassword', compact('user'));
+    }
+
+    public function update(UsersRequest $request, $id)
     {
         $this->userService->update($request, $id);
+        $user=$this->userService->findById($id);
+        return view('users.detail',compact('user'));
+    }
+
+    public function updatePassword(UsersRequest $request, $id)
+    {
+        $this->userService->updatePassword($request, $id);
         $user=$this->userService->findById($id);
         return view('users.detail',compact('user'));
     }

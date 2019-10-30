@@ -26,7 +26,7 @@ class ContractRequest extends FormRequest
         return [
             'startTime' => 'required',
             'price' => 'required|numeric|min:1000000',
-            'rentTime' => 'required|numeric|min:6',
+            'rentTime' => 'required|numeric|min:1',
         ];
     }
 
@@ -38,7 +38,7 @@ class ContractRequest extends FormRequest
             'price.min' => 'Tiền thuê phòng tối thiểu 1 triệu',
             'price.numeric' => 'Tiền thuê phòng phải nhập là số',
             'rentTime.required' => 'Thời gian thuê không được để trống',
-            'rentTime.min' => 'Thời gian thuê tối thiểu là 6 tháng',
+            'rentTime.min' => 'Thời gian thuê tối thiểu là 1 tháng',
             'rentTime.numeric' => 'Thời gian thuê phải là số',
         ];
     }
