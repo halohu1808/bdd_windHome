@@ -55,6 +55,8 @@
 
                                 <a class="pl-4" href="{{route('user.detail', Auth::user()->id)}}"> Hồ sơ cá nhân</a>
 
+                                <a class="pl-4" href="{{route('user.changePassword', Auth::user()->id)}}"> Thay đổi mật khẩu</a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -14,6 +14,13 @@
 
             </div>
 
+            <div class="col-12">
+                @if (Session::has('message'))
+                    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                @endif
+
+            </div>
+
             <div class="col-md-10">
 
                 <form method="post">

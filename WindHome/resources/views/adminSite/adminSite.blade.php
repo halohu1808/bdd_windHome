@@ -7,6 +7,13 @@
     <!-- Page Content  -->
     <div id="content">
 
+        <div class="col-12">
+            @if (Session::has('message'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            @endif
+
+        </div>
+
         <div class="row">
             <div class="col-md-6">
                 <h2>PHÒNG</h2>

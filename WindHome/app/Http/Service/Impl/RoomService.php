@@ -7,6 +7,7 @@ namespace App\Http\Service\Impl;
 use App\Http\Repository\Contract\RoomRepositoryInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use App\Room;
+use Illuminate\Support\Facades\Session;
 
 class RoomService implements RoomServiceInterface
 {
@@ -24,7 +25,9 @@ class RoomService implements RoomServiceInterface
 
     public function store($data)
     {
+        Session::flash('message', 'Tạo phòng thành công');
         return $this->roomRepository->store($data);
+
     }
 
     public function update($request, $id)
