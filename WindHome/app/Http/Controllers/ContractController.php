@@ -84,12 +84,14 @@ class ContractController extends Controller
     {
         $this->contractService->end($id);
         $this->roomService->end($id);
+        return redirect()->route('admin.index');
     }
 
     public function cancelEnd($id)
     {
         $this->roomService->cancelEnd($id);
         $this->contractService->cancelEnd($id);
+        return redirect()->route('admin.index');
     }
 
 
