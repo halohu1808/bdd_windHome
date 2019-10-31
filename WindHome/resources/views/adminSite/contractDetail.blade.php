@@ -6,8 +6,8 @@
 @section('content')
 
     <div class="container">
-
-        <div class="row pt-5">
+        <h2 class="pt-4">HỢP ĐỒNG</h2>
+        <div class="row pt-2">
             <div class="col-md-7">
 
                 <div class="carousel-item active">
@@ -92,25 +92,25 @@
                             <div class="col-md-6">
                                 {{--                                Hủy giữ phòng--}}
 
-                                <a href="{{route('UserAction.cancelBookingRequest',['roomId'=> $room->id,'contractId'=>$contract->id] )}}"
-                                   class="btn btn-primary">Hủy Giữ Phòng</a>
+{{--                                <a href="{{route('UserAction.cancelBookingRequest',['roomId'=> $room->id,'contractId'=>$contract->id] )}}"--}}
+{{--                                   class="btn btn-primary">Hủy Giữ Phòng</a>--}}
                             </div>
                         </div>
                     @elseif($contract->statusId==5)
                         <div class="row">
                             <div class="col-md-6">
                                 {{--                                Hủy hợp đồng request--}}
-                                <a href="{{route('UserAction.cancelRoom',['roomId'=> $room->id,'contractId'=>$contract->id] )}}"
-                                   class="btn btn-primary">Huỷ Hợp
-                                    Đồng</a>
+{{--                                <a href="{{route('UserAction.cancelRoom',['roomId'=> $room->id,'contractId'=>$contract->id] )}}"--}}
+{{--                                   class="btn btn-primary">Huỷ Hợp--}}
+{{--                                    Đồng</a>--}}
                             </div>
                         </div>
                     @elseif($contract->statusId==8)
                         <div class="row">
                             <div class="col-md-6">
                                 {{--                                Hủy yêu cầu hủy hợp đồng--}}
-                                <a href="{{route('contract.cancelEnd',$room->id)}}" class="btn btn-primary">Hủy Yêu
-                                    Cầu Hủy Hợp Đồng</a>
+{{--                                <a href="{{route('contract.cancelEnd',$room->id)}}" class="btn btn-primary">Hủy Yêu--}}
+{{--                                    Cầu Hủy Hợp Đồng</a>--}}
                             </div>
 
                         </div>
