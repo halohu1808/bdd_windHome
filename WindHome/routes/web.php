@@ -32,14 +32,12 @@ Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
 
+//Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
+
 
 //Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
 
 Route::group(['prefix' => 'rooms', 'middleware' => 'admin'], function () {
-
-//Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
-
-Route::group(['prefix' => 'rooms','middleware'=>'admin'], function () {
 
     Route::get('/', 'RoomController@index')->name('room.index');
     Route::get('/create', 'RoomController@create')->name('room.create');
@@ -94,18 +92,12 @@ Route::group(['prefix' => 'contracts', 'middleware' => 'admin'], function () {
 
 //User Action - Hải Viết - UserActionController
 
-Route::group(['prefix' => 'userAction', 'middleware' => 'admin'], function () {    Route::get('cancelBookingRequest/{roomId}/{contractId}', 'UserActionController@cancelBookingRequest')->name('UserAction.cancelBookingRequest');
-
-
+Route::group(['prefix' => 'userAction', 'middleware' => 'admin'], function () {
+    Route::get('cancelBookingRequest/{roomId}/{contractId}', 'UserActionController@cancelBookingRequest')->name('UserAction.cancelBookingRequest');
 });
 
 
 Route::group(['prefix' => 'adminRoute', 'middleware' => 'admin'], function () {
-Route::group(['prefix' => 'userAction','middleware'=>'admin'], function () {
-
-});
-
-Route::group(['prefix' => 'adminRoute','middleware'=>'admin'], function () {
 //    Phong
     Route::get('/roomAvailable', 'RouterAdminController@roomAvailable')->name('adminRoute.roomAvailable');
     Route::get('/roomRented', 'RouterAdminController@roomRented')->name('adminRoute.roomRented');
