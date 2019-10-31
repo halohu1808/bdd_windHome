@@ -86,6 +86,10 @@
                         <label> Trạng thái:
                             {{$room->status->name}}
                         </label><br>
+                        <label>Tiền điện: {{$room->electricFee}} VNĐ/Số</label><br>
+                        <label>Tiền nước: {{$room->waterFee}} VNĐ/Khối</label><br>
+                        <label>Tiền vệ sinh: {{$room->trashFee}} VNĐ/tháng</label><br>
+
                     </div>
 
                     <div class="row pt-2">
@@ -151,7 +155,8 @@
                         <label>Thời Gian Thuê</label>
                         <div class="input-group input-group-sm mb-3">
                             <input type="number" name="rentTime" class="form-control"
-                                   aria-describedby="inputGroup-sizing-sm" placeholder="{{$room->minRentTime}} tháng" required>
+                                   aria-describedby="inputGroup-sizing-sm" placeholder="{{$room->minRentTime}} tháng"
+                                   required>
                         </div>
                         @if ($errors->any())
                             <div class="alert alert-danger">

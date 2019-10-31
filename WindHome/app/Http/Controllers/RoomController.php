@@ -75,6 +75,10 @@ RoomController extends Controller
         $room->wifi = $request->wifi;
         $room->cooking = $request->cooking;
         $room->airCondition = $request->airCondition;
+        $room->electricFee = $request->electricFee;
+        $room->waterFee = $request->waterFee;
+        $room->trashFee = $request->trashFee;
+
         $room->save();
 
         if ($files = $request->file('images')) {
