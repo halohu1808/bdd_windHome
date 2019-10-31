@@ -31,6 +31,9 @@ class createRoom extends FormRequest
             'pricePerMonth' => 'required',
             'minRentTime' => 'required',
             'guest' => 'required',
+            'electricFee' => 'required|numeric|min:1',
+            'waterFee' => 'required|numeric|min:1',
+            'trashFee' => 'required|numeric|min:1',
         ];
     }
 
@@ -41,7 +44,16 @@ class createRoom extends FormRequest
             'cityId.required' => 'Tên thành phố không được để trống',
             'pricePerMonth.required' => 'Tiên thuê không được để trống',
             'minRentTime.required' => 'Thời gian không được để trống',
-            'guest.required' => 'Số người không được để trống'
+            'guest.required' => 'Số người không được để trống',
+            'electricFee.required' => 'Tiền điện không được để trống',
+            'electricFee.numeric'=>'Tiền điện phải là số',
+            'electricFee.min'=>'Tiền điện phải lớn hơn 0',
+            'waterFee.required' => 'Tiền nước không được để trống',
+            'waterFee.numeric'=>'Tiền nước phải là số',
+            'waterFee.min'=>'tiền nước phải lớn hơn 0',
+            'trashFee.required' => 'Tiền vệ sinh không được để trống',
+            'trashFee.numeric'=>'Tiền vệ sinh phải là số',
+            'trashFee.min'=>'Tiền vệ sinh phải lớn hơn 0',
         ];
     }
 }
