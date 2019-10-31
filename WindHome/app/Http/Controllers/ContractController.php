@@ -66,6 +66,19 @@ class ContractController extends Controller
         return view('contracts.editContract');
     }
 
+    public function underContrucction($id)
+    {
+        $this->roomService->underContruction($id);
+        return redirect()->route('admin.index');
+    }
+
+    public function hasRoom($id)
+    {
+        $this->roomService->hasRoom($id);
+        return redirect()->route('admin.index');
+    }
+
+
     //Hai code
     public function end($id)
     {

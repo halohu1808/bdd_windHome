@@ -33,4 +33,8 @@ interface RoomServiceInterface
     public function cancelBookingRequest($id);
 
     public function cancelRoom($id);
+
+    public function underContruction($id);
+
+    public function hasRoom($id);
 }
