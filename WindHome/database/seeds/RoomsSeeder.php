@@ -18,6 +18,9 @@ class RoomsSeeder extends Seeder
         $room->cityId = 1;
         $room->pricePerMonth = 3000000;
         $room->minRentTime = 6;
+        $room->electricFee = 4000;
+        $room->waterFee = 10000;
+        $room->trashFee = 50000;
         $room->bathRoom = True;
         $room->area = 50;
         $room->guest = 3;
@@ -48,6 +51,9 @@ Flamingo Dai Lai Resort đã chào đón khách Booking.com từ Ngày 25 Tháng
         $room->cityId = 1;
         $room->pricePerMonth = 2000000;
         $room->minRentTime = 6;
+        $room->electricFee = 4000;
+        $room->waterFee = 10000;
+        $room->trashFee = 50000;
         $room->bathRoom = True;
         $room->area = 50;
         $room->guest = 3;
@@ -78,6 +84,9 @@ Flamingo Dai Lai - Forest In The Sky đã chào đón khách Booking.com từ Ng
         $room->cityId = 1;
         $room->pricePerMonth = 1500000;
         $room->minRentTime = 6;
+        $room->electricFee = 4000;
+        $room->waterFee = 10000;
+        $room->trashFee = 50000;
         $room->bathRoom = True;
         $room->area = 50;
         $room->guest = 3;
@@ -105,6 +114,9 @@ Happy Villa Royal Bird by Flamingo Villa Owner đã chào đón khách Booking.c
         $room->cityId = 1;
         $room->pricePerMonth = 1500000;
         $room->minRentTime = 6;
+        $room->electricFee = 4000;
+        $room->waterFee = 10000;
+        $room->trashFee = 50000;
         $room->bathRoom = True;
         $room->area = 50;
         $room->guest = 3;
