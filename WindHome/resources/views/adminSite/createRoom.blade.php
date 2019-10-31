@@ -25,7 +25,7 @@
             @csrf
             <div class="row pl-5 pr-5 pt-3">
 
-                <div class="col-md-6">
+                <div class="col-md-6 pr-5">
                     <div class="form-group">
                         <label>Tên phòng</label>
                         <input type="text" class="form-control" name="name" placeholder="Tên phòng...">
@@ -34,19 +34,11 @@
                         <label>Địa chỉ</label>
                         <input type="text" class="form-control" name="address" placeholder="Đường,quận,thành phố...">
                     </div>
-
-
-                    <div class="form-group">
-                        <label>Thành Phố</label>
-                        <select class="custom-select" name="cityId">
-                            <option selected>Thành phố</option>
-                            @foreach($cities as $key => $city)
-                                <option value="{{$city->id}}"> {{$city->name}} </option>
-                            @endforeach
-                        </select>
-
+                    <div class="form-group ">
+                        <label>Thời gian thuê tối thiểu(Tháng)</label>
+                        <input type="text" class="form-control" name="minRentTime"
+                        >
                     </div>
-
 
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -54,16 +46,15 @@
                             <input type="number" class="form-control" name="guest" placeholder="1,2...">
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Thời gian thuê tối thiểu</label>
-                            <input type="text" class="form-control" name="minRentTime"
-                                   placeholder="...tháng">
-                        </div>
-                    </div>
+                            <label>Thành Phố</label>
+                            <select class="custom-select" name="cityId">
+                                @foreach($cities as $key => $city)
+                                    <option value="{{$city->id}}"> {{$city->name}} </option>
+                                @endforeach
+                            </select>
 
-                    <div class="form-group">
-                        <label>Giá thuê</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1"
-                               placeholder="1 000 000, 3 000 000..." name="pricePerMonth">
+                        </div>
+
                     </div>
                     <div class="form-group">
                         <label>Ảnh</label>
@@ -71,14 +62,41 @@
                     </div>
                 </div>
 
+                <div class="col-md-6" >
+                    <div class="row">
+                        <div class="form-group">
+                            <label>Diện tích (m2)</label>
+                            <input type="text" class="form-control" name="area">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Giá Điện (VNĐ)</label>
+                            <input type="text" class="form-control" name="electricFee" requidred>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label>Giá Nước (VNĐ)</label>
+                            <input type="text" class="form-control" name="waterFee" required>
+                        </div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Diện tích</label>
-                        <input type="text" class="form-control" name="area" placeholder="20m2...">
+                        <div class="form-group col-md-6">
+                            <label>Tiền Vệ Sinh(VNĐ)</label>
+                            <input type="text" class="form-control" name="trashFee" required>
+                        </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label>Giá thuê (VNĐ)</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                               placeholder="1 000 000, 3 000 000..." name="pricePerMonth">
+                    </div>
+                    <br>
+
+
+
                     <label>Thông tin thêm</label>
+                    <br>
+                    <br>
                     <hr>
                     <div class="row">
                         <div class="col-md-4">
@@ -113,12 +131,15 @@
                         </div>
 
                     </div>
+
                 </div>
+
+
             </div>
             <hr>
             <div class="pl-5">
-                <button type="submit" class="btn btn-primary">Thêm mới</button>
-                <button class="btn btn-danger" onclick="window.history.go(-1); return false;">Hủy</button>
+                <button type="submit" class="btn btn-outline-primary">Thêm mới</button>
+                <button class="btn btn-outline-secondary" onclick="window.history.go(-1); return false;">Hủy</button>
             </div>
         </form>
     </div>

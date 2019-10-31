@@ -31,6 +31,11 @@
                         <label> Trạng thái:
                             {{$room->status->name}}
                         </label><br>
+                        <label>Tiền điện: {{$room->electricFee}} VNĐ/Số</label><br>
+                        <label>Tiền nước: {{$room->waterFee}} VNĐ/Khối</label><br>
+                        <label>Tiền vệ sinh: {{$room->trashFee}} VNĐ/tháng</label>
+
+                        <br>
 
                         <hr>
                     </div>
