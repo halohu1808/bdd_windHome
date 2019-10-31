@@ -119,6 +119,18 @@
                             </div>
                         </div>
                     @elseif($room->statusId==1)
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{route('contract.underContruction',$room->id)}}" class="btn btn-primary">Đang
+                                    Sửa Chữa</a>
+                            </div>
+                        </div>
+                    @elseif($room->statusId==9)
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{route('contract.hasRoom',$room->id)}}" class="btn btn-primary">Còn Phòng</a>
+                            </div>
+                        </div>
                     @endif
                 </form>
             </div>

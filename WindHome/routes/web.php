@@ -83,6 +83,9 @@ Route::group(['prefix' => 'contracts', 'middleware' => 'admin'], function () {
     Route::get('/cancel/{id}', 'ContractController@cancel')->name('contract.cancel');
     Route::get('/endContract/{id}', 'ContractController@endContract')->name('contract.endContract');
     Route::get('/list', 'ContractController@index')->name('contract.index');
+    Route::get('/underContruction/{id}', 'ContractController@underContrucction')->name('contract.underContruction');
+    Route::get('/hasRoom/{id}', 'ContractController@hasRoom')->name('contract.hasRoom');
+
     //Hai code
     Route::get('/end/{id}', 'ContractController@end')->name('contract.end');
     Route::get('/cancelEnd/{id}', 'ContractController@cancelEnd')->name('contract.cancelEnd');
