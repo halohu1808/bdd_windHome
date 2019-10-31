@@ -73,7 +73,6 @@ class ContractService implements ContractServiceInterface
     public
     function cancel($id)
     {
-
         $contract = $this->contractRepository->findByRoomId($id);
         $contract[0]->delete();
     }
@@ -81,6 +80,7 @@ class ContractService implements ContractServiceInterface
     public
     function endContract($id)
     {
+// Đây rồi bố mẹ ơi!!!!
         $currentTime = Carbon::now()->toDateString();
         $contract = $this->contractRepository->findContractStatusRun($id);
         $contract[0]->statusId = 6;
@@ -93,10 +93,11 @@ class ContractService implements ContractServiceInterface
     function end($id)
     {
         //status Hop Dong
+        $currentTime = Carbon::now()->toDateString();
         $contract = $this->contractRepository->findContractStatusEndRequest($id);
         $contract[0]->statusId = 6;
+        $contract[0]->endTime = $currentTime;
         $this->contractRepository->save($contract[0]);
-
     }
 
     public
@@ -106,13 +107,12 @@ class ContractService implements ContractServiceInterface
         $contract[0]->statusId = "5";
 //     dd($contract[0]);
         $this->contractRepository->save($contract[0]);
-
     }
 
     public function deleteContract($contractId)
     {
-       $contract = $this->findById($contractId);
-       $this->contractRepository->destroy($contract);
+        $contract = $this->findById($contractId);
+        $this->contractRepository->destroy($contract);
     }
 
     public function cancelRoom($id)
