@@ -4,8 +4,9 @@
 @endsection
 @section('content')
     <div class="container">
+        <h2 class="pt-5">PHÒNG</h2>
+        <div class="row pt-2">
 
-        <div class="row pt-5">
             <div class="col-md-7">
 
 
@@ -20,7 +21,7 @@
                 <form class="bg-white p-3">
                     <div>
                         <h2 class="font-weight-bold text-success"> {{$room->name}}</h2>
-                        <label> {{$room->address}}, {{ $room->city }}</label>
+                        <label> {{$room->address}}, {{ $room->city->name }}</label>
                         <hr>
                     </div>
                     <div>

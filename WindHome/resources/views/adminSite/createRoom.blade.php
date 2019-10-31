@@ -6,7 +6,7 @@
     <div id="content">
         <div class="row pl-5">
             <h2>Tạo phòng mới</h2>
-{{--            {{config('const.ROLLADMIN')}}--}}
+            {{--            {{config('const.ROLLADMIN')}}--}}
 
         </div>
         {{--        ERROR MESSENGER--}}
@@ -40,8 +40,8 @@
                         <label>Thành Phố</label>
                         <select class="custom-select" name="cityId">
                             <option selected>Thành phố</option>
-                            @foreach($data as $key => $item)
-                                <option value="{{$item['id']}}"> {{$item['name']}} </option>
+                            @foreach($cities as $key => $city)
+                                <option value="{{$city->id}}"> {{$city->name}} </option>
                             @endforeach
                         </select>
 
@@ -118,6 +118,7 @@
             <hr>
             <div class="pl-5">
                 <button type="submit" class="btn btn-primary">Thêm mới</button>
+                <button class="btn btn-danger" onclick="window.history.go(-1); return false;">Hủy</button>
             </div>
         </form>
     </div>

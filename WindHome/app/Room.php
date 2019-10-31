@@ -23,4 +23,8 @@ class Room extends Model
     {
         return $this->hasMany('App\Contract', 'roomId', 'id');
     }
+    public function city()
+    {
+        return $this->belongsTo('App\City', 'cityId', 'id');
+    }
 }

@@ -1,6 +1,7 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container-fluid">
+
             <a class="navbar-brand" href="{{ route('home') }}">
                 <i class="fas fa-home fa-2x"></i>
             </a>
@@ -53,6 +54,8 @@
                                 @endif
 
                                 <a class="pl-4" href="{{route('user.detail', Auth::user()->id)}}"> Hồ sơ cá nhân</a>
+
+                                <a class="pl-4" href="{{route('user.changePassword', Auth::user()->id)}}"> Thay đổi mật khẩu</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

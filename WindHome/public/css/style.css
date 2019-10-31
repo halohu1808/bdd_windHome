@@ -63,6 +63,14 @@ a:focus {
     transition: all 0.3s;
 }
 
+#sidebarFilter {
+    min-width: 250px;
+    max-width: 250px;
+    background: #f7f7f7;
+    color: #1b1e21;
+    transition: all 0.3s;
+}
+
 #sidebar.active {
     margin-left: -250px;
 }
