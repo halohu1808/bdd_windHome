@@ -20,7 +20,10 @@ class User
             $user = Auth::user();
             if ($user->roll == 2) {
                 return $next($request);
+            } else {
+                return redirect()->route('admin.index');
             }
+
         } else
             return redirect('/login');
     }

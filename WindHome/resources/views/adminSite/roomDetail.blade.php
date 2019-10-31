@@ -4,8 +4,9 @@
 @endsection
 @section('content')
     <div class="container">
+        <h2 class="pt-5">PHÒNG</h2>
+        <div class="row pt-2">
 
-        <div class="row pt-5">
             <div class="col-md-7">
 
 
