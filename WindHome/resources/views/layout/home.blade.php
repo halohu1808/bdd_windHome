@@ -28,6 +28,8 @@
 </head>
 
 <body>
+
+
 {{--Header--}}
 <div class="sticky-top">
     @include('layout.header')
