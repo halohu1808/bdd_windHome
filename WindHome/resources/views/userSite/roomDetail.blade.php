@@ -8,9 +8,9 @@
         <div class="row pt-5">
             <div class="col-md-7">
 
-                <div class="carousel-item active">
-                    <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100" alt="...">
-                </div>
+{{--                <div class="carousel-item active">--}}
+{{--                    <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100" alt="...">--}}
+{{--                </div>--}}
             </div>
             <div class="col-md-5">
 
