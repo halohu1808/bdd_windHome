@@ -74,24 +74,24 @@
                             <input type="text" class="form-control" name="area">
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Giá Điện (VNĐ)</label>
+                            <label>Giá Điện (VNĐ/Số )</label>
                             <input type="text" class="form-control" name="electricFee" requidred>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <label>Giá Nước (VNĐ)</label>
+                            <label>Giá Nước (VNĐ/Khối)</label>
                             <input type="text" class="form-control" name="waterFee" required>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label>Tiền Vệ Sinh(VNĐ)</label>
+                            <label>Tiền Vệ Sinh (VNĐ/Tháng)</label>
                             <input type="text" class="form-control" name="trashFee" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label>Giá thuê (VNĐ)</label>
+                        <label>Giá thuê (VNĐ/Tháng)</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1"
                                placeholder="1 000 000, 3 000 000..." name="pricePerMonth">
                     </div>

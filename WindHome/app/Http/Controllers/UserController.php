@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\UsersRequest;
+
+use App\Http\Requests\UserDetailRequest;
+use App\Http\Requests\UserPasswordRequest;
 use App\Http\Service\ServiceInterface\UserServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 
 class UserController extends Controller
@@ -45,18 +49,26 @@ class UserController extends Controller
         return view('users.changePassword', compact('user'));
     }
 
-    public function update(UsersRequest $request, $id)
+    public function update(UserDetailRequest $request, $id)
     {
         $this->userService->update($request, $id);
-        $user=$this->userService->findById($id);
-        return view('users.detail',compact('user'));
+        $user = $this->userService->findById($id);
+        return view('users.detail', compact('user'));
+
     }
 
-    public function updatePassword(UsersRequest $request, $id)
+    public function updatePassword(UserPasswordRequest $request, $id)
     {
-        $this->userService->updatePassword($request, $id);
-        $user=$this->userService->findById($id);
-        return view('users.detail',compact('user'));
+        $user = $this->userService->findById($id);
+        if (Hash::check($request->passwordOld, $user->password)){
+            $this->userService->updatePassword($request, $id);
+            return view('users.detail', compact('user'));
+        }
+        else {
+            Session::flash('message', 'Mật khẩu cũ không đúng');
+            return view('users.changePassword', compact('user'));
+        }
+
     }
 
 }

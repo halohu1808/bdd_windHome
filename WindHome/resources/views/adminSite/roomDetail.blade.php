@@ -10,9 +10,22 @@
             <div class="col-md-7">
 
 
-                <div class="carousel-item active">
-                    <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100" alt="...">
+                {{--                <div class="carousel-item active">--}}
+                {{--                    <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100" alt="...">--}}
+                {{--                </div>--}}
+
+                <div class="demo">
+                    <ul id="lightSlider">
+                        @foreach ($images as $image)
+                            <li data-thumb="">
+                                <img src={{asset("storage/img/home/". $image->images)}}/>
+                            </li>
+                        @endforeach
+
+
+                    </ul>
                 </div>
+
             </div>
 
             <div class="col-md-5">
