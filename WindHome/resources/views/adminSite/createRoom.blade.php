@@ -60,9 +60,14 @@
                         <label>Ảnh</label>
                         <input required type="file" class="form-control" name="images[]" placeholder="address" multiple>
                     </div>
+                    <div class="form-group">
+                        <label>Thumbnail</label>
+                        <input required type="file" class="form-control" name="thumbnail" placeholder="address"
+                               multiple>
+                    </div>
                 </div>
 
-                <div class="col-md-6" >
+                <div class="col-md-6">
                     <div class="row">
                         <div class="form-group">
                             <label>Diện tích (m2)</label>
@@ -90,12 +95,16 @@
                         <input type="text" class="form-control" id="exampleFormControlInput1"
                                placeholder="1 000 000, 3 000 000..." name="pricePerMonth">
                     </div>
+                    <div class="form-group row">
+                        <label>Link map</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                               name="linkmap" required>
+                    </div>
                     <br>
-
+                    <br>
 
 
                     <label>Thông tin thêm</label>
-                    <br>
                     <br>
                     <hr>
                     <div class="row">
