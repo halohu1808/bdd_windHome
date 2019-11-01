@@ -8,13 +8,13 @@ body {
     background: #fafafa;
 }
 
-p {
-    font-family: 'Arial';
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
-}
+/*p {*/
+/*    font-family: 'Arial';*/
+/*    font-size: 1.1em;*/
+/*    font-weight: 300;*/
+/*    line-height: 1.7em;*/
+/*    color: black;*/
+/*}*/
 
 a,
 a:hover,
