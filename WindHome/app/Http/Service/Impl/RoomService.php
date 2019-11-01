@@ -111,4 +111,18 @@ class RoomService implements RoomServiceInterface
         $room->statusId = "4";
         $this->roomRepository->save($room);
     }
+
+    public function underContruction($id)
+    {
+        $room = $this->roomRepository->findById($id);
+        $room->statusId = '9';
+        $this->roomRepository->save($room);
+    }
+
+    public function hasRoom($id)
+    {
+        $room = $this->roomRepository->findById($id);
+        $room->statusId = '1';
+        $this->roomRepository->save($room);
+    }
 }

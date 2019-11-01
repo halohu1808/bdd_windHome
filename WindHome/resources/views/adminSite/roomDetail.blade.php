@@ -4,8 +4,9 @@
 @endsection
 @section('content')
     <div class="container">
+        <h2 class="pt-5">PHÒNG</h2>
+        <div class="row pt-2">
 
-        <div class="row pt-5">
             <div class="col-md-7">
 
 
@@ -30,6 +31,11 @@
                         <label> Trạng thái:
                             {{$room->status->name}}
                         </label><br>
+                        <label>Tiền điện: {{$room->electricFee}} VNĐ/Số</label><br>
+                        <label>Tiền nước: {{$room->waterFee}} VNĐ/Khối</label><br>
+                        <label>Tiền vệ sinh: {{$room->trashFee}} VNĐ/tháng</label>
+
+                        <br>
 
                         <hr>
                     </div>
@@ -113,6 +119,18 @@
                             </div>
                         </div>
                     @elseif($room->statusId==1)
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{route('contract.underContruction',$room->id)}}" class="btn btn-primary">Đang
+                                    Sửa Chữa</a>
+                            </div>
+                        </div>
+                    @elseif($room->statusId==9)
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{route('contract.hasRoom',$room->id)}}" class="btn btn-primary">Còn Phòng</a>
+                            </div>
+                        </div>
                     @endif
                 </form>
             </div>

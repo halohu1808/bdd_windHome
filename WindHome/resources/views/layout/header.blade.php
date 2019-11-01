@@ -1,6 +1,7 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container-fluid">
+
             <a class="navbar-brand" href="{{ route('home') }}">
                 <i class="fas fa-home fa-2x"></i>
             </a>
