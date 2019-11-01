@@ -121,4 +121,19 @@ class ContractService implements ContractServiceInterface
         $contract->statusId = "8";
         $this->contractRepository->save($contract);
     }
+
+    public function extensionContract($id)
+    {
+        return $this->contractRepository->extensionContract($id);
+    }
+
+    public function extensionUpdate($request, $id)
+    {
+        $contract = $this->contractRepository->findById($id);
+        $extensionTime = ($request->extensionTime);
+        $rentime = (int)$extensionTime + (int)($contract->rentTime);
+        $contract->rentTime = $rentime;
+        $this->contractRepository->save($contract);
+
+    }
 }

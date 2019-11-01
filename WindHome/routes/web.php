@@ -83,6 +83,8 @@ Route::group(['prefix' => 'contracts', 'middleware' => 'admin'], function () {
     Route::get('/list', 'ContractController@index')->name('contract.index');
     Route::get('/underContruction/{id}', 'ContractController@underContrucction')->name('contract.underContruction');
     Route::get('/hasRoom/{id}', 'ContractController@hasRoom')->name('contract.hasRoom');
+    Route::get('/extension/{id}', 'ContractController@extension')->name('contract.extensionContract');
+    Route::post('/extensionUpdate/{id}', 'ContractController@extensionUpdate')->name('contract.extensionUpdate');
 
     //Hai code
     Route::get('/end/{id}', 'ContractController@end')->name('contract.end');

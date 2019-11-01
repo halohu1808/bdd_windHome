@@ -106,6 +106,10 @@
                                 <a href="{{route('contract.endContract',$room->id)}}" class="btn btn-primary">Huỷ Hợp
                                     Đồng</a>
                             </div>
+
+                            <div class="col-md-6">
+                                <a href="{{route('contract.extensionContract',$room->id)}}" class="btn btn-primary">Gia Hạn Hợp Đồng</a>
+                            </div>
                         </div>
                         {{--                        Hai code 2 truong hop--}}
                     @elseif($room->statusId==4)
