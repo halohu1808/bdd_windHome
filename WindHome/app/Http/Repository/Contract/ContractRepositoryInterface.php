@@ -16,4 +16,6 @@ interface ContractRepositoryInterface extends RepositoryInterface
 
     public function findContractStatusKeepRequest($id);
 
+    public function extensionContract($id);
+
 }
