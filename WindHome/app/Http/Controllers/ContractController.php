@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contract;
 use App\Http\Requests\ContractRequest;
+use App\Http\Requests\ExtensionRequest;
 use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use Carbon\Carbon;
@@ -111,11 +112,18 @@ class ContractController extends Controller
         return view('contracts.extensionContract', compact('contract', 'room', 'timeLeft'));
     }
 
-    public function extensionUpdate(Request $request, $id)
+    public function extensionUpdate(ExtensionRequest $request, $id)
     {
         $this->contractService->extensionUpdate($request, $id);
         return redirect()->route('admin.index');
 
     }
+
+    public function feedback(Request $request, $contractId)
+    {
+        $contract = $this->contractService->findById($contractId);
+        dd($contract);
+    }
+
 
 }

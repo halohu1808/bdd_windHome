@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\UsersRequest;
+use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Service\ServiceInterface\UserServiceInterface;
 use Illuminate\Http\Request;
 
@@ -9,10 +11,13 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     protected $userService;
+    protected $contractService;
 
-    public function __construct(UserServiceInterface $userService)
+    public function __construct(UserServiceInterface $userService, ContractServiceInterface $contractService)
     {
         $this->userService = $userService;
+        $this->contractService = $contractService;
+
     }
 
     public function index()
@@ -48,15 +53,26 @@ class UserController extends Controller
     public function update(UsersRequest $request, $id)
     {
         $this->userService->update($request, $id);
-        $user=$this->userService->findById($id);
-        return view('users.detail',compact('user'));
+        $user = $this->userService->findById($id);
+        return view('users.detail', compact('user'));
     }
 
     public function updatePassword(UsersRequest $request, $id)
     {
         $this->userService->updatePassword($request, $id);
-        $user=$this->userService->findById($id);
-        return view('users.detail',compact('user'));
+        $user = $this->userService->findById($id);
+        return view('users.detail', compact('user'));
+    }
+
+    public function feedback(Request $request, $id)
+    {
+        $feedback = new \App\Feedback();
+        $feedback->content = $request->contentt;
+        $feedback->contract_id = $id;
+        $feedback->save();
+
+        return redirect()->route('userRoute.contractRun');
+
     }
 
 }

@@ -10,15 +10,6 @@
         <hr>
         <div style="background:#fefefe">
             {{--        ERROR MESSENGER--}}
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
 
             <form method="POST" action="{{route('contract.extensionUpdate',$contract[0]->id)}}">
                 @csrf
@@ -78,7 +69,12 @@
                         <div class="form-group">
                             <label>Thời gian thuê thêm(tháng)</label>
                             <input type="text" class="form-control" name="extensionTime" placeholder="Tháng"
-                            >
+                                   required>
+                            @if ($errors->has('extensionTime'))
+                                <div class="alert alert-danger">
+                                    <strong>{{$errors->first('extensionTime')}}</strong>
+                                </div>
+                            @endif
                         </div>
                     </div>
 

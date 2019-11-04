@@ -5,7 +5,7 @@
 @section('content')
     <div id="content">
         <div class="row pl-5">
-            <h2>Tạo phòng mới</h2>
+            <h2>Cập nhật phòng</h2>
             {{--            {{config('const.ROLLADMIN')}}--}}
 
         </div>
@@ -21,29 +21,33 @@
         @endif
         {{--        END MESSENGER--}}
         <hr>
-        <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('room.store')}}">
+        <form method="POST" class="form-horizontal" enctype="multipart/form-data"
+              action="{{route('room.update',$room->id)}}">
             @csrf
             <div class="row pl-5 pr-5 pt-3">
 
                 <div class="col-md-6 pr-5">
                     <div class="form-group">
                         <label>Tên phòng</label>
-                        <input type="text" class="form-control" name="name" placeholder="Tên phòng...">
+                        <input type="text" class="form-control" name="name" placeholder="Tên phòng..."
+                               value="{{$room->name}}">
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ</label>
-                        <input type="text" class="form-control" name="address" placeholder="Đường,quận,thành phố...">
+                        <input type="text" class="form-control" name="address" placeholder="Đường,quận,thành phố..."
+                               value="{{$room->address}}">
                     </div>
                     <div class="form-group ">
                         <label>Thời gian thuê tối thiểu(Tháng)</label>
                         <input type="text" class="form-control" name="minRentTime"
-                        >
+                               value="{{$room->minRentTime}}">
                     </div>
 
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label>Số người</label>
-                            <input type="number" class="form-control" name="guest" placeholder="1,2...">
+                            <input type="number" class="form-control" name="guest" placeholder="1,2..."
+                                   value="{{$room->guest}}">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Thành Phố</label>
@@ -71,34 +75,38 @@
                     <div class="row">
                         <div class="form-group">
                             <label>Diện tích (m2)</label>
-                            <input type="text" class="form-control" name="area" required>
+                            <input type="text" class="form-control" name="area" value="{{$room->area}}" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Giá Điện (VNĐ)</label>
-                            <input type="text" class="form-control" name="electricFee" requidred>
+                            <input type="text" class="form-control" name="electricFee" value="{{$room->electricFee}}"
+                                   requidred>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
                             <label>Giá Nước (VNĐ)</label>
-                            <input type="text" class="form-control" name="waterFee" required>
+                            <input type="text" class="form-control" name="waterFee" value="{{$room->waterFee}}"
+                                   required>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label>Tiền Vệ Sinh(VNĐ)</label>
-                            <input type="text" class="form-control" name="trashFee" required>
+                            <input type="text" class="form-control" name="trashFee" value="{{$room->trashFee}}"
+                                   required>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label>Giá thuê (VNĐ)</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1"
-                               placeholder="1 000 000, 3 000 000..." name="pricePerMonth" required>
+                               placeholder="1 000 000, 3 000 000..." name="pricePerMonth"
+                               value="{{$room->pricePerMonth}}" required>
                     </div>
                     <div class="form-group row">
                         <label>Link map</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1"
-                               name="linkmap" required>
+                               name="linkmap" value="{{$room->linkmap}}" required>
                     </div>
                     <br>
                     <br>
@@ -147,7 +155,7 @@
             </div>
             <hr>
             <div class="pl-5">
-                <button type="submit" class="btn btn-outline-primary">Thêm mới</button>
+                <button type="submit" class="btn btn-outline-primary">Update</button>
                 <button class="btn btn-outline-secondary" onclick="window.history.go(-1); return false;">Hủy</button>
             </div>
         </form>

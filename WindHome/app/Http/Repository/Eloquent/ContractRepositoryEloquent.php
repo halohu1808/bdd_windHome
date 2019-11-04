@@ -45,4 +45,10 @@ class ContractRepositoryEloquent extends RepositoryEloquent implements ContractR
     {
         return $contract = Contract::where('roomId', $id)->where('statusId', 5)->get();
     }
+
+    public function checkEmptyRoom($idRoom)
+    {
+        $contract = Contract::where('roomId', $idRoom)->get();
+        return $contract;
+    }
 }

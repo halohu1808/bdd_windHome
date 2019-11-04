@@ -18,4 +18,6 @@ interface ContractRepositoryInterface extends RepositoryInterface
 
     public function extensionContract($id);
 
+    public function checkEmptyRoom($idRoom);
+
 }

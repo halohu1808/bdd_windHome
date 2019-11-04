@@ -29,7 +29,9 @@ class ImageRepositoryEloquent extends RepositoryEloquent implements ImageReposit
 
     public function findAllImageByRoomId($roomId)
     {
-        $image = DB::table('images')->where('roomId', $roomId)->get();
+        $image = Image::where('roomId', $roomId)->get();
         return $image;
     }
+
+
 }
