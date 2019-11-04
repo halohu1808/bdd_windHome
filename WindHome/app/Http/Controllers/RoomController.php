@@ -103,6 +103,8 @@ RoomController extends Controller
     {
         $room = $this->roomService->findById($id);
         $images = $this->imageService->getAllImageByRoomId($id);
+        $thumpImages = [];
+
 
         return view('listSite.roomDetail', compact('room', 'images'));
     }
