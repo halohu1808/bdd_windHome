@@ -38,4 +38,6 @@ interface ContractServiceInterface
 
     public function extensionUpdate($request, $id);
 
+    public function checkEmpty($id);
+
 }

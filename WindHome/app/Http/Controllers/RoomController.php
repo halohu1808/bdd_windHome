@@ -15,6 +15,7 @@ use App\Image;
 use App\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class
 RoomController extends Controller
@@ -93,6 +94,7 @@ RoomController extends Controller
                 $image->save();
             }
         }
+        Session::flash('create', "Tạo mới phòng thành công");
 
         return redirect()->route('room.index');
     }
@@ -110,19 +112,55 @@ RoomController extends Controller
     public function edit($id)
     {
         $room = $this->roomService->findById($id);
-        return view('rooms.edit', compact('room'));
+        $cities = City::all();
+        return view('rooms.edit', compact('room', 'cities'));
     }
 
     public function update(createRoom $request, $id)
     {
-        $this->roomService->update($request, $id);
+        $room = $this->roomService->findById($id);
+        $room->name = $request->name;
+        $room->address = $request->address;
+        $room->cityId = $request->cityId;
+
+        $room->pricePerMonth = $request->pricePerMonth;
+        $room->minRentTime = $request->minRentTime;
+        $room->bathRoom = $request->bathRoom;
+        $room->area = $request->area;
+        $room->guest = $request->guest;
+        $room->parking = $request->parking;
+        $room->wifi = $request->wifi;
+        $room->cooking = $request->cooking;
+        $room->airCondition = $request->airCondition;
+        $room->electricFee = $request->electricFee;
+        $room->waterFee = $request->waterFee;
+        $room->trashFee = $request->trashFee;
+
+        $room->save();
+
+        if ($files = $request->file('images')) {
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
+                $fileName = str_random(4) . "_" . $name;
+                $file->move('storage/img/home/', $fileName);
+
+                $image = new Image();
+                $image->roomId = $room->id;
+                $image->images = $fileName;
+                $image->save();
+            }
+        }
+
+        Session::flash('update', 'cập nhật thành công');
+
         return redirect()->route('room.index');
     }
 
     public function destroy($id)
     {
-        $this->imageService->destroy($id);
-        $this->roomService->destroy($id);
+//        $img = $this->imageService->destroyRoom($id);
+        Session::flash('delete', 'Đã tồn tại dữ liệu không được phép xóa');
+
         return redirect()->route('room.index');
     }
 

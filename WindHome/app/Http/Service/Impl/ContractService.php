@@ -136,4 +136,9 @@ class ContractService implements ContractServiceInterface
         $this->contractRepository->save($contract);
 
     }
+
+    public function checkEmpty($id)
+    {
+        return $this->contractRepository->checkEmptyRoom($id);
+    }
 }

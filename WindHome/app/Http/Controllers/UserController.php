@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsersRequest;
+use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Requests\UserDetailRequest;
 use App\Http\Requests\UserPasswordRequest;
 use App\Http\Service\ServiceInterface\UserServiceInterface;
@@ -13,10 +15,13 @@ use Illuminate\Support\Facades\Session;
 class UserController extends Controller
 {
     protected $userService;
+    protected $contractService;
 
-    public function __construct(UserServiceInterface $userService)
+    public function __construct(UserServiceInterface $userService, ContractServiceInterface $contractService)
     {
         $this->userService = $userService;
+        $this->contractService = $contractService;
+
     }
 
     public function index()
@@ -54,11 +59,22 @@ class UserController extends Controller
         $this->userService->update($request, $id);
         $user = $this->userService->findById($id);
         return view('users.detail', compact('user'));
-
     }
 
     public function updatePassword(UserPasswordRequest $request, $id)
     {
+        $this->userService->updatePassword($request, $id);
+        $user = $this->userService->findById($id);
+        return view('users.detail', compact('user'));
+    }
+
+    public function feedback(Request $request, $id)
+    {
+        $feedback = new \App\Feedback();
+        $feedback->content = $request->contentt;
+        $feedback->contract_id = $id;
+        $feedback->save();
+        return redirect()->route('userRoute.contractRun');
         $user = $this->userService->findById($id);
         if (Hash::check($request->passwordOld, $user->password)){
             $this->userService->updatePassword($request, $id);
