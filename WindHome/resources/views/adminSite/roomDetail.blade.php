@@ -9,9 +9,8 @@
 
             <div class="col-md-7">
 
-
-                <div class="carousel-item active">
-                    <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100" alt="...">
+                <div class="carousel-item active" style="max-height: 300px">
+                    <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100">
                 </div>
             </div>
 
@@ -136,7 +135,6 @@
             </div>
 
         </div>
-        <br>
         <br>
 
 

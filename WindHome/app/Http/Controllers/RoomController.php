@@ -4,15 +4,13 @@ namespace App\Http\Controllers;
 
 use App\City;
 use App\Http\Requests\BookkingRequest;
-use App\Http\Service\Impl\RoomService;
 use App\Http\Service\ServiceInterface\ImageServiceInterface;
-
 use App\Http\Requests\createRoom;
 use App\Http\Service\ServiceInterface\ContractServiceInterface;
-
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use App\Image;
 use App\Room;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,15 +30,31 @@ RoomController extends Controller
 
     public function list()
     {
-        $rooms = $this->roomService->getAll();
-        $images = [];
+        $roomsSort = $this->roomService->getAll()->sortByDesc('created_at');
+        return view('listSite.listPage', compact('roomsSort'));
+    }
 
-        foreach ($rooms as $room) {
-            $image = $this->imageService->getFirstImageByRoomId($room->id);
-            array_push($images, $image);
+    public function findByCity(Request $request, Room $room)
+    {
+        $city = City::where('name', 'LIKE', '%' . $request->city . '%')->get();
+
+        $room = $room->newQuery();
+        $room->where('cityId', $city[0]->id);
+        if ($request->minPrice != '') {
+            $room->where('pricePerMonth', '>', $request->minPrice);
         }
-        $roomsSort = $this->roomService->getAll()->sortByDesc('created_at');// <- Sort theo phòng mới tạo
-        return view('listSite.listPage', compact('roomsSort', 'images'));
+        if($request->maxPrice != ''){
+            $room->where('pricePerMonth','<',$request->maxPrice);
+        }
+        if($request->guest != ''){
+            $room->where('guest','=',$request->guest);
+        }
+        if($request->area != ''){
+            $room->where('area','>',$request->area);
+        }
+
+        $roomsSort = $room->get();
+        return view('listSite.listPage', compact('roomsSort'));
     }
 
     public function index()
@@ -51,11 +65,7 @@ RoomController extends Controller
 
     public function create()
     {
-//        $jsonString = file_get_contents(base_path('public/city.json'));
-//        $data = json_decode($jsonString, true);
-//        dd($data[0]['name']);
         $cities = City::all();
-
         return view('adminSite.createRoom', compact('cities'));
     }
 
@@ -65,7 +75,6 @@ RoomController extends Controller
         $room->name = $request->name;
         $room->address = $request->address;
         $room->cityId = $request->cityId;
-
         $room->pricePerMonth = $request->pricePerMonth;
         $room->minRentTime = $request->minRentTime;
         $room->bathRoom = $request->bathRoom;
@@ -78,7 +87,14 @@ RoomController extends Controller
         $room->electricFee = $request->electricFee;
         $room->waterFee = $request->waterFee;
         $room->trashFee = $request->trashFee;
+        $room->linkmap = $request->linkmap;
 
+        if ($thumbnail = $request->file('thumbnail')) {
+            $name = $thumbnail->getClientOriginalName();
+            $fileName = str_random(4) . "_" . $name;
+            $thumbnail->move('storage/img/home/', $fileName);
+            $room->thumbnail = $fileName;
+        }
         $room->save();
 
         if ($files = $request->file('images')) {
@@ -86,7 +102,6 @@ RoomController extends Controller
                 $name = $file->getClientOriginalName();
                 $fileName = str_random(4) . "_" . $name;
                 $file->move('storage/img/home/', $fileName);
-
                 $image = new Image();
                 $image->roomId = $room->id;
                 $image->images = $fileName;
@@ -97,40 +112,45 @@ RoomController extends Controller
         return redirect()->route('room.index');
     }
 
-    public function show($id)
+    public
+    function show($id)
     {
         $room = $this->roomService->findById($id);
         $images = $this->imageService->getAllImageByRoomId($id);
-
         return view('listSite.roomDetail', compact('room', 'images'));
     }
 
-    public function edit($id)
+    public
+    function edit($id)
     {
         $room = $this->roomService->findById($id);
         return view('rooms.edit', compact('room'));
     }
 
-    public function update(createRoom $request, $id)
+    public
+    function update(createRoom $request, $id)
     {
         $this->roomService->update($request, $id);
         return redirect()->route('room.index');
     }
 
-    public function destroy($id)
+    public
+    function destroy($id)
     {
         $this->imageService->destroy($id);
         $this->roomService->destroy($id);
         return redirect()->route('room.index');
     }
 
-    public function managerUser()
+    public
+    function managerUser()
     {
         return view('users.managerUser');
     }
 
-    //Hai-code
-    public function booking(BookkingRequest $request)
+//Hai-code
+    public
+    function booking(BookkingRequest $request)
     {
         $userId = Auth::user()->id;
 //        $room = $this->roomService->findById($request->roomId);
@@ -140,5 +160,16 @@ RoomController extends Controller
         return view('listSite.roomDetail', compact('room', 'images'));
     }
 
+    public function autocomplete(Request $request)
+    {
+        dd($request);
+        $data = User::select("name as name")->where("name", "LIKE", "%{$request->input('query')}%")->get();
+        return response()->json($data);
+    }
+
+    public function searchAdvance()
+    {
+        return view('layout.search');
+    }
 
 }

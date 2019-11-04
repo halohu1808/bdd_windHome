@@ -2,15 +2,9 @@
 @section('content')
 
     <div class="container">
-
         <div class="row pt-5">
             <div class="col-md-7">
-                {{--                {{$imgLength = count($imagesSeeder) }}--}}
 
-                {{--                <img src={{asset("storage/img/home/". $room->image)}} class="img-fluid" alt="Responsive image">--}}
-                {{--                --}}{{--thông tin thêm--}}
-
-                {{-- Hiển thị nhiều ảnh trong trang detail               --}}
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -191,6 +185,7 @@
 
         </div>
         <hr>
+
         {{--        <div class="row">--}}
         {{--            <div class="col-md-7">--}}
         {{--                <h2 class="text-danger">Mô tả</h2>--}}
@@ -278,6 +273,16 @@
 
         {{--            </div>--}}
         {{--        </div>--}}
+
+        <div class="row pt-5">
+
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
 
     </div>
 

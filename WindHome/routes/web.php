@@ -26,6 +26,9 @@ Route::get('/home', function () {
 })->name('home');
 // Xóa sau khi làm xong giao diện
 
+Route::get('/autocomplete', ['as'=>'autocomplete', 'uses'=>'RoomController@autocomplete']);
+
+
 Auth::routes();
 
 Route::get('/redirect/{social}', 'SocialAuthController@redirect');
@@ -48,13 +51,15 @@ Route::group(['prefix' => 'rooms', 'middleware' => 'admin'], function () {
 
 });
 
-
-//Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
+//search
 Route::group(['prefix' => 'roomUser'], function () {
-    Route::get('/list', 'RoomController@list')->name('room.list');/// not admin
-    Route::get('/detail/{id}', 'RoomController@show')->name('room.detail');//not admin
-    Route::post('/booking', 'RoomController@booking')->middleware('user')->name('room.booking'); // not admin
+    Route::get('/list', 'RoomController@list')->name('room.list');
+    Route::post('/findByCity','RoomController@findByCity')->name('room.findByCity');
+    Route::get('/searchAdvance','RoomController@searchAdvance')->name('room.searchAdvance');
+    Route::post('/searchAdvanceGo','RoomController@searchAdvanceGo')->name('room.searchAdvanceGo');
 
+    Route::get('/detail/{id}', 'RoomController@show')->name('room.detail');
+    Route::post('/booking', 'RoomController@booking')->middleware('user')->name('room.booking');
 });
 
 
@@ -65,7 +70,6 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('/update/{id}', 'UserController@update')->name('user.update');
     Route::get('/detail/{id}', 'UserController@show')->name('user.detail');
 });
-
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
@@ -83,11 +87,9 @@ Route::group(['prefix' => 'contracts', 'middleware' => 'admin'], function () {
     Route::get('/list', 'ContractController@index')->name('contract.index');
     Route::get('/underContruction/{id}', 'ContractController@underContrucction')->name('contract.underContruction');
     Route::get('/hasRoom/{id}', 'ContractController@hasRoom')->name('contract.hasRoom');
-
     //Hai code
     Route::get('/end/{id}', 'ContractController@end')->name('contract.end');
     Route::get('/cancelEnd/{id}', 'ContractController@cancelEnd')->name('contract.cancelEnd');
-
 });
 
 //User Action - Hải Viết - UserActionController
@@ -112,12 +114,9 @@ Route::group(['prefix' => 'adminRoute', 'middleware' => 'admin'], function () {
     Route::get('/contractKeepRequest', 'RouterAdminController@contractKeepRequest')->name('adminRoute.contractKeepRequest');
     Route::get('/contractDetail/{id}', 'RouterAdminController@contractDetail')->name('adminRoute.contractDetail');
 
-
     //    User
     Route::get('/userAll', 'RouterAdminController@userAll')->name('adminRoute.userAll');
-
 });
-
 
 Route::group(['prefix' => 'userRoute', 'middleware' => 'login'], function () {
 

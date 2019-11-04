@@ -28,7 +28,7 @@ class RoomsSeeder extends Seeder
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
-        $room->thumbnail="./storage/img/home/nha1.jpg";
+        $room->thumbnail="nha1.jpg";
         $room->linkmap="https://www.google.com/maps/place/B%E1%BA%A3o+t%C3%A0ng+D%C3%A2n+t%E1%BB%99c+h%E1%BB%8Dc+Vi%E1%BB%87t+Nam/@21.022736,105.801944,13z/data=!4m13!1m7!3m6!1s0x3135ab9bd9861ca1:0xe7887f7b72ca17a9!2zSMOgIE7hu5lpLCBIb8OgbiBLaeG6v20sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!3b1!8m2!3d21.0277644!4d105.8341598!3m4!1s0x3135ab394353b821:0x47c950bb0f081a1c!8m2!3d21.0406474!4d105.7985115?hl=vi-VN";
         $room->statusId = 1;
         $room->description = "Trải nghiệm dịch vụ đẳng cấp thế giới ở Flamingo Dai Lai Resort
@@ -63,7 +63,7 @@ Flamingo Dai Lai Resort đã chào đón khách Booking.com từ Ngày 25 Tháng
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
-        $room->thumbnail="./storage/img/home/nha2.jpg";
+        $room->thumbnail="nha2.jpg";
         $room->linkmap="https://www.google.com/maps/place/B%E1%BA%A3o+t%C3%A0ng+D%C3%A2n+t%E1%BB%99c+h%E1%BB%8Dc+Vi%E1%BB%87t+Nam/@21.022736,105.801944,13z/data=!4m13!1m7!3m6!1s0x3135ab9bd9861ca1:0xe7887f7b72ca17a9!2zSMOgIE7hu5lpLCBIb8OgbiBLaeG6v20sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!3b1!8m2!3d21.0277644!4d105.8341598!3m4!1s0x3135ab394353b821:0x47c950bb0f081a1c!8m2!3d21.0406474!4d105.7985115?hl=vi-VN";
         $room->statusId = 1;
         $room->description = "Trải nghiệm dịch vụ đẳng cấp thế giới ở Flamingo Dai Lai - Forest In The Sky
@@ -98,7 +98,7 @@ Flamingo Dai Lai - Forest In The Sky đã chào đón khách Booking.com từ Ng
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
-        $room->thumbnail="./storage/img/home/nha3.jpg";
+        $room->thumbnail="nha3.jpg";
         $room->linkmap="https://www.google.com/maps/place/B%E1%BA%A3o+t%C3%A0ng+D%C3%A2n+t%E1%BB%99c+h%E1%BB%8Dc+Vi%E1%BB%87t+Nam/@21.022736,105.801944,13z/data=!4m13!1m7!3m6!1s0x3135ab9bd9861ca1:0xe7887f7b72ca17a9!2zSMOgIE7hu5lpLCBIb8OgbiBLaeG6v20sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!3b1!8m2!3d21.0277644!4d105.8341598!3m4!1s0x3135ab394353b821:0x47c950bb0f081a1c!8m2!3d21.0406474!4d105.7985115?hl=vi-VN";
         $room->statusId = 1;
         $room->description = "Happy Villa Royal Bird by Flamingo Villa Owner ở thôn Ngọc Quang này cung cấp chỗ nghỉ, xe đạp/xe máy miễn phí, hồ bơi ngoài trời theo mùa, trung tâm thể dục, quán bar và khu vườn. Biệt thự cũng có tầm nhìn ra vườn và Wi-Fi miễn phí trong toàn khuôn viên.
@@ -130,7 +130,7 @@ Happy Villa Royal Bird by Flamingo Villa Owner đã chào đón khách Booking.c
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
-        $room->thumbnail="./storage/img/home/nha4.jpg";
+        $room->thumbnail="nha4.jpg";
         $room->linkmap="https://www.google.com/maps/place/B%E1%BA%A3o+t%C3%A0ng+D%C3%A2n+t%E1%BB%99c+h%E1%BB%8Dc+Vi%E1%BB%87t+Nam/@21.022736,105.801944,13z/data=!4m13!1m7!3m6!1s0x3135ab9bd9861ca1:0xe7887f7b72ca17a9!2zSMOgIE7hu5lpLCBIb8OgbiBLaeG6v20sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!3b1!8m2!3d21.0277644!4d105.8341598!3m4!1s0x3135ab394353b821:0x47c950bb0f081a1c!8m2!3d21.0406474!4d105.7985115?hl=vi-VN";
         $room->statusId = 1;
         $room->description = " Một trong những chỗ nghỉ bán chạy nhất ở Ngọc Quang của chúng tôi!

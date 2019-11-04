@@ -35,7 +35,7 @@
                         <input type="text" class="form-control" name="address" placeholder="Đường,quận,thành phố...">
                     </div>
                     <div class="form-group ">
-                        <label>Thời gian thuê tối thiểu(Tháng)</label>
+                        <label>Thời gian thuê tối thiểu (Tháng)</label>
                         <input type="text" class="form-control" name="minRentTime"
                         >
                     </div>
@@ -57,14 +57,15 @@
 
                     </div>
                     <div class="form-group">
-                        <label>Ảnh</label>
-                        <input required type="file" class="form-control" name="images[]" placeholder="address" multiple>
-                    </div>
-                    <div class="form-group">
-                        <label>Thumbnail</label>
+                        <label>Ảnh đại diện</label>
                         <input required type="file" class="form-control" name="thumbnail" placeholder="address"
                                multiple>
                     </div>
+                    <div class="form-group">
+                        <label>Ảnh khác</label>
+                        <input required type="file" class="form-control" name="images[]" placeholder="address" multiple>
+                    </div>
+
                 </div>
 
                 <div class="col-md-6">
@@ -74,29 +75,29 @@
                             <input type="text" class="form-control" name="area">
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Giá Điện (VNĐ)</label>
+                            <label>Giá Điện (VNĐ/kw)</label>
                             <input type="text" class="form-control" name="electricFee" requidred>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <label>Giá Nước (VNĐ)</label>
+                            <label>Giá Nước (VNĐ/m3)</label>
                             <input type="text" class="form-control" name="waterFee" required>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label>Tiền Vệ Sinh(VNĐ)</label>
+                            <label>Tiền Vệ Sinh(VNĐ/tháng)</label>
                             <input type="text" class="form-control" name="trashFee" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label>Giá thuê (VNĐ)</label>
+                        <label>Giá thuê (VNĐ/tháng)</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1"
                                placeholder="1 000 000, 3 000 000..." name="pricePerMonth">
                     </div>
                     <div class="form-group row">
-                        <label>Link map</label>
+                        <label>Đường dẫn bản đồ</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1"
                                name="linkmap" required>
                     </div>
