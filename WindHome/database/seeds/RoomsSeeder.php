@@ -15,7 +15,7 @@ class RoomsSeeder extends Seeder
         $room = new Room();
         $room->name = 'WindHome1';
         $room->address = 'Thanh Xuân';
-        $room->cityId = 1;
+        $room->cityId = 2;
         $room->pricePerMonth = 3000000;
         $room->minRentTime = 6;
         $room->electricFee = 4000;
@@ -50,7 +50,7 @@ Flamingo Dai Lai Resort đã chào đón khách Booking.com từ Ngày 25 Tháng
         $room = new Room();
         $room->name = 'WindHome2';
         $room->address = 'Cầu Giấy';
-        $room->cityId = 1;
+        $room->cityId = 2;
         $room->pricePerMonth = 2000000;
         $room->minRentTime = 6;
         $room->electricFee = 4000;
@@ -85,7 +85,7 @@ Flamingo Dai Lai - Forest In The Sky đã chào đón khách Booking.com từ Ng
         $room = new Room();
         $room->name = 'WindHome3';
         $room->address = 'Ba Đình';
-        $room->cityId = 1;
+        $room->cityId = 2;
         $room->pricePerMonth = 1500000;
         $room->minRentTime = 6;
         $room->electricFee = 4000;
@@ -117,7 +117,7 @@ Happy Villa Royal Bird by Flamingo Villa Owner đã chào đón khách Booking.c
         $room = new Room();
         $room->name = 'WindHome4';
         $room->address = 'Đống Đa';
-        $room->cityId = 1;
+        $room->cityId = 2;
         $room->pricePerMonth = 1500000;
         $room->minRentTime = 6;
         $room->electricFee = 4000;
