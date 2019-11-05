@@ -27,6 +27,7 @@ class RoomService implements RoomServiceInterface
     {
         $data=$request->all();
         Session::flash('message', 'Tạo phòng thành công');
+
         return $this->roomRepository->store($data);
 
     }

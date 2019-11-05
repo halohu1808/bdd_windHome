@@ -35,7 +35,7 @@ abstract class RepositoryEloquent implements RepositoryInterface
 
     public function update($obj, array $data)
     {
-       return  $obj->update($data);
+        return $obj->update($data);
     }
 
     public function destroy($obj)

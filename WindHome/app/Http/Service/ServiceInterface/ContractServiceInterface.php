@@ -34,5 +34,10 @@ interface ContractServiceInterface
 
     public function cancelRoom($id);
 
+    public function extensionContract($id);
+
+    public function extensionUpdate($request, $id);
+
+    public function checkEmpty($id);
 
 }

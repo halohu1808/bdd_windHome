@@ -15,11 +15,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
+
                     <form action="{{route("room.findByCity")}}" method="post">
                         @csrf
                         <div class="wrapper">
                             <div class="pr-2">
-                                {{--                                Tim Kiem goi y--}}
+
                                 <input type="text" class="typeahead form-control" name="city"
                                        placeholder="Nhập địa điểm">
                             </div>
@@ -29,9 +30,6 @@
                                     Nâng Cao
                                 </a>
                                 <button type="submit" class="btn btn-outline-primary">Tìm Kiếm</button>
-                                {{--                                <a class="btn btn-outline-secondary" href="{{route('room.searchAdvance')}}"> Nâng Cao</a>--}}
-
-                                {{--                                test--}}
 
                                 <div class="collapse pt-3" id="collapseExample" >
                                     <div>
@@ -42,8 +40,14 @@
                                     </div>
 
                                 </div>
-                                {{--                                endtest--}}
                             </div>
+
+                    <div class="wrapper">
+                        <div class="pr-2">
+                            <input type="text" class="form-control" name="where" placeholder="Nhập địa điểm">
+                        </div>
+                        <div>
+                            <a class="btn btn-outline-primary" href="{{route("room.list")}}"> Tìm Kiếm</a>
                         </div>
                     </form>
                 </ul>

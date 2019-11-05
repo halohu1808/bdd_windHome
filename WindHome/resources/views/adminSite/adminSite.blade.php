@@ -13,6 +13,25 @@
             @endif
 
         </div>
+        <div class="col-12">
+            @if (Session::has('update'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('update') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('create'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('create') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('delete'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('delete') }}</p>
+            @endif
+
+        </div>
+
 
         <div class="row">
             <div class="col-md-6">
@@ -49,6 +68,9 @@
                         <td>{{$room->area}}</td>
                         <td>{{$room->guest}}</td>
                         <td>{{$room->status->name}}</td>
+                        <td><a href="{{route('room.edit',$room->id)}}" class="btn btn-outline-primary">Update</a></td>
+                        <td><a href="{{route('room.destroy',$room->id)}}" class="btn btn-outline-secondary"
+                               onclick="return confirm('Bạn có muốn chắc chắn xóa không')">Delete</a></td>
                     </tr>
                     @endforeach
                     </tbody>
