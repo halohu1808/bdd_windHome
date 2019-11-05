@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UsersRequest;
 use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Service\ServiceInterface\UserServiceInterface;
+use Cassandra\Session;
 use Illuminate\Http\Request;
 
 
@@ -70,6 +71,7 @@ class UserController extends Controller
         $feedback->content = $request->contentt;
         $feedback->contract_id = $id;
         $feedback->save();
+        \Illuminate\Support\Facades\Session::flash('feedback', 'Bạn gửi phản hồi thành công');
 
         return redirect()->route('userRoute.contractRun');
 

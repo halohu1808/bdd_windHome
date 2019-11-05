@@ -9,6 +9,7 @@ use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ContractController extends Controller
 {
@@ -46,6 +47,7 @@ class ContractController extends Controller
         $this->contractService->store($request, $id);
         $roomId = $contract->room->id;
         $this->roomService->changeStatusWhenCreateContract($roomId);
+        Session::flash('createContract', 'Tạo hợp đồng thành công');
         return redirect()->route('room.index');
     }
 
@@ -53,6 +55,7 @@ class ContractController extends Controller
     {
         $this->contractService->cancel($id);
         $this->roomService->changeStatusWhenNotOk($id);
+        Session::flash('contractCancel', 'Bạn vừa hủy tạo hợp đồng');
         return redirect()->route('room.index');
     }
 
@@ -60,6 +63,7 @@ class ContractController extends Controller
     {
         $this->roomService->endContract($id);
         $this->contractService->endContract($id);
+        Session::flash('endContracts', 'Bạn vừa hủy hợp đồng');
         return redirect()->route('admin.index');
     }
 
@@ -71,12 +75,14 @@ class ContractController extends Controller
     public function underContrucction($id)
     {
         $this->roomService->underContruction($id);
+        Session::flash('underContract', 'Bạn vừa chuyển phòng sang sữa chữa');
         return redirect()->route('admin.index');
     }
 
     public function hasRoom($id)
     {
         $this->roomService->hasRoom($id);
+        Session::flash('hasRoom', 'Phòng vừa chuyển từ sữa chữa sang còn phòng');
         return redirect()->route('admin.index');
     }
 
@@ -86,6 +92,7 @@ class ContractController extends Controller
     {
         $this->contractService->end($id);
         $this->roomService->end($id);
+        Session::flash('end', 'Bạn vừa hủy hợp đồng cho khách');
         return redirect()->route('admin.index');
     }
 
@@ -93,6 +100,15 @@ class ContractController extends Controller
     {
         $this->roomService->cancelEnd($id);
         $this->contractService->cancelEnd($id);
+        Session::flash('contractCancelEnd', 'Bạn vừa hủy yêu cầu hủy hợp đồng');
+        return redirect()->route('userRoute.allContract');
+    }
+
+    public function cancelEndByAdmin($id)
+    {
+        $this->roomService->cancelEnd($id);
+        $this->contractService->cancelEnd($id);
+        Session::flash('cancelEndByAdmin', 'Bạn vừa hủy yêu cầu hủy hợp đồng');
         return redirect()->route('admin.index');
     }
 
@@ -115,6 +131,7 @@ class ContractController extends Controller
     public function extensionUpdate(ExtensionRequest $request, $id)
     {
         $this->contractService->extensionUpdate($request, $id);
+        Session::flash('extensionUpdate', 'Bạn vừa gia hạn hợp đồng thành công');
         return redirect()->route('admin.index');
 
     }

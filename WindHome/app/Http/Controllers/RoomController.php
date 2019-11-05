@@ -79,6 +79,15 @@ RoomController extends Controller
         $room->electricFee = $request->electricFee;
         $room->waterFee = $request->waterFee;
         $room->trashFee = $request->trashFee;
+        if ($thumbnail = $request->file('thumbnail')) {
+
+            $name = $thumbnail->getClientOriginalName();
+            $fileName = str_random(4) . "_" . $name;
+            $thumbnail->move('storage/img/home/', $fileName);
+
+            $room->thumbnail = $fileName;
+
+        }
 
         $room->save();
 
@@ -133,8 +142,19 @@ RoomController extends Controller
         $room->electricFee = $request->electricFee;
         $room->waterFee = $request->waterFee;
         $room->trashFee = $request->trashFee;
+        if ($thumbnail = $request->file('thumbnail')) {
 
-        $room->save();
+            $name = $thumbnail->getClientOriginalName();
+            $fileName = str_random(4) . "_" . $name;
+            $thumbnail->move('storage/img/home/', $fileName);
+
+
+            $room->thumbnail = $fileName;
+//            dd($room->thumbnail);
+
+        }
+
+        $this->roomService->save($room);
 
         if ($files = $request->file('images')) {
             foreach ($files as $file) {
@@ -175,6 +195,7 @@ RoomController extends Controller
         $room = $this->roomService->booking($request->roomId);
         $this->contractService->booking($request, $room, $userId);
         $images = $this->imageService->getAllImageByRoomId($request->roomId);
+        Session::flash('booking', 'Bạn giữ phòng thành công');
         return view('listSite.roomDetail', compact('room', 'images'));
     }
 
