@@ -1,6 +1,6 @@
 @extends('layout.home')
 @section('content')
-
+<style></style>
     <div class="container">
         <div class="col-12">
             @if (Session::has('booking'))
@@ -11,69 +11,16 @@
 
         <div class="row pt-5">
             <div class="col-md-7">
-                {{--                {{$imgLength = count($imagesSeeder) }}--}}
 
-                {{--                <img src={{asset("storage/img/home/". $room->image)}} class="img-fluid" alt="Responsive image">--}}
-                {{--                --}}{{--thông tin thêm--}}
-
-                {{-- Hiển thị nhiều ảnh trong trang detail               --}}
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100" alt="...">
-                        </div>
-
-                        @foreach($images as $key => $image)
-                            <div class="carousel-item">
-                                <img src={{asset("storage/img/home/". $images[$key]->images)}} class="d-block w-100"
-                                alt="...">
-                                {{--                            {{count($imagesSeeder)}}--}}
-                            </div>
-
+                    <ul id="lightSlider">
+                        @foreach ($images as $image)
+                            <li data-thumb={{asset("storage/img/home/". $image->images)}}>
+                                <img src={{asset("storage/img/home/". $image->images)}}>
+                            </li>
                         @endforeach
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
 
+                    </ul>
 
-                {{--                <div class="row pt-2">--}}
-                {{--                    <table class="table table-borderless">--}}
-                {{--                        <tr>--}}
-                {{--                            <td class="align-self-md-center">--}}
-                {{--                                <i class="fas fa-bath fa-1x"></i><br>--}}
-                {{--                                <label>Phòng Tắm</label><br>--}}
-                {{--                                <div class="pl-2">--}}
-                {{--                                    @if (isset($room->bathRoom)) Có--}}
-                {{--                                    @else Không--}}
-                {{--                                    @endif--}}
-                {{--                                </div>--}}
-                {{--                            </td>--}}
-                {{--                            <td>--}}
-
-                {{--                            </td>--}}
-                {{--                            <td>--}}
-                {{--                                <i class="fas fa-user"></i>--}}
-                {{--                                <label>Số người</label>--}}
-                {{--                            </td>--}}
-                {{--                            <td>--}}
-                {{--                                <div class="pl-2">{{$room->guest}}</div>--}}
-                {{--                            </td>--}}
-                {{--                        </tr>--}}
-                {{--                    </table>--}}
-                {{--                </div>--}}
-                {{--                kết thông tin thêm--}}
             </div>
 
             <div class="col-md-5">

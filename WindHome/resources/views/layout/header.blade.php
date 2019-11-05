@@ -20,7 +20,7 @@
                         </div>
                         <div>
                             {{--                            <button type="submit" class="btn btn-outline-secondary">Tìm</button>--}}
-                            <a class="btn btn-outline-secondary" href="{{route("room.list")}}"> Tìm Kiếm</a>
+                            <a class="btn btn-outline-primary" href="{{route("room.list")}}"> Tìm Kiếm</a>
                         </div>
                     </div>
                 </ul>
