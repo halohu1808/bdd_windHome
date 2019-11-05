@@ -20,8 +20,7 @@
                         @csrf
                         <div class="wrapper">
                             <div class="pr-2">
-                                <input type="text" class="typeahead form-control" name="city"
-                                       placeholder="Nhập địa điểm">
+                                <input type="text" required class="typeahead form-control" name="city" placeholder="Nhập địa điểm">
                             </div>
                             <div>
                                 <a class="btn btn-outline-secondary" data-toggle="collapse" href="#collapseExample"
