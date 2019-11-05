@@ -31,6 +31,50 @@
             @endif
 
         </div>
+        <div class="col-12">
+            @if (Session::has('createContract'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('createContract') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('contractCancel'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('contractCancel') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('underContract'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('underContract') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('hasRoom'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('hasRoom') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('extensionUpdate'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('extensionUpdate') }}</p>
+            @endif
+        </div>
+        <div class="col-12">
+            @if (Session::has('endContract'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('endContract') }}</p>
+            @endif
+        </div>
+        <div class="col-12">
+            @if (Session::has('cancelEndByAdmin'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('cancelEndByAdmin') }}</p>
+            @endif
+        </div>
+        <div class="col-12">
+            @if (Session::has('end'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('end') }}</p>
+            @endif
+        </div>
 
 
         <div class="row">

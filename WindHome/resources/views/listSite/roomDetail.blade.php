@@ -2,6 +2,12 @@
 @section('content')
 <style></style>
     <div class="container">
+        <div class="col-12">
+            @if (Session::has('booking'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('booking') }}</p>
+            @endif
+
+        </div>
 
         <div class="row pt-5">
             <div class="col-md-7">
