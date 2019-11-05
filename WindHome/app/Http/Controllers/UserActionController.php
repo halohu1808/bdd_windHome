@@ -6,6 +6,7 @@ use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Service\ServiceInterface\ImageServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class UserActionController extends Controller
 {
@@ -32,6 +33,7 @@ class UserActionController extends Controller
     {
         $this->roomService->cancelRoom($roomId);
         $this->contractService->cancelRoom($contractId);
+        Session::flash('cancelRoom', 'Bạn vừa chọn hủy hợp đồng');
         return redirect()->route('userRoute.allContract');
 
     }

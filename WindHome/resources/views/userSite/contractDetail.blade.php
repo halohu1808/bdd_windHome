@@ -99,7 +99,8 @@
                         <div class="col-md-6">
                             {{--                                Hủy hợp đồng request--}}
                             <a href="{{route('UserAction.cancelRoom',['roomId'=> $room->id,'contractId'=>$contract->id] )}}"
-                               class="btn btn-primary">Huỷ Hợp
+                               class="btn btn-primary"
+                               onclick="return confirm('Bạn có muốn chắc chắn muốn hủy không ?')">Huỷ Hợp
                                 Đồng</a>
                         </div>
                         <div class="col-md-6">
@@ -124,7 +125,8 @@
                                         <form method="POST" action="{{route('user.feedback',$contract->id)}}">
                                             @csrf
                                             <div class="modal-body">
-                                                <textarea name="contentt" class="form-control" rows="5" required></textarea>
+                                                <textarea name="contentt" class="form-control" rows="5"
+                                                          required></textarea>
                                             </div>
 
                                             <div class="modal-footer">
@@ -148,7 +150,8 @@
                 <div class="row">
                     <div class="col-md-6">
                         {{--                                Hủy yêu cầu hủy hợp đồng--}}
-                        <a href="{{route('contract.cancelEnd',$room->id)}}" class="btn btn-primary">Hủy Yêu
+                        <a href="{{route('contract.cancelEnd',$room->id)}}" class="btn btn-primary"
+                           onclick="return confirm('Bạn có chắc chắn muốn hủy')">Hủy Yêu
                             Cầu Hủy Hợp Đồng</a>
                     </div>
 

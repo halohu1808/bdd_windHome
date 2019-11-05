@@ -74,13 +74,15 @@ class UserController extends Controller
         $feedback->content = $request->contentt;
         $feedback->contract_id = $id;
         $feedback->save();
+
+        Session::flash('feedback', 'Bạn gửi phản hồi thành công');
+
         return redirect()->route('userRoute.contractRun');
         $user = $this->userService->findById($id);
-        if (Hash::check($request->passwordOld, $user->password)){
+        if (Hash::check($request->passwordOld, $user->password)) {
             $this->userService->updatePassword($request, $id);
             return view('users.detail', compact('user'));
-        }
-        else {
+        } else {
             Session::flash('message', 'Mật khẩu cũ không đúng');
             return view('users.changePassword', compact('user'));
         }
