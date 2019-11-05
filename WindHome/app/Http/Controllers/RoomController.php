@@ -38,8 +38,6 @@ RoomController extends Controller
     public function findByCity(Request $request, Room $room)
     {
         $city = City::where('name', 'LIKE', '%' . $request->city . '%')->get();
-        dd($city);
-
         if (count($city) == 0){
             Session::flash('unknowCity','Không có thành phố đấy');
             return redirect()->route('room.list');
@@ -127,7 +125,6 @@ RoomController extends Controller
     {
         $room = $this->roomService->findById($id);
         $images = $this->imageService->getAllImageByRoomId($id);
-        $thumpImages = [];
         return view('listSite.roomDetail', compact('room', 'images'));
     }
 

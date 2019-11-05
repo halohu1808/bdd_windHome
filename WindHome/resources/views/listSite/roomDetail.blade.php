@@ -1,35 +1,27 @@
 @extends('layout.home')
 @section('content')
-<style></style>
+    <style></style>
     <div class="container">
         <div class="row pt-5">
             <div class="col-md-7">
 
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
+{{--                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">--}}
+{{--                    <ol class="carousel-indicators">--}}
+{{--                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>--}}
+{{--                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>--}}
+{{--                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>--}}
+{{--                    </ol>--}}
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100" alt="...">
-                        </div>
 
-                        @foreach($images as $key => $image)
-                            <div class="carousel-item">
-                                <img src={{asset("storage/img/home/". $images[$key]->images)}} class="d-block w-100"
-                                alt="...">
-
-                            </div>
-
-                    <ul id="lightSlider">
-                        @foreach ($images as $image)
-                            <li data-thumb={{asset("storage/img/home/". $image->images)}}>
-                                <img src={{asset("storage/img/home/". $image->images)}}>
-                            </li>
-                        @endforeach
-                    </ul>
+                            <ul id="lightSlider">
+                                @foreach ($images as $image)
+                                    <li data-thumb={{asset("storage/img/home/". $image->images)}}>
+                                        <img src={{asset("storage/img/home/". $image->images)}}>
+                                    </li>
+                                @endforeach
+                            </ul>
+                    </div>
+{{--                </div>--}}
             </div>
 
             <div class="col-md-5">
