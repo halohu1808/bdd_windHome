@@ -20,7 +20,6 @@
             </div>
         </div>
 
-
         <div class="row pt-5">
             <table class="table table-hover">
                 <thead class="thead-light">
@@ -30,7 +29,6 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Address</th>
-
                 </tr>
                 </thead>
                 @foreach($users as $key => $user)
@@ -43,11 +41,8 @@
                     </tr>
                     @endforeach
                     </tbody>
-
             </table>
         </div>
         <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Create</a>
-
-
     </div>
 @endsection

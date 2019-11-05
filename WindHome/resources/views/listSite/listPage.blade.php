@@ -3,17 +3,15 @@
 @section('content')
     <!-- Page Content  -->
     <div id="content">
-{{--        <div class="row">--}}
-{{--            <div class="col-md-4">--}}
-{{--                <button type="button" id="sidebarCollapse" class="btn btn-outline-secondary">--}}
-{{--                    <i class="fa fa-arrow-left"></i>--}}
-{{--                    <span>Lọc</span>--}}
-{{--                </button>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <hr>--}}
+        <div>
+            @if(\Illuminate\Support\Facades\Session::has('unknowCity'))
+                <p class="alert alert-dark" > {{\Illuminate\Support\Facades\Session::get('unknowCity')}} </p>
+            @endif
+        </div>
+
 
         <div class="card-deck row">
+
             @foreach($roomsSort as $key => $room)
                 <div class="col-md-3 pt-5">
                     <img class="card-img-top" src="{{asset("storage/img/home/" .$room->thumbnail)}}">

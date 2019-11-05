@@ -20,7 +20,6 @@
                         @csrf
                         <div class="wrapper">
                             <div class="pr-2">
-
                                 <input type="text" class="typeahead form-control" name="city"
                                        placeholder="Nhập địa điểm">
                             </div>
@@ -31,23 +30,15 @@
                                 </a>
                                 <button type="submit" class="btn btn-outline-primary">Tìm Kiếm</button>
 
-                                <div class="collapse pt-3" id="collapseExample" >
+                                <div class="collapse pt-3" id="collapseExample">
                                     <div>
                                         <input type="text" name="minPrice" placeholder="giá tối thiểu(VNĐ)">
                                         <input type="text" name="maxPrice" placeholder="giá tối đa(VNĐ)">
                                         <input type="text" name="guest" placeholder="số lượng khách(ngừoi)">
                                         <input type="text" name="area" placeholder="diện tích tối thiểu(m2)">
                                     </div>
-
                                 </div>
                             </div>
-
-                    <div class="wrapper">
-                        <div class="pr-2">
-                            <input type="text" class="form-control" name="where" placeholder="Nhập địa điểm">
-                        </div>
-                        <div>
-                            <a class="btn btn-outline-primary" href="{{route("room.list")}}"> Tìm Kiếm</a>
                         </div>
                     </form>
                 </ul>

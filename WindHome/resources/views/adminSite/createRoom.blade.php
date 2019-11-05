@@ -75,40 +75,25 @@
                             <input type="text" class="form-control" name="area" required>
                         </div>
                         <div class="form-group col-md-6">
-<<<<<<< HEAD
-                            <label>Giá Điện (VNĐ/kw)</label>
-=======
-                            <label>Giá Điện (VNĐ/Số )</label>
->>>>>>> bd7e373ff3c78b68a919e3e2b9e4656d835ce7af
+                            <label>Giá Điện (VNĐ/kW)</label>
+
                             <input type="text" class="form-control" name="electricFee" requidred>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
-<<<<<<< HEAD
                             <label>Giá Nước (VNĐ/m3)</label>
-=======
-                            <label>Giá Nước (VNĐ/Khối)</label>
->>>>>>> bd7e373ff3c78b68a919e3e2b9e4656d835ce7af
                             <input type="text" class="form-control" name="waterFee" required>
                         </div>
 
                         <div class="form-group col-md-6">
-<<<<<<< HEAD
-                            <label>Tiền Vệ Sinh(VNĐ/tháng)</label>
-=======
                             <label>Tiền Vệ Sinh (VNĐ/Tháng)</label>
->>>>>>> bd7e373ff3c78b68a919e3e2b9e4656d835ce7af
                             <input type="text" class="form-control" name="trashFee" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
-<<<<<<< HEAD
-                        <label>Giá thuê (VNĐ/tháng)</label>
-=======
                         <label>Giá thuê (VNĐ/Tháng)</label>
->>>>>>> bd7e373ff3c78b68a919e3e2b9e4656d835ce7af
                         <input type="text" class="form-control" id="exampleFormControlInput1"
                                placeholder="1 000 000, 3 000 000..." name="pricePerMonth" required>
                     </div>
@@ -119,7 +104,6 @@
                     </div>
                     <br>
                     <br>
-
 
                     <label>Thông tin thêm</label>
                     <br>
@@ -169,6 +153,4 @@
             </div>
         </form>
     </div>
-
-
 @endsection

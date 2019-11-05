@@ -38,6 +38,13 @@ RoomController extends Controller
     public function findByCity(Request $request, Room $room)
     {
         $city = City::where('name', 'LIKE', '%' . $request->city . '%')->get();
+        dd($city);
+
+        if (count($city) == 0){
+            Session::flash('unknowCity','Không có thành phố đấy');
+            return redirect()->route('room.list');
+        }
+
 
         $room = $room->newQuery();
         $room->where('cityId', $city[0]->id);
@@ -55,6 +62,7 @@ RoomController extends Controller
         }
 
         $roomsSort = $room->get();
+
         return view('listSite.listPage', compact('roomsSort'));
     }
 
