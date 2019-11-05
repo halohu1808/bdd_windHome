@@ -13,6 +13,10 @@ class CitiesSeeder extends Seeder
     public function run()
     {
         $city = new City();
+        $city->name = "Chọn Thành Phố";
+        $city->save();
+
+        $city = new City();
         $city->name = "Hà Nội";
         $city->save();
 
