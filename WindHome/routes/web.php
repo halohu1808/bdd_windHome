@@ -74,7 +74,7 @@ Route::group(['prefix' => 'user'], function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
-    Route::get('/detail/{id}', 'AdminController@detail')->name('admin.detail');
+    Route::get('/detail/{id}/{key?}', 'AdminController@detail')->name('admin.detail');
     Route::post('/edit/{id}', 'AdminController@editStatus')->name('admin.editStatus');
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');

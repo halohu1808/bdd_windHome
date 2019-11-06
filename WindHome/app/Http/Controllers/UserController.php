@@ -7,9 +7,9 @@ use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Requests\UserDetailRequest;
 use App\Http\Requests\UserPasswordRequest;
 use App\Http\Service\ServiceInterface\UserServiceInterface;
+use Cassandra\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 
 
 class UserController extends Controller
@@ -76,7 +76,6 @@ class UserController extends Controller
         $feedback->save();
 
         Session::flash('feedback', 'Bạn gửi phản hồi thành công');
-
         return redirect()->route('userRoute.contractRun');
         $user = $this->userService->findById($id);
         if (Hash::check($request->passwordOld, $user->password)) {

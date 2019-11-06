@@ -70,6 +70,7 @@ class RouterUserController extends Controller
 
     public function contractDetail($contractId)
     {
+
         $contract = $this->contractService->findById($contractId);
         $room = $this->roomService->findById($contract->roomId);
         $images = $this->imageService->getAllImageByRoomId($contract->roomId);
