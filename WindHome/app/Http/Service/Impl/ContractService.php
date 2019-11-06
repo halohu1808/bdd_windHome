@@ -36,7 +36,8 @@ class ContractService implements ContractServiceInterface
 
 //        dd($contract);
 
-        $this->contractRepository->save($contract);
+         $this->contractRepository->save($contract);
+         return $contract;
 
     }
 

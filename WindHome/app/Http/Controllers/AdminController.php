@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Service\ServiceInterface\ImageServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -23,10 +24,12 @@ class AdminController extends Controller
         return view('adminSite.adminSite', compact('rooms'));
     }
 
-    public function detail($id)
+    public function detail($id, $key)
     {
+        Auth::user()->notifications[$key]->markAsRead();
         $images = $this->imageService->getAllImageByRoomId($id);
         $room = $this->roomService->findById($id);
+
         return view('adminSite.roomDetail', compact('room', 'images'));
     }
 

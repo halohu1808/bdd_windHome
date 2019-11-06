@@ -12,7 +12,9 @@ use App\Http\Service\ServiceInterface\ContractServiceInterface;
 
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use App\Image;
+use App\Notifications\Booking;
 use App\Room;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -47,6 +49,8 @@ RoomController extends Controller
     public function index()
     {
         $rooms = $this->roomService->getAll();
+
+
         return view('adminSite.adminSite', compact('rooms'));
     }
 
@@ -193,10 +197,15 @@ RoomController extends Controller
     public function booking(BookkingRequest $request)
     {
         $userId = Auth::user()->id;
+
 //        $room = $this->roomService->findById($request->roomId);
         $room = $this->roomService->booking($request->roomId);
-        $this->contractService->booking($request, $room, $userId);
+        $contract = $this->contractService->booking($request, $room, $userId);
         $images = $this->imageService->getAllImageByRoomId($request->roomId);
+
+        $admin = User::findorfail(1);
+        $user = Auth::user();
+        $admin->notify(new Booking($user, $contract));
         Session::flash('booking', 'Bạn giữ phòng thành công');
         return view('listSite.roomDetail', compact('room', 'images'));
     }

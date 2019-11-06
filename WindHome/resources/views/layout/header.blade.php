@@ -41,6 +41,21 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fas fa-bell"></i> <span class="caret"> {{count(\Illuminate\Support\Facades\Auth::user()->unreadNotifications)}}
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                @foreach(\Illuminate\Support\Facades\Auth::user()->unreadNotifications as $key=>$notification)
+                                    <a class="pl-4"
+                                       href="{{route('admin.detail',['id'=>$notification->data['room_id'],'key'=>$key++])}}"> {{$notification->data['user_name'] }}
+                                        đã giữ phòng</a><br/>
+                                @endforeach
+
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -48,14 +63,15 @@
                                 @if(Auth::user()->roll==1)
                                     <a class="pl-4" href="{{route('room.index')}}"> Trang quản
                                         lí</a> {{--Hải thêm để demo--}}
-                                    @else
+                                @else
                                     <a class="pl-4" href="{{route('userRoute.userSite')}}"> Trang quản
                                         lí</a> {{--Hải thêm để demo--}}
                                 @endif
 
                                 <a class="pl-4" href="{{route('user.detail', Auth::user()->id)}}"> Hồ sơ cá nhân</a>
 
-                                <a class="pl-4" href="{{route('user.changePassword', Auth::user()->id)}}"> Thay đổi mật khẩu</a>
+                                <a class="pl-4" href="{{route('user.changePassword', Auth::user()->id)}}"> Thay đổi mật
+                                    khẩu</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -69,6 +85,7 @@
                                 </form>
                             </div>
                         </li>
+
                     @endguest
                 </ul>
             </div>
