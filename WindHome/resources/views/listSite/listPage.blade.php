@@ -1,39 +1,25 @@
 @extends('layout.home')
 
-@section('sideBar')
-    @include('listSite.filterSideBar')
-@endsection
-
 @section('content')
     <!-- Page Content  -->
     <div id="content">
-        <div class="row">
-            <div class="col-md-4">
-                <button type="button" id="sidebarCollapse" class="btn btn-outline-secondary">
-                    <i class="fa fa-arrow-left"></i>
-                    <span>Lọc</span>
-                </button>
-            </div>
+        <div>
+            @if(\Illuminate\Support\Facades\Session::has('unknowCity'))
+                <p class="alert alert-dark" > {{\Illuminate\Support\Facades\Session::get('unknowCity')}} </p>
+            @endif
         </div>
+
 
         <div class="card-deck row">
 
-            {{--            bat dau FOR--}}
-
-{{--            {{$img = 0}}--}}
             @foreach($roomsSort as $key => $room)
-
-
                 <div class="col-md-3 pt-5">
-                    <img class="card-img-top"
-                         src={{asset("storage/img/home/". $images[$key]->images)}}>
+                    <img class="card-img-top" src="{{asset("storage/img/home/" .$room->thumbnail)}}">
                     <div class="card-body alert bg-white">
                         <a href="#"><h5 class="card-title">Phòng {{$room->name}}</h5></a>
                         <p class="blockquote-footer">
                             {{$room->status->name}}
                         </p>
-
-
                         <div class="row">
                             <div class="wrapper col-md-6">
                                 <div class=""><i class="fas fa-user"></i></div>
@@ -45,8 +31,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="card-footer ">
                         <a href="{{route('room.detail', $room->id)}}" class="btn btn-outline-primary btn-sm">Chi
                             Tiết</a>
@@ -55,11 +39,7 @@
                             VND </label>
                     </div>
                 </div>
-
-{{--                {{$img++}}--}}
             @endforeach
         </div>
-
     </div>
-
 @endsection

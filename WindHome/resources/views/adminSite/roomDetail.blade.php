@@ -5,29 +5,25 @@
 @section('content')
     <div class="container">
         <h2 class="pt-5">PHÒNG</h2>
-        <div class="row pt-2">
 
+        <div class="row pt-2">
             <div class="col-md-7">
 
+                <div class="carousel-item active" style="max-height: 300px">
+                    <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100">
+                    <div class="demo">
+                        <ul id="lightSlider">
+                            @foreach ($images as $image)
+                                <li data-thumb="">
+                                    <img src={{asset("storage/img/home/". $image->images)}}/>
+                                </li>
+                            @endforeach
 
-                {{--                <div class="carousel-item active">--}}
-                {{--                    <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100" alt="...">--}}
-                {{--                </div>--}}
+                        </ul>
+                    </div>
 
-                <div class="demo">
-                    <ul id="lightSlider">
-                        @foreach ($images as $image)
-                            <li data-thumb="">
-                                <img src={{asset("storage/img/home/". $image->images)}}/>
-                            </li>
-                        @endforeach
-
-
-                    </ul>
                 </div>
-
             </div>
-
             <div class="col-md-5">
 
 
@@ -47,9 +43,7 @@
                         <label>Tiền điện: {{$room->electricFee}} VNĐ/Số</label><br>
                         <label>Tiền nước: {{$room->waterFee}} VNĐ/Khối</label><br>
                         <label>Tiền vệ sinh: {{$room->trashFee}} VNĐ/tháng</label>
-
                         <br>
-
                         <hr>
                     </div>
 
@@ -93,7 +87,6 @@
                             </div> {{--cooking--}}
                         </div>
 
-
                         <div class="wrapper col-md-4">
                             <i class="fas fa-snowflake"></i>
                             <div class="pl-2">
@@ -107,10 +100,12 @@
                     @if($room->statusId==3)
                         <div class="row">
                             <div class="col-md-6">
+
                                 <a href="{{route('contract.cancel',$room->id)}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn hủy không ?')">Hủy Yêu Cầu</a>
                             </div>
                             <div class="col-md-6">
-                                <a href="{{route('contract.run',$room->id)}}" class="btn btn-primary">Tạo Hợp Đồng</a>
+                                <a href="{{route('contract.run',$room->id)}}" class="btn btn-primary">Tạo Hợp
+                                    Đồng</a>
                             </div>
                         </div>
                     @elseif($room->statusId==2)
@@ -121,7 +116,8 @@
                             </div>
 
                             <div class="col-md-6">
-                                <a href="{{route('contract.extensionContract',$room->id)}}" class="btn btn-primary">Gia Hạn Hợp Đồng</a>
+                                <a href="{{route('contract.extensionContract',$room->id)}}" class="btn btn-primary">Gia
+                                    Hạn Hợp Đồng</a>
                             </div>
                         </div>
                         {{--                        Hai code 2 truong hop--}}
@@ -145,15 +141,14 @@
                     @elseif($room->statusId==9)
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="{{route('contract.hasRoom',$room->id)}}" class="btn btn-primary">Còn Phòng</a>
+                                <a href="{{route('contract.hasRoom',$room->id)}}" class="btn btn-primary">Còn
+                                    Phòng</a>
                             </div>
                         </div>
                     @endif
                 </form>
             </div>
-
         </div>
-        <br>
         <br>
 
 
