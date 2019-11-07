@@ -1,17 +1,18 @@
 .demo {
-    width:200px;
+    width:400px;
 }
-ul {
-    list-style: none outside none;
-    padding-left: 0;
-    margin-bottom:0;
-}
-li {
-    display: block;
-    float: left;
-    margin-right: 6px;
-    cursor:pointer;
-}
+/*ul {*/
+/*    list-style: none outside none;*/
+/*    padding-left: 0;*/
+/*    margin-bottom:0;*/
+/*}*/
+/*li {*/
+/*    display: block;*/
+/*    float: left;*/
+/*    margin-right: 6px;*/
+/*    cursor:pointer;*/
+/*    max-width: 100%*/
+/*}*/
 img {
     display: block;
     height: auto;

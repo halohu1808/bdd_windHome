@@ -1,11 +1,16 @@
 @extends('layout.home')
 
+
+{{--@section('sideBar')--}}
+{{--    @include('listSite.filterSideBar')--}}
+{{--@endsection--}}
+
 @section('content')
     <!-- Page Content  -->
     <div id="content">
         <div>
             @if(\Illuminate\Support\Facades\Session::has('unknowCity'))
-                <p class="alert alert-dark" > {{\Illuminate\Support\Facades\Session::get('unknowCity')}} </p>
+                <p class="alert alert-danger" > {{\Illuminate\Support\Facades\Session::get('unknowCity')}} </p>
             @endif
         </div>
 

@@ -6,6 +6,7 @@
 @section('content')
     <!-- Page Content  -->
     <div id="content">
+
         <div class="row">
             <div class="col-md-12">
 
@@ -90,20 +91,26 @@
                 </div>
             </div>
 
-            <div class="row pt-5">
-                <table class="table table-hover">
+            <div class="pt-4">
+                <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Tạo phòng mới</a>
+            </div>
+            <div class="row pt-4">
+
+                <br>
+                <table class="table table-hover pt-4">
                     <thead class="thead-light">
                     <tr>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Price</th>
-                        <th>Area</th>
-                        <th>Guest</th>
-                        <th>Status</th>
+                        <th>Tên phòng</th>
+                        <th>Địa chỉ</th>
+                        <th style=text-align:center>Giá phòng VNĐ/tháng</th>
+                        <th style=text-align:center>Diện tích (m2)</th>
+                        <th style=text-align:center>Số người tối đa</th>
+                        <th style=text-align:center>Trạng thái phòng</th>
                         <th></th>
                         <th></th>
                     </tr>
                     </thead>
+                    <tbody>
                     @foreach($rooms as $room)
                         <tr>
                             <td><a href="{{route('admin.detail',$room->id)}}">{{$room->name}}</a></td>
@@ -117,12 +124,11 @@
                             <td><a href="{{route('room.destroy',$room->id)}}" class="btn btn-outline-secondary"
                                    onclick="return confirm('Bạn có muốn chắc chắn xóa không')">Delete</a></td>
                         </tr>
-                        @endforeach
-                        </tbody>
+                    @endforeach
+                    </tbody>
 
                 </table>
             </div>
-            <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Create</a>
         </div>
 
     </div>

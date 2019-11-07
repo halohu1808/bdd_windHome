@@ -1,8 +1,8 @@
 @extends('layout.home')
 
-@section('sideBar')
-    @include('listSite.filterSideBar')
-@endsection
+{{--@section('sideBar')--}}
+{{--    @include('listSite.filterSideBar')--}}
+{{--@endsection--}}
 
 @section('content')
 
@@ -18,7 +18,8 @@
         <div class="row pt-5">
         </div>
         <div class="row pt-5" style="background: white">
-
+            <div class="col-md-1">
+            </div>
             <div class="col-md-10">
 
                 <form method="post" action="{{route('user.updatePassword',$user->id)}}">
@@ -28,7 +29,7 @@
                         <label for="inputPassword" class="col-sm-3 col-form-label">Mật khẩu cũ</label>
                         <div class="col-sm-9">
                             <input type="password" name="passwordOld" class="form-control"
-                                   placeholder="Old Password">
+                                   placeholder="">
                         </div>
                         <label for="inputPassword" class="col-sm-3 col-form-label"></label>
 
@@ -45,7 +46,7 @@
                         <label for="inputPassword" class="col-sm-3 col-form-label">Mật khẩu mới</label>
                         <div class="col-sm-9">
                             <input type="password" name="passwordNew" class="form-control"
-                                   placeholder="New password">
+                                   placeholder="">
                         </div>
                         <label for="inputPassword" class="col-sm-3 col-form-label"></label>
 
@@ -61,7 +62,7 @@
                         <label for="inputPassword" class="col-sm-3 col-form-label">Nhập lại mật khẩu mới</label>
                         <div class="col-sm-9">
                             <input type="password" name="passwordConfirm" class="form-control"
-                                   placeholder="Confirm password">
+                                   placeholder="">
                         </div>
                         <label for="inputPassword" class="col-sm-3 col-form-label"></label>
 

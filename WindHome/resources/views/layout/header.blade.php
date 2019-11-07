@@ -47,11 +47,11 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Đăng nhập') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Tạo tài khoản') }}</a>
                             </li>
                         @endif
                     @else
@@ -114,6 +114,12 @@
                                              Phòng {{$notification->data['room_name']}} đã bị hủy
                                         </a>
 
+                                    @elseif($notification->type=='App\Notifications\UserFeedback')
+                                        <a class="pl-4"
+                                           href="{{route('adminRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
+                                         {{$notification->data['user_name']}} đã gửi góp ý về phòng {{$notification->data['room_name']}}
+                                        </a>
+
                                     @endif
 
                                 @endforeach
@@ -121,14 +127,14 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a id="navbarDropdown" class="" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @if(Auth::user()->roll==1)
-                                    <a class="pl-4" href="{{route('room.index')}}"> Trang quản
+                                    <a class="pl-4" href="{{route('admin.income')}}"> Trang quản
                                         lí</a> {{--Hải thêm để demo--}}
                                 @else
                                     <a class="pl-4" href="{{route('userRoute.userSite')}}"> Trang quản
@@ -144,7 +150,7 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Thoát') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
