@@ -27,20 +27,38 @@ class AdminController extends Controller
 
     public function detail($id, $key = null)
     {
-        if (($key!='')) {
-            Auth::user()->notifications[$key]->markAsRead();
-
-            $noti = Notification::where ('id',Auth::user()->notifications[$key]->id )->get();
-            $room_id = json_decode($noti[0]->data)->room_id;
-            dd($room_id);
+//        if (($key != '')) {
+//            Auth::user()->notifications[$key]->markAsRead();
+//
+//            $noti = Notification::where('id', Auth::user()->notifications[$key]->id)->get();
+//            $room_id = json_decode($noti[0]->data)->room_id;
+//
+//        }
+        foreach (Auth::user()->notifications as $notification) {
+            $notification->markAsRead();
         }
-
 
 
         $images = $this->imageService->getAllImageByRoomId($id);
         $room = $this->roomService->findById($id);
 
         return view('adminSite.roomDetail', compact('room', 'images'));
+    }
+
+    public function cancelCancelRoom($id, $key = null)
+    {
+        if (($key != '')) {
+            Auth::user()->notifications[$key]->markAsRead();
+            Auth::user()->notifications[$key - 1]->markAsRead();
+        }
+
+
+        $images = $this->imageService->getAllImageByRoomId($id);
+        $room = $this->roomService->findById($id);
+
+        return view('adminSite.roomDetail', compact('room', 'images'));
+
+
     }
 
 
