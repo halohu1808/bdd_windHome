@@ -27,12 +27,29 @@ class AdminController extends Controller
 
     public function detail($id)
     {
-        foreach (Auth::user()->unreadNotifications as $notification) {
+
+        foreach (Auth::user()->notifications as $notification) {
             $notification->markAsRead();
         }
+
+        $images = $this->imageService->getAllImageByRoomId($id);
+        $room = $this->roomService->findById($id);
+
+        return view('adminSite.roomDetail', compact('room', 'images'));
+    }
+
+    public function cancelCancelRoom($id, $key = null)
+    {
+        if (($key != '')) {
+            Auth::user()->notifications[$key]->markAsRead();
+            Auth::user()->notifications[$key - 1]->markAsRead();
+        }
+
         $images = $this->imageService->getAllImageByRoomId($id);
         $room = $this->roomService->findById($id);
         return view('adminSite.roomDetail', compact('room', 'images'));
+
+
     }
 
 

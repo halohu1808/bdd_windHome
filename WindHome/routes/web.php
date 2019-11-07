@@ -80,6 +80,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/edit/{id}', 'AdminController@editStatus')->name('admin.editStatus');
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
+    Route::get('/cancelCancelRoom/{id}/{key?}', 'AdminController@cancelCancelRoom')->name('admin.cancelCancelRoom');
 });
 
 Route::group(['prefix' => 'contracts', 'middleware' => 'admin'], function () {
@@ -134,7 +135,7 @@ Route::group(['prefix' => 'userRoute', 'middleware' => 'user'], function () {
     Route::get('/contractKeepRequest', 'RouterUserController@contractKeepRequest')->name('userRoute.contractKeepRequest');
     Route::get('/contractEndRequest', 'RouterUserController@contractEndRequest')->name('userRoute.contractEndRequest');
     Route::get('/contractEnd', 'RouterUserController@contractEnd')->name('userRoute.contractEnd');
-    Route::get('/contractDetail/{id}', 'RouterUserController@contractDetail')->name('userRoute.contractDetail');
+    Route::get('/contractDetail/{id}/{key?}', 'RouterUserController@contractDetail')->name('userRoute.contractDetail');
     Route::get('cancelBookingRequest/{roomId}/{contractId}', 'UserActionController@cancelBookingRequest')->name('UserAction.cancelBookingRequest');
     Route::get('cancelRoom/{roomId}/{contractId}', 'UserActionController@cancelRoom')->name('UserAction.cancelRoom');
     Route::get('/cancelEnd/{id}', 'ContractController@cancelEnd')->name('contract.cancelEnd');
