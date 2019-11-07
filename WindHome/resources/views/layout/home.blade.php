@@ -8,26 +8,28 @@
 
     <title>Wind Home</title>
 
+
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     {{--    <link rel="stylesheet" href="../css/style.css">--}}
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
-{{--    Css image trong roomDetail--}}
-        <link type="text/css" rel="stylesheet" href="{{asset('css/lightslider.css')}}" />
-{{--        <link type="text/css" rel="stylesheet" href="{{asset('css/imagesCss.css')}}" />--}}
 
-<!-- Font Awesome JS -->
+    <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
             integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
             crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
             integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
             crossorigin="anonymous"></script>
-
     <!-- Styles -->
 
+
+{{--    Anh Hai--}}
+    {{--    Css image trong roomDetail--}}
+    <link type="text/css" rel="stylesheet" href="{{asset('css/imagesCss.css')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('css/lightslider.css')}}" />
 
 
 </head>
@@ -41,9 +43,7 @@
 <!-- Sidebar  -->
 <div class="wrapper">
     @yield('sideBar')
-
     @yield('content')
-
 </div>
 
 
@@ -60,7 +60,6 @@
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
 
-
 <script type="text/javascript">
     $(document).ready(function () {
         $('#sidebarCollapse').on('click', function () {
@@ -68,9 +67,12 @@
         });
     });
 </script>
-    <script src="{{asset('js/images.js')}}"></script>
-    <script src="{{asset('js/lightslider.js')}}"></script>
+
+{{--Anh Hai--}}
+<script src="{{asset('js/lightslider.js')}}"></script>
+<script src="{{asset('js/images.js')}}"></script>
+
+
 
 </body>
-
 </html>

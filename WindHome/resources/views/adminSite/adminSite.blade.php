@@ -13,6 +13,69 @@
             @endif
 
         </div>
+        <div class="col-12">
+            @if (Session::has('update'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('update') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('create'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('create') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('delete'))
+                <p class="alert alert-danger {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('delete') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('createContract'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('createContract') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('contractCancel'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('contractCancel') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('underContract'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('underContract') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('hasRoom'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('hasRoom') }}</p>
+            @endif
+
+        </div>
+        <div class="col-12">
+            @if (Session::has('extensionUpdate'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('extensionUpdate') }}</p>
+            @endif
+        </div>
+        <div class="col-12">
+            @if (Session::has('endContract'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('endContract') }}</p>
+            @endif
+        </div>
+        <div class="col-12">
+            @if (Session::has('cancelEndByAdmin'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('cancelEndByAdmin') }}</p>
+            @endif
+        </div>
+        <div class="col-12">
+            @if (Session::has('end'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('end') }}</p>
+            @endif
+        </div>
+
 
         <div class="row">
             <div class="col-md-6">
@@ -25,18 +88,21 @@
                 </form>
             </div>
         </div>
+        <div class="pt-4">
+            <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Tạo phòng mới</a>
+        </div>
+        <div class="row pt-4">
 
-
-        <div class="row pt-5">
-            <table class="table table-hover">
+            <br>
+            <table class="table table-hover pt-4">
                 <thead class="thead-light">
                 <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Price</th>
-                    <th>Area</th>
-                    <th>Guest</th>
-                    <th>Status</th>
+                    <th>Tên phòng</th>
+                    <th>Địa chỉ</th>
+                    <th style = text-align:center>Giá phòng VNĐ/tháng</th>
+                    <th style = text-align:center>Diện tích (m2)</th>
+                    <th style = text-align:center>Số người tối đa</th>
+                    <th style = text-align:center>Trạng thái phòng</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -45,17 +111,19 @@
                     <tr>
                         <td><a href="{{route('admin.detail',$room->id)}}">{{$room->name}}</a></td>
                         <td>{{$room->address}}</td>
-                        <td>{{number_format($room->pricePerMonth)}}</td>
-                        <td>{{$room->area}}</td>
-                        <td>{{$room->guest}}</td>
-                        <td>{{$room->status->name}}</td>
+                        <td style = text-align:center>{{number_format($room->pricePerMonth)}}</td>
+                        <td style = text-align:center>{{$room->area}}</td>
+                        <td style = text-align:center>{{$room->guest}}</td>
+                        <td style = text-align:center>{{$room->status->name}}</td>
+                        <td><a href="{{route('room.edit',$room->id)}}" class="btn btn-outline-primary">Cập nhật</a></td>
+                        <td><a href="{{route('room.destroy',$room->id)}}" class="btn btn-outline-secondary"
+                               onclick="return confirm('Bạn có muốn chắc chắn xóa không')">Xóa</a></td>
                     </tr>
                     @endforeach
                     </tbody>
 
             </table>
         </div>
-        <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Create</a>
 
 
     </div>

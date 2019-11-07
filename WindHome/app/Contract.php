@@ -23,4 +23,9 @@ class Contract extends Model
         return $this->belongsTo('App\Status', 'statusId', 'id');
     }
 
+    public function feedbacks()
+    {
+        return $this->hasMany('App\Feedback');
+    }
+
 }

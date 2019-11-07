@@ -1,20 +1,35 @@
 @extends('layout.home')
 @section('content')
-<style></style>
+    <style></style>
     <div class="container">
+
+        <div class="col-12">
+            @if (Session::has('booking'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('booking') }}</p>
+            @endif
+
+        </div>
 
         <div class="row pt-5">
             <div class="col-md-7">
 
-                    <ul id="lightSlider">
-                        @foreach ($images as $image)
-                            <li data-thumb={{asset("storage/img/home/". $image->images)}}>
-                                <img src={{asset("storage/img/home/". $image->images)}}>
-                            </li>
-                        @endforeach
+{{--                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">--}}
+{{--                    <ol class="carousel-indicators">--}}
+{{--                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>--}}
+{{--                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>--}}
+{{--                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>--}}
+{{--                    </ol>--}}
+                    <div class="carousel-inner">
 
-                    </ul>
-
+                            <ul id="lightSlider">
+                                @foreach ($images as $image)
+                                    <li data-thumb={{asset("storage/img/home/". $image->images)}}>
+                                        <img src={{asset("storage/img/home/". $image->images)}}>
+                                    </li>
+                                @endforeach
+                            </ul>
+                    </div>
+{{--                </div>--}}
             </div>
 
             <div class="col-md-5">
@@ -96,10 +111,7 @@
                                 @endif
                             </div>
                         </div>
-
                     </div>
-
-
                     <hr>
                     <div class="pt-2">
                         @if($room->statusId==1)
@@ -111,7 +123,6 @@
                                        required>
                             </div>
                         @endif
-
 
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -138,93 +149,15 @@
 
         </div>
         <hr>
-        {{--        <div class="row">--}}
-        {{--            <div class="col-md-7">--}}
-        {{--                <h2 class="text-danger">Mô tả</h2>--}}
-        {{--                <p class="text-justify">--}}
-        {{--                    Nằm ở vị trí thuận lợi thuộc Eindhoven, Campanile Eindhoven là một nơi nghỉ chân tuyệt vời để tiếp--}}
-        {{--                    tục--}}
-        {{--                    khám phá thành phố sôi động. Từ đây, khách có thể dễ dàng tiếp cận được nét đẹp sống động của thành--}}
-        {{--                    phố--}}
-        {{--                    ở mọi góc cạnh. Như một thiên đường nghỉ dưỡng và thư giãn, khách sạn mang lại sự đổi mới hoàn toàn,--}}
-        {{--                    chỉ--}}
-        {{--                    cách nhiều điểm tham quan trong thành phố vài bước, như Mitra Slijterij Van Bergen, Sân gôn--}}
-        {{--                    Welschap,--}}
-        {{--                    Bảo tàng khoa học kỹ thuật Evoluon.--}}
-        {{--                    <br>--}}
-        {{--                    Tất cả các dịch vụ và tiện nghi khi đến trải nghiệm tại Louvre Hôtels mang lại cho khách hàng cảm--}}
-        {{--                    giác--}}
-        {{--                    thoải mái như đang ở nhà mình. Những tiện nghi hàng đầu của khách sạn bao gồm miễn phí wifi tất cả--}}
-        {{--                    các--}}
-        {{--                    phòng, quầy lễ tân 24 giờ, tiện nghi cho người khuyết tật, wifi công cộng, bãi đậu xe.--}}
-        {{--                    <br>--}}
-        {{--                    Khách sạn rất chú ý đến việc trang bị đầy đủ tiện nghi để đạt được sự thoải mái và tiện lợi nhất.--}}
-        {{--                    Trong--}}
-        {{--                    một số phòng, khách hàng có thể thấy tivi màn hình phẳng, thảm, internet không dây, internet không--}}
-        {{--                    dây--}}
-        {{--                    (miễn phí), máy điều hòa. Khách sạn còn gợi ý cho bạn những hoạt động vui chơi giải trí bảo đảm bạn--}}
-        {{--                    luôn--}}
-        {{--                    thấy hứng thú trong suốt kỳ nghỉ. Khi bạn đang tìm chỗ ở thoải mái và thuận tiện ở Eindhoven,--}}
-        {{--                    Campanile--}}
-        {{--                    Eindhoven mang đến cho bạn cảm giác như đang ở nhà.</p>--}}
-        {{--            </div>--}}
-        {{--            <div class="col-md-5 p3 ">--}}
-        {{--                <div class="bg-white p-3">--}}
-        {{--                    <h2 class="text-danger">Phòng tương tự</h2>--}}
 
-        {{--                    <div class="p-3">--}}
-        {{--                        <div class="row border">--}}
-        {{--                            <div class="col-md-4 p-3">--}}
-        {{--                                Phòng ABC--}}
-        {{--                                <br>--}}
-        {{--                                Giá: $1000--}}
-        {{--                                <div class="">--}}
-        {{--                                    <a class="btn btn-outline-secondary"> Chi tiết </a>--}}
-        {{--                                </div>--}}
-        {{--                            </div>--}}
-        {{--                            <div class="col-md-8 p-3">--}}
-        {{--                                <img class="img-fluid" alt="Responsive image"--}}
-        {{--                                     src="https://image.thanhnien.vn/660/uploaded/tuyenth/2019_01_09/lisa-1_mwvm.jpg">--}}
-        {{--                            </div>--}}
+        <div class="row pt-5">
 
-        {{--                        </div>--}}
-        {{--                        <div class="row border">--}}
-        {{--                            <div class="col-md-4 p-3">--}}
-        {{--                                Phòng ABC--}}
-        {{--                                <br>--}}
-        {{--                                Giá: $1000--}}
-        {{--                                <div class="">--}}
-        {{--                                    <a class="btn btn-outline-secondary"> Chi tiết </a>--}}
-        {{--                                </div>--}}
-        {{--                            </div>--}}
-        {{--                            <div class="col-md-8 p-3">--}}
-        {{--                                <img class="img-fluid" alt="Responsive image"--}}
-        {{--                                     src="https://image.thanhnien.vn/660/uploaded/tuyenth/2019_01_09/lisa-1_mwvm.jpg">--}}
-        {{--                            </div>--}}
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
 
-        {{--                        </div>--}}
-        {{--                        <div class="row border">--}}
-        {{--                            <div class="col-md-4 p-3">--}}
-        {{--                                Phòng ABC--}}
-        {{--                                <br>--}}
-        {{--                                Giá: $1000--}}
-        {{--                                <div class="">--}}
-        {{--                                    <a class="btn btn-outline-secondary"> Chi tiết </a>--}}
-        {{--                                </div>--}}
-        {{--                            </div>--}}
-        {{--                            <div class="col-md-8 p-3">--}}
-        {{--                                <img class="img-fluid" alt="Responsive image"--}}
-        {{--                                     src="https://image.thanhnien.vn/660/uploaded/tuyenth/2019_01_09/lisa-1_mwvm.jpg">--}}
-        {{--                            </div>--}}
-
-        {{--                        </div>--}}
-        {{--                    </div>--}}
-
-
-        {{--                </div>--}}
-
-        {{--            </div>--}}
-        {{--        </div>--}}
 
     </div>
 
