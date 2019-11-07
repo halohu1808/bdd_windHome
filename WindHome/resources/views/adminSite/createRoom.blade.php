@@ -57,13 +57,13 @@
 
                     </div>
                     <div class="form-group">
-                        <label>Ảnh</label>
-                        <input required type="file" class="form-control" name="images[]" placeholder="address" multiple>
-                    </div>
-                    <div class="form-group">
                         <label>Thumbnail</label>
                         <input required type="file" class="form-control" name="thumbnail" placeholder="address"
                                multiple>
+                    </div>
+                    <div class="form-group">
+                        <label>Ảnh</label>
+                        <input required type="file" class="form-control" name="images[]" placeholder="address" multiple>
                     </div>
                 </div>
 

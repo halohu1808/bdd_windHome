@@ -11,6 +11,7 @@ li {
     float: left;
     margin-right: 6px;
     cursor:pointer;
+    max-width: 100%
 }
 img {
     display: block;

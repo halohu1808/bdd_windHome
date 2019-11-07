@@ -71,4 +71,10 @@ class UserController extends Controller
 
     }
 
+    public function resetPassword(Request $request)
+    {
+        return $this->userService->findByEmail($request->email);
+
+    }
+
 }
