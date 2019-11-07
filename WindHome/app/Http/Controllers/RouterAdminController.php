@@ -10,6 +10,7 @@ use App\Room;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class RouterAdminController extends Controller
@@ -88,7 +89,7 @@ class RouterAdminController extends Controller
         return view('adminSite.contractSite', compact('contracts'));
     }
 
-    public function contractDetail($id)
+    public function contractDetail($id, $key = null)
     {
         $contract = $this->contractService->findById($id);
         $room = $this->roomService->findById($contract->roomId);
@@ -106,8 +107,12 @@ class RouterAdminController extends Controller
 
         $feedbacks = \App\Feedback::where('contract_id', $id)->get();
 
+        foreach (Auth::user()->notifications as $notification) {
+            $notification->markAsRead();
+        }
 
-        return view('adminSite.contractDetail', compact('room', 'contract', 'images', 'endTime', 'timeLeft','feedbacks'));
+
+        return view('adminSite.contractDetail', compact('room', 'contract', 'images', 'endTime', 'timeLeft', 'feedbacks'));
     }
 
 
