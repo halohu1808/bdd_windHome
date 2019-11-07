@@ -100,8 +100,8 @@
                     @if($room->statusId==3)
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="{{route('contract.cancel',$room->id)}}" class="btn btn-primary">Hủy Yêu
-                                    Cầu</a>
+
+                                <a href="{{route('contract.cancel',$room->id)}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn hủy không ?')">Hủy Yêu Cầu</a>
                             </div>
                             <div class="col-md-6">
                                 <a href="{{route('contract.run',$room->id)}}" class="btn btn-primary">Tạo Hợp
@@ -111,8 +111,7 @@
                     @elseif($room->statusId==2)
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="{{route('contract.endContract',$room->id)}}" class="btn btn-primary">Huỷ
-                                    Hợp
+                                <a href="{{route('contract.endContract',$room->id)}}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn xóa hợp đồng')">Huỷ Hợp
                                     Đồng</a>
                             </div>
 
@@ -125,7 +124,7 @@
                     @elseif($room->statusId==4)
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="{{route('contract.cancelEnd',$room->id)}}" class="btn btn-primary">Hủy Yêu
+                                <a href="{{route('contract.cancelEndByAdmin',$room->id)}}" class="btn btn-primary" onclick="return confirm('Bạn có đồng ý hủy ?')">Hủy Yêu
                                     Cầu</a>
                             </div>
                             <div class="col-md-6">

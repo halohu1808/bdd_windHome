@@ -104,7 +104,10 @@ class RouterAdminController extends Controller
         $timeLeft = $endTime1->diffInDays($carbonNow);
         $endTime = $endTime1->toDateString();
 
-        return view('adminSite.contractDetail', compact('room', 'contract', 'images', 'endTime', 'timeLeft'));
+        $feedbacks = \App\Feedback::where('contract_id', $id)->get();
+
+
+        return view('adminSite.contractDetail', compact('room', 'contract', 'images', 'endTime', 'timeLeft','feedbacks'));
     }
 
 

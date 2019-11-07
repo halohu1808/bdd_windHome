@@ -92,25 +92,25 @@
                             <div class="col-md-6">
                                 {{--                                Hủy giữ phòng--}}
 
-{{--                                <a href="{{route('UserAction.cancelBookingRequest',['roomId'=> $room->id,'contractId'=>$contract->id] )}}"--}}
-{{--                                   class="btn btn-primary">Hủy Giữ Phòng</a>--}}
+                                {{--                                <a href="{{route('UserAction.cancelBookingRequest',['roomId'=> $room->id,'contractId'=>$contract->id] )}}"--}}
+                                {{--                                   class="btn btn-primary">Hủy Giữ Phòng</a>--}}
                             </div>
                         </div>
                     @elseif($contract->statusId==5)
                         <div class="row">
                             <div class="col-md-6">
                                 {{--                                Hủy hợp đồng request--}}
-{{--                                <a href="{{route('UserAction.cancelRoom',['roomId'=> $room->id,'contractId'=>$contract->id] )}}"--}}
-{{--                                   class="btn btn-primary">Huỷ Hợp--}}
-{{--                                    Đồng</a>--}}
+                                {{--                                <a href="{{route('UserAction.cancelRoom',['roomId'=> $room->id,'contractId'=>$contract->id] )}}"--}}
+                                {{--                                   class="btn btn-primary">Huỷ Hợp--}}
+                                {{--                                    Đồng</a>--}}
                             </div>
                         </div>
                     @elseif($contract->statusId==8)
                         <div class="row">
                             <div class="col-md-6">
                                 {{--                                Hủy yêu cầu hủy hợp đồng--}}
-{{--                                <a href="{{route('contract.cancelEnd',$room->id)}}" class="btn btn-primary">Hủy Yêu--}}
-{{--                                    Cầu Hủy Hợp Đồng</a>--}}
+                                {{--                                <a href="{{route('contract.cancelEnd',$room->id)}}" class="btn btn-primary">Hủy Yêu--}}
+                                {{--                                    Cầu Hủy Hợp Đồng</a>--}}
                             </div>
 
                         </div>
@@ -150,6 +150,16 @@
 
 
         </div>
+
+        <div>Ý Kiền phản hổi của khách hàng:<br/>
+
+            @foreach($feedbacks as $key=>$feedback)
+                {{$feedback->contract->user->name}} có ý kiến : {{$feedback->content}}<br/>
+
+            @endforeach
+        </div>
+
+
     </div>
 
 @endsection

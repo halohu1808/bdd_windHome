@@ -9,6 +9,7 @@ use App\Http\Requests\createRoom;
 use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use App\Image;
+use App\Notifications\Booking;
 use App\Room;
 use App\User;
 use Illuminate\Http\Request;
@@ -38,8 +39,8 @@ RoomController extends Controller
     public function findByCity(Request $request, Room $room)
     {
         $city = City::where('name', 'LIKE', '%' . $request->city . '%')->get();
-        if (count($city) == 0){
-            Session::flash('unknowCity','Không có thành phố đấy');
+        if (count($city) == 0) {
+            Session::flash('unknowCity', 'Không có thành phố đấy');
             return redirect()->route('room.list');
         }
 
@@ -49,14 +50,14 @@ RoomController extends Controller
         if ($request->minPrice != '') {
             $room->where('pricePerMonth', '>', $request->minPrice);
         }
-        if($request->maxPrice != ''){
-            $room->where('pricePerMonth','<',$request->maxPrice);
+        if ($request->maxPrice != '') {
+            $room->where('pricePerMonth', '<', $request->maxPrice);
         }
-        if($request->guest != ''){
-            $room->where('guest','=',$request->guest);
+        if ($request->guest != '') {
+            $room->where('guest', '=', $request->guest);
         }
-        if($request->area != ''){
-            $room->where('area','>',$request->area);
+        if ($request->area != '') {
+            $room->where('area', '>', $request->area);
         }
 
         $roomsSort = $room->get();
@@ -67,6 +68,8 @@ RoomController extends Controller
     public function index()
     {
         $rooms = $this->roomService->getAll();
+
+
         return view('adminSite.adminSite', compact('rooms'));
     }
 
@@ -94,6 +97,7 @@ RoomController extends Controller
         $room->electricFee = $request->electricFee;
         $room->waterFee = $request->waterFee;
         $room->trashFee = $request->trashFee;
+
         $room->linkmap = $request->linkmap;
 
         if ($thumbnail = $request->file('thumbnail')) {
@@ -156,8 +160,19 @@ RoomController extends Controller
         $room->electricFee = $request->electricFee;
         $room->waterFee = $request->waterFee;
         $room->trashFee = $request->trashFee;
+        if ($thumbnail = $request->file('thumbnail')) {
 
-        $room->save();
+            $name = $thumbnail->getClientOriginalName();
+            $fileName = str_random(4) . "_" . $name;
+            $thumbnail->move('storage/img/home/', $fileName);
+
+
+            $room->thumbnail = $fileName;
+//            dd($room->thumbnail);
+
+        }
+
+        $this->roomService->save($room);
 
         if ($files = $request->file('images')) {
             foreach ($files as $file) {
@@ -194,9 +209,19 @@ RoomController extends Controller
     function booking(BookkingRequest $request)
     {
         $userId = Auth::user()->id;
+
+
+//        $room = $this->roomService->findById($request->roomId);
         $room = $this->roomService->booking($request->roomId);
-        $this->contractService->booking($request, $room, $userId);
+        $contract = $this->contractService->booking($request, $room, $userId);
         $images = $this->imageService->getAllImageByRoomId($request->roomId);
+
+        $admin = User::findorfail(1);
+        $user = Auth::user();
+        $admin->notify(new Booking($user, $contract));
+
+
+        Session::flash('booking', 'Bạn giữ phòng thành công');
         return view('listSite.roomDetail', compact('room', 'images'));
     }
 

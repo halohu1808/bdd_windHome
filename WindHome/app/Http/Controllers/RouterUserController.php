@@ -32,8 +32,10 @@ class RouterUserController extends Controller
 
     public function allContract()
     {
+
         $userId = Auth::user()->id;
         $contracts = Contract::where('userId', $userId)->get();
+
 
         return view('userSite.contractSite', compact('contracts'));
     }
@@ -68,6 +70,7 @@ class RouterUserController extends Controller
 
     public function contractDetail($contractId)
     {
+
         $contract = $this->contractService->findById($contractId);
         $room = $this->roomService->findById($contract->roomId);
         $images = $this->imageService->getAllImageByRoomId($contract->roomId);
@@ -81,6 +84,7 @@ class RouterUserController extends Controller
         $endTime1 = $carbonStartTime->addMonth($rentime);
         $timeLeft = $endTime1->diffInDays($carbonNow);
         $endTime = $endTime1->toDateString();
+
         return view('userSite.contractDetail', compact('room', 'contract', 'images','endTime','timeLeft'));
     }
 

@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 {{--                                Hủy giữ phòng--}}
-                               dd($contractId)
+
 
                                 <a href="{{route('UserAction.cancelBookingRequest',$room->id, $contractId)}}"
                                    class="btn btn-primary">Hủy Giữ Phòng</a>

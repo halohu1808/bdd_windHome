@@ -19,7 +19,8 @@
                         @csrf
                         <div class="wrapper">
                             <div class="pr-2">
-                                <input type="text" required class="typeahead form-control" name="city" placeholder="Nhập địa điểm">
+                                <input type="text" required class="typeahead form-control" name="city"
+                                       placeholder="Nhập địa điểm">
                             </div>
                             <div>
                                 <a class="btn btn-outline-secondary" data-toggle="collapse" href="#collapseExample"
@@ -57,6 +58,36 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fas fa-bell"></i> <span class="caret"> {{count(\Illuminate\Support\Facades\Auth::user()->unreadNotifications)}}
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                @foreach(\Illuminate\Support\Facades\Auth::user()->unreadNotifications as $key=>$notification)
+                                    @if($notification->type=='App\Notifications\Booking')
+
+                                        <a class="pl-4"
+                                           href="{{route('admin.detail',['id'=>$notification->data['room_id'],'key'=>$key++])}}"> {{$notification->data['user_name'] }}
+                                            đã giữ phòng</a><br/>
+                                    @elseif($notification->type=='App\Notifications\UserCancelRequest')
+                                        <a class="pl-4"
+                                           href="{{route('admin.detail',['id'=>$notification->data['room_id'],'key'=>$key++])}}">{{$notification->data['user_name'] }}
+                                            muốn hủy thuê
+                                            phòng</a>
+                                    @elseif($notification->type=='App\Notifications\UserCancelBookingRequest')
+                                        <a class="pl-4"
+                                           href="{{route('admin.detail',['id'=>$notification->data['room_id'],'key'=>$key++])}}">{{$notification->data['user_name'] }}
+                                          muốn hủy yêu cầu đặt phòng
+                                            </a>
+
+                                    @endif
+
+                                @endforeach
+
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -71,9 +102,9 @@
 
                                 <a class="pl-4" href="{{route('user.detail', Auth::user()->id)}}"> Hồ sơ cá nhân</a>
 
+
                                 <a class="pl-4" href="{{route('user.changePassword', Auth::user()->id)}}"> Thay đổi
-                                    mật
-                                    khẩu</a>
+                                    mật khẩu</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -87,6 +118,7 @@
                                 </form>
                             </div>
                         </li>
+
                     @endguest
                 </ul>
             </div>
