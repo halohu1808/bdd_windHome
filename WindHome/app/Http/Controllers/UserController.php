@@ -7,8 +7,11 @@ use App\Http\Service\ServiceInterface\ContractServiceInterface;
 use App\Http\Requests\UserDetailRequest;
 use App\Http\Requests\UserPasswordRequest;
 use App\Http\Service\ServiceInterface\UserServiceInterface;
+use App\Notifications\UserFeedback;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 
 class UserController extends Controller
@@ -73,7 +76,6 @@ class UserController extends Controller
         $feedback->content = $request->contentt;
         $feedback->contract_id = $id;
         $feedback->save();
-
         \Illuminate\Support\Facades\Session::flash('feedback', 'Bạn gửi phản hồi thành công');
         return redirect()->route('userRoute.contractRun');
 
@@ -82,7 +84,6 @@ class UserController extends Controller
     public function resetPassword(Request $request)
     {
         return $this->userService->findByEmail($request->email);
-
     }
 
 }
