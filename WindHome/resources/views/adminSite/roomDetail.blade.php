@@ -5,10 +5,8 @@
 @section('content')
     <div class="container">
         <h2 class="pt-5">PHÒNG</h2>
-
         <div class="row pt-2">
             <div class="col-md-7">
-
                 <div class="carousel-item active" style="max-height: 300px">
                     <img src={{asset("storage/img/home/". $images[0]->images)}} class="d-block w-100">
                     <div class="demo">
@@ -24,6 +22,7 @@
 
                 </div>
             </div>
+
             <div class="col-md-5">
 
 

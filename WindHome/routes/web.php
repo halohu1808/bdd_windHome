@@ -63,7 +63,7 @@ Route::group(['prefix' => 'roomUser'], function () {
 });
 
 
-Route::group(['prefix' => 'user'], function () {
+Route::group(['prefix' => 'user', 'middleware' => 'user'], function () {
     Route::get('/edit/{id}', 'UserController@edit')->name('user.edit');
     Route::get('/changePassword/{id}', 'UserController@changePassword')->name('user.changePassword');
     Route::post('/updatePassword/{id}', 'UserController@updatePassword')->name('user.updatePassword');
@@ -141,6 +141,4 @@ Route::group(['prefix' => 'userRoute', 'middleware' => 'user'], function () {
 
 });
 
-
-
-
+Route::post('/resetPassword', 'UserController@resetPassword')->name('user.resetPassword');
