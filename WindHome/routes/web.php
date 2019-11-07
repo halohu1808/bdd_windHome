@@ -79,6 +79,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
     Route::get('/cancelCancelRoom/{id}/{key?}', 'AdminController@cancelCancelRoom')->name('admin.cancelCancelRoom');
+    Route::get('/income', 'AdminController@income')->name('admin.income');
 });
 
 Route::group(['prefix' => 'contracts', 'middleware' => 'admin'], function () {

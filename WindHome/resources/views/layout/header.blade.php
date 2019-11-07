@@ -115,6 +115,12 @@
                                              Phòng {{$notification->data['room_name']}} đã bị hủy
                                         </a>
 
+                                    @elseif($notification->type=='App\Notifications\UserFeedback')
+                                        <a class="pl-4"
+                                           href="{{route('adminRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
+                                         {{$notification->data['user_name']}} đã gửi góp ý về phòng {{$notification->data['room_name']}}
+                                        </a>
+
                                     @endif
 
                                 @endforeach
@@ -129,7 +135,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @if(Auth::user()->roll==1)
-                                    <a class="pl-4" href="{{route('room.index')}}"> Trang quản
+                                    <a class="pl-4" href="{{route('admin.income')}}"> Trang quản
                                         lí</a> {{--Hải thêm để demo--}}
                                 @else
                                     <a class="pl-4" href="{{route('userRoute.userSite')}}"> Trang quản

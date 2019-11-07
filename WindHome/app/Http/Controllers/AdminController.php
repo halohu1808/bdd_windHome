@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contract;
 use App\Http\Service\ServiceInterface\ImageServiceInterface;
 use App\Http\Service\ServiceInterface\RoomServiceInterface;
 use App\Notification;
@@ -59,6 +60,12 @@ class AdminController extends Controller
         return view('adminSite.roomDetail', compact('room', 'images'));
 
 
+    }
+
+    public function income()
+    {
+        $contracts = Contract::where('statusId', '5')->get();
+        return view('adminSite.adminIncome', compact('contracts'));
     }
 
 
