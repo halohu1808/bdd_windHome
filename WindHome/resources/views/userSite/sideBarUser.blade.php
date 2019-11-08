@@ -1,6 +1,6 @@
 <nav id="sidebar">
     <div class="sidebar-header">
-        <a href="https://www.google.com"><h3>Wind Home</h3></a>
+        <a href="#"><h3>Wind Home</h3></a>
     </div>
 
     <ul class="list-unstyled components">

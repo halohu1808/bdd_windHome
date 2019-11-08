@@ -99,8 +99,8 @@
                 <tr>
                     <th>Tên phòng</th>
                     <th>Địa chỉ</th>
-                    <th style = text-align:center>Giá phòng VNĐ/tháng</th>
-                    <th style = text-align:center>Diện tích (m2)</th>
+                    <th style = text-align:center>Giá phòng/tháng</th>
+                    <th style = text-align:center>Diện tích</th>
                     <th style = text-align:center>Số người tối đa</th>
                     <th style = text-align:center>Trạng thái phòng</th>
                     <th></th>
@@ -111,8 +111,8 @@
                     <tr>
                         <td><a href="{{route('admin.detail',$room->id)}}">{{$room->name}}</a></td>
                         <td>{{$room->address}}</td>
-                        <td style = text-align:center>{{number_format($room->pricePerMonth)}}</td>
-                        <td style = text-align:center>{{$room->area}}</td>
+                        <td style = text-align:center>{{number_format($room->pricePerMonth)}} vnđ</td>
+                        <td style = text-align:center>{{$room->area}} m²</td>
                         <td style = text-align:center>{{$room->guest}}</td>
                         <td style = text-align:center>{{$room->status->name}}</td>
                         <td><a href="{{route('room.edit',$room->id)}}" class="btn btn-outline-primary">Cập nhật</a></td>
