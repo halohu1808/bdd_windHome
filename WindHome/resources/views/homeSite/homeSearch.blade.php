@@ -40,8 +40,8 @@
 
 
 
-<video id="video_background" preload="auto" autoplay loop="loop"  volume="1">
-    <source src={{asset("video/home.mp4")}} type="video/webm"/>
+<video id="video_background" preload="auto" autoplay="autoplay" loop="loop"  volume="1" >
+    <source src="{{asset("video/home.mp4")}}" type="video/webm"/>
     <source src="{{asset("video/home.mp4")}}" type="video/ogg ogv"; codecs="theora, vorbis"/>
     <source src="{{asset("video/home.mp4")}}" type="video/mp4"/>
 </video>
