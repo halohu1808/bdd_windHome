@@ -76,7 +76,12 @@ class UserController extends Controller
         $feedback->content = $request->contentt;
         $feedback->contract_id = $id;
         $feedback->save();
-        \Illuminate\Support\Facades\Session::flash('feedback', 'Bạn gửi phản hồi thành công');
+
+        $contract = $this->contractService->findById($id);
+        $admin = User::findorfail(1);
+        $admin->notify(new UserFeedback($contract));
+
+        Session::flash('feedback', 'Bạn gửi phản hồi thành công');
         return redirect()->route('userRoute.contractRun');
 
     }

@@ -72,8 +72,9 @@
                                         Đăng nhập bằng Facebook
                                     </a>
 
+
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="btn btn-link pt-3" href="{{ route('password.request') }}">
                                             {{ __('Bạn quên mật khẩu?') }}
                                         </a>
                                     @endif

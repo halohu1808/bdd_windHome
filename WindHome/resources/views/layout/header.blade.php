@@ -67,62 +67,81 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 @foreach(\Illuminate\Support\Facades\Auth::user()->unreadNotifications as $key=>$notification)
                                     @if($notification->type=='App\Notifications\Booking')
-
-                                        <a class=""
-                                           href="{{route('admin.detail',['id'=>$notification->data['room_id'],'key'=>$key++])}}"> {{$notification->data['user_name'] }}
-                                            đã giữ phòng</a>
+                                        <p style="width: 300px">
+                                            <a class=""
+                                               href="{{route('admin.detail',['id'=>$notification->data['room_id'],'key'=>$key++])}}"> {{$notification->data['user_name'] }}
+                                                đã giữ phòng</a>
+                                        </p>
                                     @elseif($notification->type=='App\Notifications\UserCancelRequest')
+                                        <p style="width: 300px">
                                         <a class=""
                                            href="{{route('admin.detail',['id'=>$notification->data['room_id'],'key'=>$key++])}}">{{$notification->data['user_name'] }}
                                             muốn hủy thuê
                                             phòng</a>
+                                        </p>
                                     @elseif($notification->type=='App\Notifications\UserCancelBookingRequest')
+                                        <p style="width: 300px">
                                         <a class=""
                                            href="{{route('admin.detail',['id'=>$notification->data['room_id'],'key'=>$key++])}}">{{$notification->data['user_name'] }}
                                             muốn hủy yêu cầu đặt phòng
                                         </a>
+                                        </p>
                                         {{--                                        Admin --}}
                                     @elseif($notification->type=='App\Notifications\AdminContractCancel')
+                                        <p style="width: 300px">
                                         <a class=""
                                            href="#"> Admin vừa hủy yêu cầu giữ
                                             phòng {{$notification->data['room_name']}} của bạn.
                                         </a>
+                                        </p>
                                     @elseif($notification->type=='App\Notifications\AdminContractStore')
+                                        <p style="width: 300px">
                                         <a class=""
                                            href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
                                             Hợp đồng nhà {{$notification->data['room_name']}} đã được tạo
                                         </a>
+                                        </p>
 
                                     @elseif($notification->type=='App\Notifications\AdminContractEndContract')
+                                        <p style="width: 300px">
                                         <a class=""
                                            href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
                                             Hợp đồng nhà {{$notification->data['room_name']}} đã bị hủy
                                         </a>
+                                        </p>
 
                                     @elseif($notification->type=='App\Notifications\AdminExtensionContract')
+                                        <p style="width: 300px">
                                         <a class=""
                                            href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
                                             {{$notification->data['room_name']}} đã được gia hạn
                                         </a>
+                                        </p>
 
                                     @elseif($notification->type=='App\Notifications\AdminCancelEnd')
+                                        <p style="width: 300px">
                                         <a class=""
                                            href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
                                             Lệnh hủy phòng {{$notification->data['room_name']}} đã bị hủy
                                         </a>
+                                        </p>
 
                                     @elseif($notification->type=='App\Notifications\AdminContractEnd')
+                                        <p style="width: 300px">
                                         <a class=""
                                            href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
                                             Phòng {{$notification->data['room_name']}} đã bị hủy
                                         </a>
+                                        </p>
 
                                     @elseif($notification->type=='App\Notifications\UserFeedback')
+                                        <p style="width: 300px">
                                         <a class=""
                                            href="{{route('adminRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
                                             {{$notification->data['user_name']}} đã gửi góp ý về
                                             phòng {{$notification->data['room_name']}}
                                         </a>
+                                        </p>
 
                                     @endif
 
