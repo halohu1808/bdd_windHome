@@ -23,6 +23,11 @@
                     <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('contractCancelEnd') }}</p>
                 @endif
             </div>
+            <div class="col-12">
+                @if (Session::has('cancelRoom'))
+                    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('cancelRoom') }}</p>
+                @endif
+            </div>
 
             <div class="col-md-6">
                 <h2>HỢP ĐỒNG</h2>
