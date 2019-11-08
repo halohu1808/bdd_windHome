@@ -13,23 +13,16 @@
         <div class="row pt-5">
             <div class="col-md-7">
 
-{{--                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">--}}
-{{--                    <ol class="carousel-indicators">--}}
-{{--                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>--}}
-{{--                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>--}}
-{{--                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>--}}
-{{--                    </ol>--}}
-                    <div class="carousel-inner">
+                <div class="carousel-inner">
 
-                            <ul id="lightSlider">
-                                @foreach ($images as $image)
-                                    <li data-thumb={{asset("storage/img/home/". $image->images)}}>
-                                        <img src={{asset("storage/img/home/". $image->images)}}>
-                                    </li>
-                                @endforeach
-                            </ul>
-                    </div>
-{{--                </div>--}}
+                    <ul id="lightSlider">
+                        @foreach ($images as $image)
+                            <li data-thumb={{asset("storage/img/home/". $image->images)}}>
+                                <img src={{asset("storage/img/home/". $image->images)}}>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
 
             <div class="col-md-5">
@@ -37,25 +30,49 @@
                 <form class="bg-white p-3" method="POST" action="{{route('room.booking')}}">
                     @csrf
                     <div>
-                        <h1 class="font-weight-bold text-danger"> {{$room->name}}</h1>
-                        <label> {{$room->address}}, {{ $room->city->name }}</label>
+                        <h1 class="card-title text-success font-weight-bold"> {{$room->name}}</h1>
+                        <label> {{$room->address}}, {{ $room->city->name }} - <a class="il" href="{{$room->linkmap}}">Chỉ
+                                Đường</a></label>
+
+                        @if($room->statusId == 1)
+                            <p class="blockquote-footer text-primary font-weight-bold">
+                                {{$room->status->name}} <i class="fas fa-check-circle"></i>
+                            </p>
+                        @elseif($room->statusId == 2)
+                            <p class="blockquote-footer text-danger font-weight-bold">
+                                {{$room->status->name}} <i class="fas fa-times-circle"></i>
+                            </p>
+                        @else
+                            <p class="blockquote-footer text-secondary font-weight-bold">
+                                {{$room->status->name}} <i class="fas fa-exclamation-circle"></i>
+                            </p>
+                        @endif
+                        <hr>
+                        <label
+                            class="font-weight-bold text-success"> {{number_format($room->pricePerMonth) }}
+                            VND/ tháng </label>
                         <hr>
                     </div>
-                    <div>
-                        <label> Giá phòng: {{$room->pricePerMonth}} VNĐ/tháng </label><br>
-                        <label> Diện tích: {{$room->area}} m2 </label><br>
-                        <label> Thời gian thuê tối thiểu: {{$room->minRentTime}} tháng </label><br>
-                        <label> Trạng thái:
-                            {{$room->status->name}}
-                        </label><br>
-                        <label>Tiền điện: {{$room->electricFee}} VNĐ/Số</label><br>
-                        <label>Tiền nước: {{$room->waterFee}} VNĐ/Khối</label><br>
-                        <label>Tiền vệ sinh: {{$room->trashFee}} VNĐ/tháng</label><br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="col-md-12"> Diện tích: </label><br>
+                            <label class="col-md-12"> Thuê tối thiểu: </label><br>
+                            <label class="col-md-12"> Tiền điện: </label><br>
+                            <label class="col-md-12"> Tiền nước: </label><br>
+                            <label class="col-md-12"> Tiền vệ sinh: </label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class=" ">{{$room->area}} m2</label><br>
+                            <label class=" ">{{$room->minRentTime}} tháng</label><br>
+                            <label class=" ">{{$room->electricFee}} VNĐ/kw</label><br>
+                            <label class=" ">{{$room->waterFee}} VNĐ/m3</label><br>
+                            <label class=" ">{{$room->trashFee}} VNĐ/tháng</label>
+
+                        </div>
 
                     </div>
-                    <div>
-                        <a href="{{$room->linkmap}}">Chỉ Đường</a>
-                    </div>
+                    <hr>
+
 
                     <div class="row pt-2">
                         <div class="wrapper col-md-6">
@@ -138,8 +155,6 @@
                     <div class="pt-2">
                         @if($room->status->id == 1)
                             <button class="btn btn-success btn-lg btn-block" type="submit"> ĐẶT PHÒNG</button>
-
-                            {{--                        <a class="btn btn-success btn-lg btn-block" href="{{route('room.booking',$room->id )}}"></a>--}}
                         @else {{$room->status->name}}
                         @endif
 
@@ -151,13 +166,8 @@
         <hr>
 
         <div class="row pt-5">
-
         </div>
         <br>
-        <br>
-        <br>
-        <br>
-
 
     </div>
 
