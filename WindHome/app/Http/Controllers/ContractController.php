@@ -191,7 +191,7 @@ class ContractController extends Controller
     public function feedback(Request $request, $contractId)
     {
         $contract = $this->contractService->findById($contractId);
-        dd($contract);
+
     }
 
 

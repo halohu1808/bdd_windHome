@@ -45,7 +45,7 @@
                     <th>Mã số</th>
                     <th>Phòng</th>
                     <th>Khách</th>
-                    <th>Giá/thang</th>
+                    <th>Giá/tháng</th>
                     <th>Thời Gian Thuê</th>
                     <th>Trạng Thái</th>
                 </tr>
@@ -56,8 +56,8 @@
                         <td><a href="{{route('userRoute.contractDetail',$contract->id)}}">{{$contract->room->name}}</a>
                         </td>
                         <td>{{$contract->user->name }}</td>
-                        <td>{{$contract->room->pricePerMonth}}</td>
-                        <td>{{$contract->rentTime}}</td>
+                        <td>{{number_format($contract->room->pricePerMonth)}} vnđ</td>
+                        <td  class="pr-5" style="text-align: center">{{$contract->rentTime}} tháng</td>
                         <td>{{$contract->status->name}}</td>
                     </tr>
                     @endforeach
