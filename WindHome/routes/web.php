@@ -13,6 +13,18 @@
 
 // Hải viết Route vớ vẩn để test giao diện tí thôi!
 
+Route::get('/noti', function () {
+    $user = \Illuminate\Support\Facades\Auth::user();
+    $user->notify(new \App\Notifications\DataBaseNoti(\App\User::findOrFail(3)));
+    $all = [];
+    foreach (\Illuminate\Support\Facades\Auth::user()->Notifications as $notification) {
+//        $notification->markAsRead();
+        array_push($all, $notification);
+    }
+    dd($all);
+
+});
+
 Route::get('/test', function () {
     return view('listSite.test');
 });
@@ -24,31 +36,21 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('homeSite.homeSearch');
 })->name('home');
-// Xóa sau khi làm xong giao diện
 
 Route::get('/autocomplete', ['as' => 'autocomplete', 'uses' => 'RoomController@autocomplete']);
-
 
 Auth::routes();
 
 Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
-
-//Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
-
-
-//Route::get('detail/{id}', 'RoomController@show')->name('room.detail');
-
 Route::group(['prefix' => 'rooms', 'middleware' => 'admin'], function () {
-
     Route::get('/', 'RoomController@index')->name('room.index');
     Route::get('/create', 'RoomController@create')->name('room.create');
     Route::post('/create', 'RoomController@store')->name('room.store');
     Route::get('/update/{id}', 'RoomController@edit')->name('room.edit');
     Route::post('/update/{id}', 'RoomController@update')->name('room.update');
     Route::get('/delete/{id}', 'RoomController@destroy')->name('room.destroy');
-
 });
 
 //search

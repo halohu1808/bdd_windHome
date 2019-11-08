@@ -219,6 +219,8 @@ RoomController extends Controller
         $admin = User::findorfail(1);
         $user = Auth::user();
         $admin->notify(new Booking($user, $contract));
+
+
         Session::flash('booking', 'Bạn giữ phòng thành công');
         return view('listSite.roomDetail', compact('room', 'images'));
     }

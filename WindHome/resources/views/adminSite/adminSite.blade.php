@@ -27,7 +27,7 @@
         </div>
         <div class="col-12">
             @if (Session::has('delete'))
-                <p class="alert alert-danger {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('delete') }}</p>
+                <p class="p-3 mb-2 bg-danger text-white {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('delete') }}</p>
             @endif
 
         </div>

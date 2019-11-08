@@ -26,19 +26,12 @@ class AdminController extends Controller
         return view('adminSite.adminSite', compact('rooms'));
     }
 
-    public function detail($id, $key = null)
+    public function detail($id)
     {
-//        if (($key != '')) {
-//            Auth::user()->notifications[$key]->markAsRead();
-//
-//            $noti = Notification::where('id', Auth::user()->notifications[$key]->id)->get();
-//            $room_id = json_decode($noti[0]->data)->room_id;
-//
-//        }
+
         foreach (Auth::user()->notifications as $notification) {
             $notification->markAsRead();
         }
-
 
         $images = $this->imageService->getAllImageByRoomId($id);
         $room = $this->roomService->findById($id);
@@ -53,10 +46,8 @@ class AdminController extends Controller
             Auth::user()->notifications[$key - 1]->markAsRead();
         }
 
-
         $images = $this->imageService->getAllImageByRoomId($id);
         $room = $this->roomService->findById($id);
-
         return view('adminSite.roomDetail', compact('room', 'images'));
 
 
