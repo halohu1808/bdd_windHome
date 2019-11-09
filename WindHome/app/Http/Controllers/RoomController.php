@@ -40,10 +40,9 @@ RoomController extends Controller
     {
         $city = City::where('name', 'LIKE', '%' . $request->city . '%')->get();
         if (count($city) == 0) {
-            Session::flash('unknowCity', 'Không có thành phố đấy');
+            Session::flash('unknowCity', 'Không tìm thấy kết quả phù hợp cho dữ liệu '. "'$request->city'" );
             return redirect()->route('room.list');
         }
-
 
         $room = $room->newQuery();
         $room->where('cityId', $city[0]->id);
@@ -61,6 +60,10 @@ RoomController extends Controller
         }
 
         $roomsSort = $room->get();
+        if (count($roomsSort) == 0) {
+            Session::flash('unknowCity', 'Không tìm thấy kết quả phù hợp cho dữ liệu '."'$request->city'" );
+            return redirect()->route('room.list');
+        }
 
         return view('listSite.listPage', compact('roomsSort'));
     }
