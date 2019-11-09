@@ -30,6 +30,7 @@
     {{--    Css image trong roomDetail--}}
     <link type="text/css" rel="stylesheet" href="{{asset('css/imagesCss.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('css/lightslider.css')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('css/styleSang.css')}}"/>
 
 
 </head>

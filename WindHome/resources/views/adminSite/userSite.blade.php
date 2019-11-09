@@ -11,22 +11,22 @@
             <div class="col-md-6">
                 <h2>KHÁCH HÀNG</h2>
             </div>
-            <div class="col-md-6">
-                <form id="test" class="form-inline" style="float: right">
-                    <input class="form-control mr-sm-2" type="search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>
-                </form>
-            </div>
+{{--            <div class="col-md-6">--}}
+{{--                <form id="test" class="form-inline" style="float: right">--}}
+{{--                    <input class="form-control mr-sm-2" type="search" aria-label="Search">--}}
+{{--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>--}}
+{{--                </form>--}}
+{{--            </div>--}}
         </div>
         <div class="row pt-5">
             <table class="table table-hover">
                 <thead class="thead-light">
                 <tr>
-                    <th>Stt</th>
-                    <th>Name</th>
+                    <th>STT</th>
+                    <th>Tên</th>
                     <th>Email</th>
-                    <th>Phone</th>
-                    <th>Address</th>
+                    <th>Số điện thoại</th>
+                    <th>Địa chỉ</th>
                 </tr>
                 </thead>
                 @foreach($users as $key => $user)
@@ -41,6 +41,5 @@
                     </tbody>
             </table>
         </div>
-        <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Create</a>
     </div>
 @endsection
