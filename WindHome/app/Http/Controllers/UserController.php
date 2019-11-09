@@ -47,13 +47,26 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = $this->userService->findById($id);
-        return view('users.edit', compact('user'));
+        if($user->name !== $user->password) {
+            return view('users.edit', compact('user'));
+        }
+        else{
+            Session::flash('facebook', 'Bạn không được thay đổi thông tin khi đăng nhập bằng Facebook');
+            return view('users.detail', compact('user'));
+        }
     }
 
     public function changePassword($id)
     {
         $user = $this->userService->findById($id);
-        return view('users.changePassword', compact('user'));
+        if($user->name !== $user->password){
+            return view('users.changePassword', compact('user'));
+        }
+        else{
+            Session::flash('facebook', 'Bạn không được thay đổi mật khẩu khi đăng nhập bằng Facebook');
+            return view('users.detail', compact('user'));
+        }
+
     }
 
     public function update(UserDetailRequest $request, $id)
