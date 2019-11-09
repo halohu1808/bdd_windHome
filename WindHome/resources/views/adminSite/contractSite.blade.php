@@ -11,12 +11,12 @@
             <div class="col-md-6">
                 <h2>HỢP ĐỒNG</h2>
             </div>
-            <div class="col-md-6">
-                <form id="test" class="form-inline" style="float: right">
-                    <input class="form-control mr-sm-2" type="search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>
-                </form>
-            </div>
+{{--            <div class="col-md-6">--}}
+{{--                <form id="test" class="form-inline" style="float: right">--}}
+{{--                    <input class="form-control mr-sm-2" type="search" aria-label="Search">--}}
+{{--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>--}}
+{{--                </form>--}}
+{{--            </div>--}}
         </div>
 
 
@@ -27,7 +27,7 @@
                     <th>Mã số</th>
                     <th>Phòng</th>
                     <th>Khách</th>
-                    <th>Giá/thang</th>
+                    <th>Giá/tháng</th>
                     <th>Thời Gian Thuê</th>
                     <th>Trạng Thái</th>
                 </tr>
@@ -37,8 +37,8 @@
                         <td>{{$contract->id}} </td>
                         <td><a href="{{route('adminRoute.contractDetail',$contract->id)}}">{{$contract->room->name}}</a></td>
                         <td>{{$contract->user->name }}</td>
-                        <td>{{$contract->room->pricePerMonth}}</td>
-                        <td>{{$contract->rentTime}}</td>
+                        <td>{{$contract->room->pricePerMonth}} vnđ</td>
+                        <td  class="pr-5" style="text-align:center">{{$contract->rentTime}} tháng</td>
                         <td>{{$contract->status->name}}</td>
                     </tr>
                     @endforeach

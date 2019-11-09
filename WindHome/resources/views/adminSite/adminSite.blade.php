@@ -81,12 +81,12 @@
             <div class="col-md-6">
                 <h2>PHÒNG</h2>
             </div>
-            <div class="col-md-6">
-                <form id="test" class="form-inline" style="float: right">
-                    <input class="form-control mr-sm-2" type="search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>
-                </form>
-            </div>
+{{--            <div class="col-md-6">--}}
+{{--                <form id="test" class="form-inline" style="float: right">--}}
+{{--                    <input class="form-control mr-sm-2" type="search" aria-label="Search">--}}
+{{--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>--}}
+{{--                </form>--}}
+{{--            </div>--}}
         </div>
         <div class="pt-4">
             <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Tạo phòng mới</a>
@@ -99,8 +99,8 @@
                 <tr>
                     <th>Tên phòng</th>
                     <th>Địa chỉ</th>
-                    <th style = text-align:center>Giá phòng VNĐ/tháng</th>
-                    <th style = text-align:center>Diện tích (m2)</th>
+                    <th style = text-align:center>Giá phòng/tháng</th>
+                    <th style = text-align:center>Diện tích</th>
                     <th style = text-align:center>Số người tối đa</th>
                     <th style = text-align:center>Trạng thái phòng</th>
                     <th></th>
@@ -111,8 +111,8 @@
                     <tr>
                         <td><a href="{{route('admin.detail',$room->id)}}">{{$room->name}}</a></td>
                         <td>{{$room->address}}</td>
-                        <td style = text-align:center>{{number_format($room->pricePerMonth)}}</td>
-                        <td style = text-align:center>{{$room->area}}</td>
+                        <td style = text-align:center>{{number_format($room->pricePerMonth)}} vnđ</td>
+                        <td style = text-align:center>{{$room->area}} m²</td>
                         <td style = text-align:center>{{$room->guest}}</td>
                         <td style = text-align:center>{{$room->status->name}}</td>
                         <td><a href="{{route('room.edit',$room->id)}}" class="btn btn-outline-primary">Cập nhật</a></td>
