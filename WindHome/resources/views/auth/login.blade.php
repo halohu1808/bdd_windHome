@@ -61,7 +61,7 @@
                                 <button type="submit" class="btn btn-outline-primary">
                                     {{ __('Đăng nhập') }}
                                 </button>
-                                <a href="redirect/facebook" class="btn btn-outline-primary">
+                                <a href="redirect/facebook" class="btn btn-outline-secondary">
                                     Đăng nhập bằng Facebook
                                 </a>
 
