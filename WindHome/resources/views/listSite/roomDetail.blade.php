@@ -46,6 +46,11 @@
                                 {{$room->status->name}} <i class="fas fa-exclamation-circle"></i>
                             </p>
                         @endif
+                            <hr>
+
+                        <label
+                            class="font-weight-bold text-success pl-3">Giá phòng: {{number_format($room->pricePerMonth) }}
+                            vnđ/ tháng </label>
                         <hr>
                         <div class="row pl-3">
                             <div class="wrapper col-md-12">
@@ -157,13 +162,8 @@
                         <input type="text" name="roomId" value="{{$room->id}}" style="visibility: hidden">
                     </div>
 
-                    <label
-                        class="font-weight-bold text-success pl-3"> {{number_format($room->pricePerMonth) }}
-                        vnđ/ tháng </label>
-
                     <div class="">
                         @if($room->status->id == 1)
-                            <hr>
                             <button class="btn btn-success btn-lg btn-block" type="submit"> ĐẶT PHÒNG</button>
                         @endif
                     </div>
@@ -171,10 +171,7 @@
             </div>
 
         </div>
-        <hr>
 
-        <div class="row pt-5">
-        </div>
         <br>
 
     </div>

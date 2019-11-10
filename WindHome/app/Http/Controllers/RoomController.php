@@ -47,16 +47,16 @@ RoomController extends Controller
         $room = $room->newQuery();
         $room->where('cityId', $city[0]->id);
         if ($request->minPrice != '') {
-            $room->where('pricePerMonth', '>', $request->minPrice);
+            $room->where('pricePerMonth', '>=', $request->minPrice);
         }
         if ($request->maxPrice != '') {
-            $room->where('pricePerMonth', '<', $request->maxPrice);
+            $room->where('pricePerMonth', '<=', $request->maxPrice);
         }
         if ($request->guest != '') {
-            $room->where('guest', '=', $request->guest);
+            $room->where('guest', '>=', $request->guest);
         }
         if ($request->area != '') {
-            $room->where('area', '>', $request->area);
+            $room->where('area', '>=', $request->area);
         }
 
         $roomsSort = $room->get();
