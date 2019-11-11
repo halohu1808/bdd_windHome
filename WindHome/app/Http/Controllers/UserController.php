@@ -47,10 +47,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = $this->userService->findById($id);
-        if($user->name !== $user->password) {
+        if ($user->name !== $user->password) {
             return view('users.edit', compact('user'));
-        }
-        else{
+        } else {
             Session::flash('facebook', 'Bạn không được thay đổi thông tin khi đăng nhập bằng Facebook');
             return view('users.detail', compact('user'));
         }
@@ -59,10 +58,9 @@ class UserController extends Controller
     public function changePassword($id)
     {
         $user = $this->userService->findById($id);
-        if($user->name !== $user->password){
+        if ($user->name !== $user->password) {
             return view('users.changePassword', compact('user'));
-        }
-        else{
+        } else {
             Session::flash('facebook', 'Bạn không được thay đổi mật khẩu khi đăng nhập bằng Facebook');
             return view('users.detail', compact('user'));
         }

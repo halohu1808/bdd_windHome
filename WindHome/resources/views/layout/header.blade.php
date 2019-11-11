@@ -33,7 +33,7 @@
                                     <div>
                                         <input type="text" name="minPrice" placeholder="giá tối thiểu(VNĐ)">
                                         <input type="text" name="maxPrice" placeholder="giá tối đa(VNĐ)">
-                                        <input type="text" name="guest" placeholder="số lượng khách(ngừoi)">
+                                        <input type="text" name="guest" placeholder="số lượng khách(người)">
                                         <input type="text" name="area" placeholder="diện tích tối thiểu(m2)">
                                     </div>
                                 </div>
@@ -74,73 +74,73 @@
                                         </p>
                                     @elseif($notification->type=='App\Notifications\UserCancelRequest')
                                         <p style="width: 300px">
-                                        <a class=""
-                                           href="{{route('admin.detail',['id'=>$notification->data['room_id'],'key'=>$key++])}}">{{$notification->data['user_name'] }}
-                                            muốn hủy thuê
-                                            phòng</a>
+                                            <a class=""
+                                               href="{{route('admin.detail',['id'=>$notification->data['room_id'],'key'=>$key++])}}">{{$notification->data['user_name'] }}
+                                                muốn hủy thuê
+                                                phòng</a>
                                         </p>
                                     @elseif($notification->type=='App\Notifications\UserCancelBookingRequest')
                                         <p style="width: 300px">
-                                        <a class=""
-                                           href="{{route('admin.detail',['id'=>$notification->data['room_id'],'key'=>$key++])}}">{{$notification->data['user_name'] }}
-                                            muốn hủy yêu cầu đặt phòng
-                                        </a>
+                                            <a class=""
+                                               href="{{route('admin.detail',['id'=>$notification->data['room_id'],'key'=>$key++])}}">{{$notification->data['user_name'] }}
+                                                muốn hủy yêu cầu đặt phòng
+                                            </a>
                                         </p>
                                         {{--                                        Admin --}}
                                     @elseif($notification->type=='App\Notifications\AdminContractCancel')
                                         <p style="width: 300px">
-                                        <a class=""
-                                           href="#"> Admin vừa hủy yêu cầu giữ
-                                            phòng {{$notification->data['room_name']}} của bạn.
-                                        </a>
+                                            <a class=""
+                                               href="#"> Admin vừa hủy yêu cầu giữ
+                                                phòng {{$notification->data['room_name']}} của bạn.
+                                            </a>
                                         </p>
                                     @elseif($notification->type=='App\Notifications\AdminContractStore')
                                         <p style="width: 300px">
-                                        <a class=""
-                                           href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
-                                            Hợp đồng nhà {{$notification->data['room_name']}} đã được tạo
-                                        </a>
+                                            <a class=""
+                                               href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
+                                                Hợp đồng nhà {{$notification->data['room_name']}} đã được tạo
+                                            </a>
                                         </p>
 
                                     @elseif($notification->type=='App\Notifications\AdminContractEndContract')
                                         <p style="width: 300px">
-                                        <a class=""
-                                           href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
-                                            Hợp đồng nhà {{$notification->data['room_name']}} đã bị hủy
-                                        </a>
+                                            <a class=""
+                                               href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
+                                                Hợp đồng nhà {{$notification->data['room_name']}} đã bị hủy
+                                            </a>
                                         </p>
 
                                     @elseif($notification->type=='App\Notifications\AdminExtensionContract')
                                         <p style="width: 300px">
-                                        <a class=""
-                                           href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
-                                            {{$notification->data['room_name']}} đã được gia hạn
-                                        </a>
+                                            <a class=""
+                                               href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
+                                                {{$notification->data['room_name']}} đã được gia hạn
+                                            </a>
                                         </p>
 
                                     @elseif($notification->type=='App\Notifications\AdminCancelEnd')
                                         <p style="width: 300px">
-                                        <a class=""
-                                           href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
-                                            Lệnh hủy phòng {{$notification->data['room_name']}} đã bị hủy
-                                        </a>
+                                            <a class=""
+                                               href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
+                                                Lệnh hủy phòng {{$notification->data['room_name']}} đã bị hủy
+                                            </a>
                                         </p>
 
                                     @elseif($notification->type=='App\Notifications\AdminContractEnd')
                                         <p style="width: 300px">
-                                        <a class=""
-                                           href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
-                                            Phòng {{$notification->data['room_name']}} đã bị hủy
-                                        </a>
+                                            <a class=""
+                                               href="{{route('userRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
+                                                Phòng {{$notification->data['room_name']}} đã bị hủy
+                                            </a>
                                         </p>
 
                                     @elseif($notification->type=='App\Notifications\UserFeedback')
                                         <p style="width: 300px">
-                                        <a class=""
-                                           href="{{route('adminRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
-                                            {{$notification->data['user_name']}} đã gửi góp ý về
-                                            phòng {{$notification->data['room_name']}}
-                                        </a>
+                                            <a class=""
+                                               href="{{route('adminRoute.contractDetail',['id'=>$notification->data['contract_id'],'key'=>$key++])}}">
+                                                {{$notification->data['user_name']}} đã gửi góp ý về
+                                                phòng {{$notification->data['room_name']}}
+                                            </a>
                                         </p>
 
                                     @endif

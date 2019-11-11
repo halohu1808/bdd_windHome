@@ -76,6 +76,12 @@
             @endif
         </div>
 
+        <div class="col-12">
+            @if (Session::has('endContracts'))
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('endContracts') }}</p>
+            @endif
+        </div>
+
 
         <div class="row">
             <div class="col-md-6">
