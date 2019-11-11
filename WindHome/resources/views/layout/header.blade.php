@@ -4,7 +4,7 @@
         <div class="container-fluid">
 
             <a class="navbar-brand" href="{{ route('home') }}">
-                <i class="fas fa-home fa-2x"></i>
+                <img class="card-img-top" src="{{asset("storage/img/home/Windhome_LOGO_BLUE_50x50.png")}}">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"

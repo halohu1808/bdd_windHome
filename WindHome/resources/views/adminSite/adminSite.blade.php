@@ -81,12 +81,12 @@
             <div class="col-md-6">
                 <h2>PHÒNG</h2>
             </div>
-            <div class="col-md-6">
-                <form id="test" class="form-inline" style="float: right">
-                    <input class="form-control mr-sm-2" type="search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>
-                </form>
-            </div>
+{{--            <div class="col-md-6">--}}
+{{--                <form id="test" class="form-inline" style="float: right">--}}
+{{--                    <input class="form-control mr-sm-2" type="search" aria-label="Search">--}}
+{{--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>--}}
+{{--                </form>--}}
+{{--            </div>--}}
         </div>
         <div class="pt-4">
             <a class="btn btn-outline-secondary" href="{{route('room.create')}}">Tạo phòng mới</a>
