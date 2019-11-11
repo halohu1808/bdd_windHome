@@ -51,9 +51,8 @@
             <div class="col-md-5">
 
                 <div class="col-md-12">
+                    <div class="bg-white p-3">
 
-                    <form class="bg-white p-3" method="POST" action="{{route('room.booking')}}">
-                        @csrf
                         <div>
                             <h1 class="card-title text-success font-weight-bold pl-2"> {{$room->name}}</h1>
                             <label class="pl-3"> {{$room->address}}, {{ $room->city->name }} - <a class="text-primary "
@@ -224,7 +223,9 @@
                                                                 data-dismiss="modal">
                                                             Đóng
                                                         </button>
-                                                        <button type="submit" class="btn btn-outline-primary">Gửi góp ý</button>
+                                                        <button type="submit" class="btn btn-outline-primary">Gửi góp
+                                                            ý
+                                                        </button>
 
                                                     </div>
                                             </div>
@@ -233,23 +234,23 @@
 
                                 </div>
 
-                    </form>
-                </div>
-                @elseif($contract->statusId==8)
-                    <div class="row">
-                        <div class="col-md-6">
-                            {{--                                Hủy yêu cầu hủy hợp đồng--}}
-                            <a href="{{route('contract.cancelEnd',$room->id)}}" class="btn btn-outline-primary"
-                               onclick="return confirm('Bạn có chắc chắn muốn hủy')">Hủy Yêu
-                                Cầu Hủy Hợp Đồng
-                            </a>
-                        </div>
+                                </form>
+                            </div>
+                        @elseif($contract->statusId==8)
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{--                                Hủy yêu cầu hủy hợp đồng--}}
+                                    <a href="{{route('contract.cancelEnd',$room->id)}}" class="btn btn-outline-primary"
+                                       onclick="return confirm('Bạn có chắc chắn muốn hủy')">Hủy Yêu
+                                        Cầu Hủy Hợp Đồng
+                                    </a>
+                                </div>
+                            </div>
+                        @elseif($room->statusId==6)
+                        @endif
                     </div>
-                    @elseif($room->statusId==6)
-                    @endif
-                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
 @endsection
