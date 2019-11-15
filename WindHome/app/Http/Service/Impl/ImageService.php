@@ -16,6 +16,7 @@ class ImageService implements ImageServiceInterface
     {
         $this->imageRepository = $imageRepository;
     }
+
     public function getAll()
     {
         return $this->imageRepository->getAll();
@@ -44,5 +45,10 @@ class ImageService implements ImageServiceInterface
     public function getAllImageByRoomId($roomId)
     {
         return $this->imageRepository->findAllImageByRoomId($roomId);
+    }
+
+    public function destroyImage($roomId)
+    {
+        return $this->imageRepository->destroyImage($roomId);
     }
 }

@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
+    protected $guarded = ['images'];
 //    protected $table = 'roomsSeeder';
-    protected $guarded = [];
 
 
     public function images()

@@ -4,12 +4,17 @@
 namespace App\Http\Service\Impl;
 
 
+use App\Http\Middleware\login;
 use App\Http\Repository\Contract\UserRepositoryInterface;
 use App\Http\Service\ServiceInterface\UserServiceInterface;
+use App\Mail\ResetPasswordWindhome;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+
+
 
 class UserService implements UserServiceInterface
 {
@@ -35,26 +40,18 @@ class UserService implements UserServiceInterface
     {
         $user = $this->userRepository->findById($id);
         $data = $request->all();
-        $data['password'] = Hash::make($request->password);
         $this->userRepository->update($user, $data);
         Session::flash('message', 'Cập nhật hồ sơ thành công');
+
     }
 
     public function updatePassword($request, $id)
     {
         $user = $this->userRepository->findById($id);
         $data = [];
-
-
-        if(Hash::check($request->passwordOld, $user->password)){
-            $data['password'] = Hash::make($request->passwordNew);
-            $this->userRepository->update($user, $data);
-            Session::flash('message', 'Đổi mật khẩu thành công');
-
-        } else {
-            Session::flash('message', 'Đổi mật khẩu không thành công');
-            return view('users.changePassword', compact('user'));
-        }
+        $data['password'] = Hash::make($request->passwordNew);
+        $this->userRepository->update($user, $data);
+        Session::flash('message', 'Đổi mật khẩu thành công');
     }
 
     public function findById($id)
@@ -66,5 +63,31 @@ class UserService implements UserServiceInterface
     {
         $user = $this->userRepository->findById($id);
         $this->userRepository->destroy($user);
+    }
+
+    public function findByEmail($email)
+    {
+        $userFind = User::where('email', $email)->get();
+        if(count($userFind) != 0){
+            $user = $userFind[0];
+            $pass = str_random(8);
+            $data= [];
+            $data['password'] = Hash::make($pass);
+            $this->userRepository->update($user, $data);
+            $subject = 'WindHome thông báo thay đổi mật khẩu';
+            $message = 'Mật khẩu mới của bạn tại WinHome là: '.$pass;
+            $mail = new ResetPasswordWindhome($subject, $message);
+            Mail::to($email)->send($mail);
+
+//            dd($mail);
+            Session::flash('status', 'Kiểm tra mật khẩu mới trong email của bạn');
+            return view('auth.login');
+        }
+        else {
+
+            Session::flash('status', 'Email không tồn tại');
+            return redirect()->back();
+        }
+
     }
 }

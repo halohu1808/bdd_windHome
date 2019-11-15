@@ -24,6 +24,7 @@ class UsersRequest extends FormRequest
     public function rules()
     {
         return [
+
             'passwordOld' => 'required',
             'passwordNew' => 'required|min:8',
             'passwordConfirm' => 'required|same:passwordNew',
@@ -36,6 +37,7 @@ class UsersRequest extends FormRequest
     public function messages()
     {
         return [
+
             'passwordOld.required' => 'Mật khẩu cũ không được để trống',
             'passwordNew.required' => 'Mật khẩu mới không được để trống',
             'passwordNew.required|min' => 'Mật khẩu mới phải nhiều hơn 8 ký tự',

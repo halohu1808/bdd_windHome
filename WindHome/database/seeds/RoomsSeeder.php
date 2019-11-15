@@ -15,7 +15,7 @@ class RoomsSeeder extends Seeder
         $room = new Room();
         $room->name = 'WindHome1';
         $room->address = 'Thanh Xuân';
-        $room->cityId = 1;
+        $room->cityId = 2;
         $room->pricePerMonth = 3000000;
         $room->minRentTime = 6;
         $room->electricFee = 4000;
@@ -28,6 +28,8 @@ class RoomsSeeder extends Seeder
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
+        $room->thumbnail="nha1.jpg";
+        $room->linkmap="https://www.google.com/maps/place/B%E1%BA%A3o+t%C3%A0ng+D%C3%A2n+t%E1%BB%99c+h%E1%BB%8Dc+Vi%E1%BB%87t+Nam/@21.022736,105.801944,13z/data=!4m13!1m7!3m6!1s0x3135ab9bd9861ca1:0xe7887f7b72ca17a9!2zSMOgIE7hu5lpLCBIb8OgbiBLaeG6v20sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!3b1!8m2!3d21.0277644!4d105.8341598!3m4!1s0x3135ab394353b821:0x47c950bb0f081a1c!8m2!3d21.0406474!4d105.7985115?hl=vi-VN";
         $room->statusId = 1;
         $room->description = "Trải nghiệm dịch vụ đẳng cấp thế giới ở Flamingo Dai Lai Resort
 Flamingo Dai Lai Resort có các biệt thự sang trọng nằm giữa một phong cảnh yên bình ở thị trấn Phúc Yên. Nằm trong bán kính chỉ 1,5 km từ Sân Gôn Đại Lải, nơi nghỉ này có hồ bơi ngoài trời và nhà hàng ngay trong khuôn viên. Khách có thể truy cập Wi-Fi miễn phí tại đây.
@@ -48,7 +50,7 @@ Flamingo Dai Lai Resort đã chào đón khách Booking.com từ Ngày 25 Tháng
         $room = new Room();
         $room->name = 'WindHome2';
         $room->address = 'Cầu Giấy';
-        $room->cityId = 1;
+        $room->cityId = 2;
         $room->pricePerMonth = 2000000;
         $room->minRentTime = 6;
         $room->electricFee = 4000;
@@ -61,6 +63,8 @@ Flamingo Dai Lai Resort đã chào đón khách Booking.com từ Ngày 25 Tháng
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
+        $room->thumbnail="nha2.jpg";
+        $room->linkmap="https://www.google.com/maps/place/B%E1%BA%A3o+t%C3%A0ng+D%C3%A2n+t%E1%BB%99c+h%E1%BB%8Dc+Vi%E1%BB%87t+Nam/@21.022736,105.801944,13z/data=!4m13!1m7!3m6!1s0x3135ab9bd9861ca1:0xe7887f7b72ca17a9!2zSMOgIE7hu5lpLCBIb8OgbiBLaeG6v20sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!3b1!8m2!3d21.0277644!4d105.8341598!3m4!1s0x3135ab394353b821:0x47c950bb0f081a1c!8m2!3d21.0406474!4d105.7985115?hl=vi-VN";
         $room->statusId = 1;
         $room->description = "Trải nghiệm dịch vụ đẳng cấp thế giới ở Flamingo Dai Lai - Forest In The Sky
 Flamingo Dai Lai - Forest In The Sky có nhà hàng, bể bơi ngoài trời, trung tâm thể dục và quán bar ở Ngọc Quang. Resort 5 sao này có vườn và phòng nghỉ gắn máy điều hòa với Wi-Fi miễn phí cùng phòng tắm riêng. Chỗ nghỉ có thể sắp xếp chỗ đỗ xe riêng kèm phụ phí.
@@ -81,7 +85,7 @@ Flamingo Dai Lai - Forest In The Sky đã chào đón khách Booking.com từ Ng
         $room = new Room();
         $room->name = 'WindHome3';
         $room->address = 'Ba Đình';
-        $room->cityId = 1;
+        $room->cityId = 2;
         $room->pricePerMonth = 1500000;
         $room->minRentTime = 6;
         $room->electricFee = 4000;
@@ -94,6 +98,8 @@ Flamingo Dai Lai - Forest In The Sky đã chào đón khách Booking.com từ Ng
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
+        $room->thumbnail="nha3.jpg";
+        $room->linkmap="https://www.google.com/maps/place/B%E1%BA%A3o+t%C3%A0ng+D%C3%A2n+t%E1%BB%99c+h%E1%BB%8Dc+Vi%E1%BB%87t+Nam/@21.022736,105.801944,13z/data=!4m13!1m7!3m6!1s0x3135ab9bd9861ca1:0xe7887f7b72ca17a9!2zSMOgIE7hu5lpLCBIb8OgbiBLaeG6v20sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!3b1!8m2!3d21.0277644!4d105.8341598!3m4!1s0x3135ab394353b821:0x47c950bb0f081a1c!8m2!3d21.0406474!4d105.7985115?hl=vi-VN";
         $room->statusId = 1;
         $room->description = "Happy Villa Royal Bird by Flamingo Villa Owner ở thôn Ngọc Quang này cung cấp chỗ nghỉ, xe đạp/xe máy miễn phí, hồ bơi ngoài trời theo mùa, trung tâm thể dục, quán bar và khu vườn. Biệt thự cũng có tầm nhìn ra vườn và Wi-Fi miễn phí trong toàn khuôn viên.
 
@@ -111,7 +117,7 @@ Happy Villa Royal Bird by Flamingo Villa Owner đã chào đón khách Booking.c
         $room = new Room();
         $room->name = 'WindHome4';
         $room->address = 'Đống Đa';
-        $room->cityId = 1;
+        $room->cityId = 2;
         $room->pricePerMonth = 1500000;
         $room->minRentTime = 6;
         $room->electricFee = 4000;
@@ -124,6 +130,8 @@ Happy Villa Royal Bird by Flamingo Villa Owner đã chào đón khách Booking.c
         $room->wifi = True;
         $room->cooking = True;
         $room->airCondition = True;
+        $room->thumbnail="nha4.jpg";
+        $room->linkmap="https://www.google.com/maps/place/B%E1%BA%A3o+t%C3%A0ng+D%C3%A2n+t%E1%BB%99c+h%E1%BB%8Dc+Vi%E1%BB%87t+Nam/@21.022736,105.801944,13z/data=!4m13!1m7!3m6!1s0x3135ab9bd9861ca1:0xe7887f7b72ca17a9!2zSMOgIE7hu5lpLCBIb8OgbiBLaeG6v20sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!3b1!8m2!3d21.0277644!4d105.8341598!3m4!1s0x3135ab394353b821:0x47c950bb0f081a1c!8m2!3d21.0406474!4d105.7985115?hl=vi-VN";
         $room->statusId = 1;
         $room->description = " Một trong những chỗ nghỉ bán chạy nhất ở Ngọc Quang của chúng tôi!
 Nằm ở thôn Ngọc Quang, Biệt thự ven hồ Lake side Forest cung cấp chỗ nghỉ với nhà hàng.
