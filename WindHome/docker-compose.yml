@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  web-service:
+    build: docker/web
+    container_name: web-windhome
+    ports:
+      - 80:80
+    volumes:
+      - .:/var/www/html/windhome
+    links:
+      - database
+    command: sh /entry-point.sh
+
+  database:
+    image: mysql:5.7
+    container_name: mysql-windhome
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=1
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-windhome
+    depends_on:
+      - database
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: database
+      MYSQL_ROOT_PASSWORD: 1
+
